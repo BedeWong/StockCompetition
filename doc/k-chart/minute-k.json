@@ -1,0 +1,1945 @@
+{
+    "result": {
+        "code": "SH601333",
+        "crc": "20180518",
+        "time": "",
+        "detail_list": [
+            {
+                "min_time": 201805180930,
+                "last_px": 4.58,
+                "avg_px": 4.583092896174864,
+                "business_amount": 91500,
+                "business_balance": 419353,
+                "min_business_amount": 91500
+            },
+            {
+                "min_time": 201805180931,
+                "last_px": 4.59,
+                "avg_px": 4.583689154568745,
+                "business_amount": 234200,
+                "business_balance": 1073500,
+                "min_business_amount": 234200
+            },
+            {
+                "min_time": 201805180932,
+                "last_px": 4.57,
+                "avg_px": 4.582895377128954,
+                "business_amount": 287700,
+                "business_balance": 1318499,
+                "min_business_amount": 287700
+            },
+            {
+                "min_time": 201805180933,
+                "last_px": 4.57,
+                "avg_px": 4.582770465489567,
+                "business_amount": 311500,
+                "business_balance": 1427533,
+                "min_business_amount": 311500
+            },
+            {
+                "min_time": 201805180934,
+                "last_px": 4.58,
+                "avg_px": 4.582865432439901,
+                "business_amount": 361900,
+                "business_balance": 1658539,
+                "min_business_amount": 361900
+            },
+            {
+                "min_time": 201805180935,
+                "last_px": 4.57,
+                "avg_px": 4.582756677284979,
+                "business_amount": 408100,
+                "business_balance": 1870223,
+                "min_business_amount": 408100
+            },
+            {
+                "min_time": 201805180936,
+                "last_px": 4.57,
+                "avg_px": 4.581488541877915,
+                "business_amount": 493100,
+                "business_balance": 2259132,
+                "min_business_amount": 493100
+            },
+            {
+                "min_time": 201805180937,
+                "last_px": 4.57,
+                "avg_px": 4.578842628553674,
+                "business_amount": 643700,
+                "business_balance": 2947401,
+                "min_business_amount": 643700
+            },
+            {
+                "min_time": 201805180938,
+                "last_px": 4.57,
+                "avg_px": 4.578649181322013,
+                "business_amount": 659600,
+                "business_balance": 3020077,
+                "min_business_amount": 659600
+            },
+            {
+                "min_time": 201805180939,
+                "last_px": 4.58,
+                "avg_px": 4.5782177373507675,
+                "business_amount": 703600,
+                "business_balance": 3221234,
+                "min_business_amount": 703600
+            },
+            {
+                "min_time": 201805180940,
+                "last_px": 4.57,
+                "avg_px": 4.577549711353432,
+                "business_amount": 779500,
+                "business_balance": 3568200,
+                "min_business_amount": 779500
+            },
+            {
+                "min_time": 201805180941,
+                "last_px": 4.57,
+                "avg_px": 4.577430755733801,
+                "business_amount": 797900,
+                "business_balance": 3652332,
+                "min_business_amount": 797900
+            },
+            {
+                "min_time": 201805180942,
+                "last_px": 4.58,
+                "avg_px": 4.577305138923039,
+                "business_amount": 813400,
+                "business_balance": 3723180,
+                "min_business_amount": 813400
+            },
+            {
+                "min_time": 201805180943,
+                "last_px": 4.57,
+                "avg_px": 4.577103960396039,
+                "business_amount": 848400,
+                "business_balance": 3883215,
+                "min_business_amount": 848400
+            },
+            {
+                "min_time": 201805180944,
+                "last_px": 4.57,
+                "avg_px": 4.576727232439619,
+                "business_amount": 902600,
+                "business_balance": 4130954,
+                "min_business_amount": 902600
+            },
+            {
+                "min_time": 201805180945,
+                "last_px": 4.57,
+                "avg_px": 4.576856610435465,
+                "business_amount": 1019600,
+                "business_balance": 4666563,
+                "min_business_amount": 1019600
+            },
+            {
+                "min_time": 201805180946,
+                "last_px": 4.56,
+                "avg_px": 4.576493299597039,
+                "business_amount": 1067100,
+                "business_balance": 4883576,
+                "min_business_amount": 1067100
+            },
+            {
+                "min_time": 201805180947,
+                "last_px": 4.57,
+                "avg_px": 4.575737457897536,
+                "business_amount": 1128200,
+                "business_balance": 5162347,
+                "min_business_amount": 1128200
+            },
+            {
+                "min_time": 201805180948,
+                "last_px": 4.57,
+                "avg_px": 4.575270225737354,
+                "business_amount": 1213800,
+                "business_balance": 5553463,
+                "min_business_amount": 1213800
+            },
+            {
+                "min_time": 201805180949,
+                "last_px": 4.56,
+                "avg_px": 4.57475221659278,
+                "business_amount": 1263200,
+                "business_balance": 5778827,
+                "min_business_amount": 1263200
+            },
+            {
+                "min_time": 201805180950,
+                "last_px": 4.56,
+                "avg_px": 4.573800675675676,
+                "business_amount": 1361600,
+                "business_balance": 6227687,
+                "min_business_amount": 1361600
+            },
+            {
+                "min_time": 201805180951,
+                "last_px": 4.56,
+                "avg_px": 4.573311853845064,
+                "business_amount": 1412200,
+                "business_balance": 6458431,
+                "min_business_amount": 1412200
+            },
+            {
+                "min_time": 201805180952,
+                "last_px": 4.56,
+                "avg_px": 4.573066991144461,
+                "business_amount": 1479300,
+                "business_balance": 6764938,
+                "min_business_amount": 1479300
+            },
+            {
+                "min_time": 201805180953,
+                "last_px": 4.56,
+                "avg_px": 4.572826115658833,
+                "business_amount": 1514800,
+                "business_balance": 6926917,
+                "min_business_amount": 1514800
+            },
+            {
+                "min_time": 201805180954,
+                "last_px": 4.56,
+                "avg_px": 4.572599178328412,
+                "business_amount": 1557800,
+                "business_balance": 7123195,
+                "min_business_amount": 1557800
+            },
+            {
+                "min_time": 201805180955,
+                "last_px": 4.56,
+                "avg_px": 4.572267561021055,
+                "business_amount": 1610100,
+                "business_balance": 7361808,
+                "min_business_amount": 1610100
+            },
+            {
+                "min_time": 201805180956,
+                "last_px": 4.57,
+                "avg_px": 4.5721091062699895,
+                "business_amount": 1657100,
+                "business_balance": 7576442,
+                "min_business_amount": 1657100
+            },
+            {
+                "min_time": 201805180957,
+                "last_px": 4.56,
+                "avg_px": 4.572049976030681,
+                "business_amount": 1668800,
+                "business_balance": 7629837,
+                "min_business_amount": 1668800
+            },
+            {
+                "min_time": 201805180958,
+                "last_px": 4.56,
+                "avg_px": 4.571894569255263,
+                "business_amount": 1695900,
+                "business_balance": 7753476,
+                "min_business_amount": 1695900
+            },
+            {
+                "min_time": 201805180959,
+                "last_px": 4.56,
+                "avg_px": 4.570731107589749,
+                "business_amount": 1830100,
+                "business_balance": 8364895,
+                "min_business_amount": 1830100
+            },
+            {
+                "min_time": 201805181000,
+                "last_px": 4.54,
+                "avg_px": 4.5656798227276525,
+                "business_amount": 2391800,
+                "business_balance": 10920193,
+                "min_business_amount": 2391800
+            },
+            {
+                "min_time": 201805181001,
+                "last_px": 4.56,
+                "avg_px": 4.5643666209628275,
+                "business_amount": 2625600,
+                "business_balance": 11984201,
+                "min_business_amount": 2625600
+            },
+            {
+                "min_time": 201805181002,
+                "last_px": 4.56,
+                "avg_px": 4.564312792685646,
+                "business_amount": 2690600,
+                "business_balance": 12280740,
+                "min_business_amount": 2690600
+            },
+            {
+                "min_time": 201805181003,
+                "last_px": 4.56,
+                "avg_px": 4.564265569917744,
+                "business_amount": 2723200,
+                "business_balance": 12429408,
+                "min_business_amount": 2723200
+            },
+            {
+                "min_time": 201805181004,
+                "last_px": 4.55,
+                "avg_px": 4.564033489377025,
+                "business_amount": 2777000,
+                "business_balance": 12674321,
+                "min_business_amount": 2777000
+            },
+            {
+                "min_time": 201805181005,
+                "last_px": 4.56,
+                "avg_px": 4.563998498552175,
+                "business_amount": 2797300,
+                "business_balance": 12766873,
+                "min_business_amount": 2797300
+            },
+            {
+                "min_time": 201805181006,
+                "last_px": 4.56,
+                "avg_px": 4.563941226697025,
+                "business_amount": 2810800,
+                "business_balance": 12828326,
+                "min_business_amount": 2810800
+            },
+            {
+                "min_time": 201805181007,
+                "last_px": 4.55,
+                "avg_px": 4.563755470746822,
+                "business_amount": 2856100,
+                "business_balance": 13034542,
+                "min_business_amount": 2856100
+            },
+            {
+                "min_time": 201805181008,
+                "last_px": 4.56,
+                "avg_px": 4.563619842660346,
+                "business_amount": 2910900,
+                "business_balance": 13284241,
+                "min_business_amount": 2910900
+            },
+            {
+                "min_time": 201805181009,
+                "last_px": 4.56,
+                "avg_px": 4.563600574123437,
+                "business_amount": 2926200,
+                "business_balance": 13354008,
+                "min_business_amount": 2926200
+            },
+            {
+                "min_time": 201805181010,
+                "last_px": 4.55,
+                "avg_px": 4.563450302160195,
+                "business_amount": 2995100,
+                "business_balance": 13667990,
+                "min_business_amount": 2995100
+            },
+            {
+                "min_time": 201805181011,
+                "last_px": 4.55,
+                "avg_px": 4.5629942122186495,
+                "business_amount": 3110000,
+                "business_balance": 14190912,
+                "min_business_amount": 3110000
+            },
+            {
+                "min_time": 201805181012,
+                "last_px": 4.55,
+                "avg_px": 4.5627475465525915,
+                "business_amount": 3179200,
+                "business_balance": 14505887,
+                "min_business_amount": 3179200
+            },
+            {
+                "min_time": 201805181013,
+                "last_px": 4.55,
+                "avg_px": 4.562646737262987,
+                "business_amount": 3201300,
+                "business_balance": 14606401,
+                "min_business_amount": 3201300
+            },
+            {
+                "min_time": 201805181014,
+                "last_px": 4.56,
+                "avg_px": 4.562578989427096,
+                "business_amount": 3253600,
+                "business_balance": 14844807,
+                "min_business_amount": 3253600
+            },
+            {
+                "min_time": 201805181015,
+                "last_px": 4.56,
+                "avg_px": 4.562568503647398,
+                "business_amount": 3262600,
+                "business_balance": 14885836,
+                "min_business_amount": 3262600
+            },
+            {
+                "min_time": 201805181016,
+                "last_px": 4.56,
+                "avg_px": 4.562523712839783,
+                "business_amount": 3299900,
+                "business_balance": 15055872,
+                "min_business_amount": 3299900
+            },
+            {
+                "min_time": 201805181017,
+                "last_px": 4.55,
+                "avg_px": 4.562439903846154,
+                "business_amount": 3328000,
+                "business_balance": 15183800,
+                "min_business_amount": 3328000
+            },
+            {
+                "min_time": 201805181018,
+                "last_px": 4.55,
+                "avg_px": 4.56240692485099,
+                "business_amount": 3338700,
+                "business_balance": 15232508,
+                "min_business_amount": 3338700
+            },
+            {
+                "min_time": 201805181019,
+                "last_px": 4.55,
+                "avg_px": 4.5623837434173335,
+                "business_amount": 3361100,
+                "business_balance": 15334628,
+                "min_business_amount": 3361100
+            },
+            {
+                "min_time": 201805181020,
+                "last_px": 4.55,
+                "avg_px": 4.562283754342578,
+                "business_amount": 3396600,
+                "business_balance": 15496253,
+                "min_business_amount": 3396600
+            },
+            {
+                "min_time": 201805181021,
+                "last_px": 4.55,
+                "avg_px": 4.5622173201659555,
+                "business_amount": 3422600,
+                "business_balance": 15614645,
+                "min_business_amount": 3422600
+            },
+            {
+                "min_time": 201805181022,
+                "last_px": 4.55,
+                "avg_px": 4.5621937098135055,
+                "business_amount": 3437100,
+                "business_balance": 15680716,
+                "min_business_amount": 3437100
+            },
+            {
+                "min_time": 201805181023,
+                "last_px": 4.56,
+                "avg_px": 4.562177166724678,
+                "business_amount": 3447600,
+                "business_balance": 15728562,
+                "min_business_amount": 3447600
+            },
+            {
+                "min_time": 201805181024,
+                "last_px": 4.55,
+                "avg_px": 4.56217246569791,
+                "business_amount": 3454600,
+                "business_balance": 15760481,
+                "min_business_amount": 3454600
+            },
+            {
+                "min_time": 201805181025,
+                "last_px": 4.56,
+                "avg_px": 4.562161251296232,
+                "business_amount": 3471600,
+                "business_balance": 15837999,
+                "min_business_amount": 3471600
+            },
+            {
+                "min_time": 201805181026,
+                "last_px": 4.55,
+                "avg_px": 4.562009071580439,
+                "business_amount": 3527500,
+                "business_balance": 16092487,
+                "min_business_amount": 3527500
+            },
+            {
+                "min_time": 201805181027,
+                "last_px": 4.56,
+                "avg_px": 4.561936768872556,
+                "business_amount": 3564700,
+                "business_balance": 16261936,
+                "min_business_amount": 3564700
+            },
+            {
+                "min_time": 201805181028,
+                "last_px": 4.55,
+                "avg_px": 4.561817806295267,
+                "business_amount": 3631300,
+                "business_balance": 16565329,
+                "min_business_amount": 3631300
+            },
+            {
+                "min_time": 201805181029,
+                "last_px": 4.56,
+                "avg_px": 4.561796624013068,
+                "business_amount": 3673000,
+                "business_balance": 16755479,
+                "min_business_amount": 3673000
+            },
+            {
+                "min_time": 201805181030,
+                "last_px": 4.56,
+                "avg_px": 4.561790036062509,
+                "business_amount": 3743500,
+                "business_balance": 17077061,
+                "min_business_amount": 3743500
+            },
+            {
+                "min_time": 201805181031,
+                "last_px": 4.56,
+                "avg_px": 4.561782644242527,
+                "business_amount": 3766001,
+                "business_balance": 17179678,
+                "min_business_amount": 3766001
+            },
+            {
+                "min_time": 201805181032,
+                "last_px": 4.56,
+                "avg_px": 4.561775096499882,
+                "business_amount": 3789901,
+                "business_balance": 17288676,
+                "min_business_amount": 3789901
+            },
+            {
+                "min_time": 201805181033,
+                "last_px": 4.56,
+                "avg_px": 4.561775098201574,
+                "business_amount": 3800601,
+                "business_balance": 17337487,
+                "min_business_amount": 3800601
+            },
+            {
+                "min_time": 201805181034,
+                "last_px": 4.56,
+                "avg_px": 4.561861050942681,
+                "business_amount": 3844301,
+                "business_balance": 17537167,
+                "min_business_amount": 3844301
+            },
+            {
+                "min_time": 201805181035,
+                "last_px": 4.56,
+                "avg_px": 4.561878550929088,
+                "business_amount": 3854801,
+                "business_balance": 17585134,
+                "min_business_amount": 3854801
+            },
+            {
+                "min_time": 201805181036,
+                "last_px": 4.56,
+                "avg_px": 4.561908852305014,
+                "business_amount": 3879001,
+                "business_balance": 17695649,
+                "min_business_amount": 3879001
+            },
+            {
+                "min_time": 201805181037,
+                "last_px": 4.56,
+                "avg_px": 4.56191519250767,
+                "business_amount": 3886001,
+                "business_balance": 17727607,
+                "min_business_amount": 3886001
+            },
+            {
+                "min_time": 201805181038,
+                "last_px": 4.56,
+                "avg_px": 4.561910522203382,
+                "business_amount": 3920101,
+                "business_balance": 17883150,
+                "min_business_amount": 3920101
+            },
+            {
+                "min_time": 201805181039,
+                "last_px": 4.57,
+                "avg_px": 4.561938803811713,
+                "business_amount": 3940801,
+                "business_balance": 17977693,
+                "min_business_amount": 3940801
+            },
+            {
+                "min_time": 201805181040,
+                "last_px": 4.57,
+                "avg_px": 4.561954509071134,
+                "business_amount": 3951601,
+                "business_balance": 18027024,
+                "min_business_amount": 3951601
+            },
+            {
+                "min_time": 201805181041,
+                "last_px": 4.57,
+                "avg_px": 4.561975922908561,
+                "business_amount": 3969001,
+                "business_balance": 18106487,
+                "min_business_amount": 3969001
+            },
+            {
+                "min_time": 201805181042,
+                "last_px": 4.56,
+                "avg_px": 4.562028200327843,
+                "business_amount": 4001301,
+                "business_balance": 18254048,
+                "min_business_amount": 4001301
+            },
+            {
+                "min_time": 201805181043,
+                "last_px": 4.57,
+                "avg_px": 4.562010994849381,
+                "business_amount": 4059901,
+                "business_balance": 18521313,
+                "min_business_amount": 4059901
+            },
+            {
+                "min_time": 201805181044,
+                "last_px": 4.56,
+                "avg_px": 4.562081281563852,
+                "business_amount": 4112101,
+                "business_balance": 18759739,
+                "min_business_amount": 4112101
+            },
+            {
+                "min_time": 201805181045,
+                "last_px": 4.56,
+                "avg_px": 4.562078955940692,
+                "business_amount": 4116701,
+                "business_balance": 18780715,
+                "min_business_amount": 4116701
+            },
+            {
+                "min_time": 201805181046,
+                "last_px": 4.56,
+                "avg_px": 4.562078012376407,
+                "business_amount": 4130601,
+                "business_balance": 18844124,
+                "min_business_amount": 4130601
+            },
+            {
+                "min_time": 201805181047,
+                "last_px": 4.57,
+                "avg_px": 4.562081799463631,
+                "business_amount": 4142301,
+                "business_balance": 18897516,
+                "min_business_amount": 4142301
+            },
+            {
+                "min_time": 201805181048,
+                "last_px": 4.57,
+                "avg_px": 4.562142449521266,
+                "business_amount": 4182801,
+                "business_balance": 19082534,
+                "min_business_amount": 4182801
+            },
+            {
+                "min_time": 201805181049,
+                "last_px": 4.56,
+                "avg_px": 4.562148346259758,
+                "business_amount": 4191801,
+                "business_balance": 19123618,
+                "min_business_amount": 4191801
+            },
+            {
+                "min_time": 201805181050,
+                "last_px": 4.56,
+                "avg_px": 4.562161027344378,
+                "business_amount": 4210701,
+                "business_balance": 19209896,
+                "min_business_amount": 4210701
+            },
+            {
+                "min_time": 201805181051,
+                "last_px": 4.56,
+                "avg_px": 4.562165728387391,
+                "business_amount": 4222801,
+                "business_balance": 19265118,
+                "min_business_amount": 4222801
+            },
+            {
+                "min_time": 201805181052,
+                "last_px": 4.56,
+                "avg_px": 4.562170160319262,
+                "business_amount": 4228001,
+                "business_balance": 19288860,
+                "min_business_amount": 4228001
+            },
+            {
+                "min_time": 201805181053,
+                "last_px": 4.57,
+                "avg_px": 4.562303081244064,
+                "business_amount": 4309201,
+                "business_balance": 19659881,
+                "min_business_amount": 4309201
+            },
+            {
+                "min_time": 201805181054,
+                "last_px": 4.57,
+                "avg_px": 4.562423768330115,
+                "business_amount": 4382201,
+                "business_balance": 19993458,
+                "min_business_amount": 4382201
+            },
+            {
+                "min_time": 201805181055,
+                "last_px": 4.57,
+                "avg_px": 4.562880930770678,
+                "business_amount": 4672601,
+                "business_balance": 21320522,
+                "min_business_amount": 4672601
+            },
+            {
+                "min_time": 201805181056,
+                "last_px": 4.58,
+                "avg_px": 4.563431286220214,
+                "business_amount": 4823101,
+                "business_balance": 22009890,
+                "min_business_amount": 4823101
+            },
+            {
+                "min_time": 201805181057,
+                "last_px": 4.58,
+                "avg_px": 4.563830727619074,
+                "business_amount": 4898401,
+                "business_balance": 22355473,
+                "min_business_amount": 4898401
+            },
+            {
+                "min_time": 201805181058,
+                "last_px": 4.58,
+                "avg_px": 4.564210970196487,
+                "business_amount": 5013201,
+                "business_balance": 22881307,
+                "min_business_amount": 5013201
+            },
+            {
+                "min_time": 201805181059,
+                "last_px": 4.57,
+                "avg_px": 4.564435510832463,
+                "business_amount": 5087901,
+                "business_balance": 23223396,
+                "min_business_amount": 5087901
+            },
+            {
+                "min_time": 201805181100,
+                "last_px": 4.57,
+                "avg_px": 4.564440973818262,
+                "business_amount": 5092901,
+                "business_balance": 23246246,
+                "min_business_amount": 5092901
+            },
+            {
+                "min_time": 201805181101,
+                "last_px": 4.57,
+                "avg_px": 4.564444115620513,
+                "business_amount": 5095601,
+                "business_balance": 23258586,
+                "min_business_amount": 5095601
+            },
+            {
+                "min_time": 201805181102,
+                "last_px": 4.57,
+                "avg_px": 4.564458456989276,
+                "business_amount": 5105901,
+                "business_balance": 23305673,
+                "min_business_amount": 5105901
+            },
+            {
+                "min_time": 201805181103,
+                "last_px": 4.57,
+                "avg_px": 4.564469297731899,
+                "business_amount": 5114101,
+                "business_balance": 23343157,
+                "min_business_amount": 5114101
+            },
+            {
+                "min_time": 201805181104,
+                "last_px": 4.57,
+                "avg_px": 4.564493250419944,
+                "business_amount": 5135801,
+                "business_balance": 23442329,
+                "min_business_amount": 5135801
+            },
+            {
+                "min_time": 201805181105,
+                "last_px": 4.57,
+                "avg_px": 4.5645105774474235,
+                "business_amount": 5151101,
+                "business_balance": 23512255,
+                "min_business_amount": 5151101
+            },
+            {
+                "min_time": 201805181106,
+                "last_px": 4.57,
+                "avg_px": 4.564537702773766,
+                "business_amount": 5174301,
+                "business_balance": 23618292,
+                "min_business_amount": 5174301
+            },
+            {
+                "min_time": 201805181107,
+                "last_px": 4.57,
+                "avg_px": 4.564560770353655,
+                "business_amount": 5186501,
+                "business_balance": 23674099,
+                "min_business_amount": 5186501
+            },
+            {
+                "min_time": 201805181108,
+                "last_px": 4.57,
+                "avg_px": 4.564581877486167,
+                "business_amount": 5196001,
+                "business_balance": 23717572,
+                "min_business_amount": 5196001
+            },
+            {
+                "min_time": 201805181109,
+                "last_px": 4.57,
+                "avg_px": 4.564609615643699,
+                "business_amount": 5218101,
+                "business_balance": 23818594,
+                "min_business_amount": 5218101
+            },
+            {
+                "min_time": 201805181110,
+                "last_px": 4.57,
+                "avg_px": 4.564613257874757,
+                "business_amount": 5220701,
+                "business_balance": 23830481,
+                "min_business_amount": 5220701
+            },
+            {
+                "min_time": 201805181111,
+                "last_px": 4.58,
+                "avg_px": 4.564648147122436,
+                "business_amount": 5253801,
+                "business_balance": 23981753,
+                "min_business_amount": 5253801
+            },
+            {
+                "min_time": 201805181112,
+                "last_px": 4.58,
+                "avg_px": 4.564658275448724,
+                "business_amount": 5263201,
+                "business_balance": 24024714,
+                "min_business_amount": 5263201
+            },
+            {
+                "min_time": 201805181113,
+                "last_px": 4.58,
+                "avg_px": 4.564664319807099,
+                "business_amount": 5268601,
+                "business_balance": 24049395,
+                "min_business_amount": 5268601
+            },
+            {
+                "min_time": 201805181114,
+                "last_px": 4.57,
+                "avg_px": 4.564688287126805,
+                "business_amount": 5277501,
+                "business_balance": 24090147,
+                "min_business_amount": 5277501
+            },
+            {
+                "min_time": 201805181115,
+                "last_px": 4.57,
+                "avg_px": 4.5646989755559595,
+                "business_amount": 5285501,
+                "business_balance": 24126721,
+                "min_business_amount": 5285501
+            },
+            {
+                "min_time": 201805181116,
+                "last_px": 4.58,
+                "avg_px": 4.565037254478037,
+                "business_amount": 5407001,
+                "business_balance": 24683161,
+                "min_business_amount": 5407001
+            },
+            {
+                "min_time": 201805181117,
+                "last_px": 4.58,
+                "avg_px": 4.565048577410797,
+                "business_amount": 5412701,
+                "business_balance": 24709243,
+                "min_business_amount": 5412701
+            },
+            {
+                "min_time": 201805181118,
+                "last_px": 4.57,
+                "avg_px": 4.565051687613935,
+                "business_amount": 5415901,
+                "business_balance": 24723868,
+                "min_business_amount": 5415901
+            },
+            {
+                "min_time": 201805181119,
+                "last_px": 4.57,
+                "avg_px": 4.5650578229240635,
+                "business_amount": 5420601,
+                "business_balance": 24745357,
+                "min_business_amount": 5420601
+            },
+            {
+                "min_time": 201805181120,
+                "last_px": 4.58,
+                "avg_px": 4.565084002303445,
+                "business_amount": 5433601,
+                "business_balance": 24804845,
+                "min_business_amount": 5433601
+            },
+            {
+                "min_time": 201805181121,
+                "last_px": 4.57,
+                "avg_px": 4.565089437911039,
+                "business_amount": 5438801,
+                "business_balance": 24828613,
+                "min_business_amount": 5438801
+            },
+            {
+                "min_time": 201805181122,
+                "last_px": 4.58,
+                "avg_px": 4.5651073562115165,
+                "business_amount": 5453201,
+                "business_balance": 24894448,
+                "min_business_amount": 5453201
+            },
+            {
+                "min_time": 201805181123,
+                "last_px": 4.58,
+                "avg_px": 4.565131639257184,
+                "business_amount": 5465201,
+                "business_balance": 24949362,
+                "min_business_amount": 5465201
+            },
+            {
+                "min_time": 201805181124,
+                "last_px": 4.58,
+                "avg_px": 4.56521564337924,
+                "business_amount": 5497201,
+                "business_balance": 25095908,
+                "min_business_amount": 5497201
+            },
+            {
+                "min_time": 201805181125,
+                "last_px": 4.58,
+                "avg_px": 4.56523023937591,
+                "business_amount": 5509201,
+                "business_balance": 25150771,
+                "min_business_amount": 5509201
+            },
+            {
+                "min_time": 201805181126,
+                "last_px": 4.58,
+                "avg_px": 4.565238787368259,
+                "business_amount": 5513001,
+                "business_balance": 25168166,
+                "min_business_amount": 5513001
+            },
+            {
+                "min_time": 201805181127,
+                "last_px": 4.58,
+                "avg_px": 4.565417183136716,
+                "business_amount": 5682001,
+                "business_balance": 25940705,
+                "min_business_amount": 5682001
+            },
+            {
+                "min_time": 201805181128,
+                "last_px": 4.58,
+                "avg_px": 4.565435164266748,
+                "business_amount": 5695401,
+                "business_balance": 26001984,
+                "min_business_amount": 5695401
+            },
+            {
+                "min_time": 201805181129,
+                "last_px": 4.58,
+                "avg_px": 4.565453633287103,
+                "business_amount": 5702701,
+                "business_balance": 26035417,
+                "min_business_amount": 5702701
+            },
+            {
+                "min_time": 201805181130,
+                "last_px": 4.58,
+                "avg_px": 4.565453633287103,
+                "business_amount": 5702701,
+                "business_balance": 26035417,
+                "min_business_amount": 5702701
+            },
+            {
+                "min_time": 201805181300,
+                "last_px": 4.58,
+                "avg_px": 4.565764419302871,
+                "business_amount": 5833101,
+                "business_balance": 26632565,
+                "min_business_amount": 5833101
+            },
+            {
+                "min_time": 201805181301,
+                "last_px": 4.57,
+                "avg_px": 4.565779864139277,
+                "business_amount": 5842601,
+                "business_balance": 26676030,
+                "min_business_amount": 5842601
+            },
+            {
+                "min_time": 201805181302,
+                "last_px": 4.56,
+                "avg_px": 4.565782556839701,
+                "business_amount": 5880001,
+                "business_balance": 26846806,
+                "min_business_amount": 5880001
+            },
+            {
+                "min_time": 201805181303,
+                "last_px": 4.57,
+                "avg_px": 4.565827297709699,
+                "business_amount": 5989301,
+                "business_balance": 27346114,
+                "min_business_amount": 5989301
+            },
+            {
+                "min_time": 201805181304,
+                "last_px": 4.57,
+                "avg_px": 4.565741819799287,
+                "business_amount": 6117301,
+                "business_balance": 27930017,
+                "min_business_amount": 6117301
+            },
+            {
+                "min_time": 201805181305,
+                "last_px": 4.57,
+                "avg_px": 4.56575954977283,
+                "business_amount": 6160801,
+                "business_balance": 28128736,
+                "min_business_amount": 6160801
+            },
+            {
+                "min_time": 201805181306,
+                "last_px": 4.56,
+                "avg_px": 4.565773302339619,
+                "business_amount": 6209001,
+                "business_balance": 28348891,
+                "min_business_amount": 6209001
+            },
+            {
+                "min_time": 201805181307,
+                "last_px": 4.57,
+                "avg_px": 4.565813744403591,
+                "business_amount": 6265401,
+                "business_balance": 28606654,
+                "min_business_amount": 6265401
+            },
+            {
+                "min_time": 201805181308,
+                "last_px": 4.57,
+                "avg_px": 4.565846541111043,
+                "business_amount": 6285501,
+                "business_balance": 28698633,
+                "min_business_amount": 6285501
+            },
+            {
+                "min_time": 201805181309,
+                "last_px": 4.57,
+                "avg_px": 4.5658622636698984,
+                "business_amount": 6303101,
+                "business_balance": 28779091,
+                "min_business_amount": 6303101
+            },
+            {
+                "min_time": 201805181310,
+                "last_px": 4.57,
+                "avg_px": 4.565900041549322,
+                "business_amount": 6356301,
+                "business_balance": 29022235,
+                "min_business_amount": 6356301
+            },
+            {
+                "min_time": 201805181311,
+                "last_px": 4.56,
+                "avg_px": 4.565893854490273,
+                "business_amount": 6379601,
+                "business_balance": 29128581,
+                "min_business_amount": 6379601
+            },
+            {
+                "min_time": 201805181312,
+                "last_px": 4.56,
+                "avg_px": 4.565881715194002,
+                "business_amount": 6421501,
+                "business_balance": 29319814,
+                "min_business_amount": 6421501
+            },
+            {
+                "min_time": 201805181313,
+                "last_px": 4.56,
+                "avg_px": 4.565838758215959,
+                "business_amount": 6485701,
+                "business_balance": 29612665,
+                "min_business_amount": 6485701
+            },
+            {
+                "min_time": 201805181314,
+                "last_px": 4.56,
+                "avg_px": 4.565838319666098,
+                "business_amount": 6487901,
+                "business_balance": 29622707,
+                "min_business_amount": 6487901
+            },
+            {
+                "min_time": 201805181315,
+                "last_px": 4.56,
+                "avg_px": 4.565840123270769,
+                "business_amount": 6507301,
+                "business_balance": 29711296,
+                "min_business_amount": 6507301
+            },
+            {
+                "min_time": 201805181316,
+                "last_px": 4.57,
+                "avg_px": 4.565864710736695,
+                "business_amount": 6547201,
+                "business_balance": 29893634,
+                "min_business_amount": 6547201
+            },
+            {
+                "min_time": 201805181317,
+                "last_px": 4.57,
+                "avg_px": 4.565786790218725,
+                "business_amount": 6644001,
+                "business_balance": 30335092,
+                "min_business_amount": 6644001
+            },
+            {
+                "min_time": 201805181318,
+                "last_px": 4.57,
+                "avg_px": 4.565812144757291,
+                "business_amount": 6677301,
+                "business_balance": 30487302,
+                "min_business_amount": 6677301
+            },
+            {
+                "min_time": 201805181319,
+                "last_px": 4.56,
+                "avg_px": 4.5658264087057265,
+                "business_amount": 6700601,
+                "business_balance": 30593781,
+                "min_business_amount": 6700601
+            },
+            {
+                "min_time": 201805181320,
+                "last_px": 4.57,
+                "avg_px": 4.565832066638655,
+                "business_amount": 6720904,
+                "business_balance": 30686519,
+                "min_business_amount": 6720904
+            },
+            {
+                "min_time": 201805181321,
+                "last_px": 4.57,
+                "avg_px": 4.565840570301396,
+                "business_amount": 6734404,
+                "business_balance": 30748215,
+                "min_business_amount": 6734404
+            },
+            {
+                "min_time": 201805181322,
+                "last_px": 4.57,
+                "avg_px": 4.565843286138015,
+                "business_amount": 6738804,
+                "business_balance": 30768323,
+                "min_business_amount": 6738804
+            },
+            {
+                "min_time": 201805181323,
+                "last_px": 4.58,
+                "avg_px": 4.566132893050296,
+                "business_amount": 6899804,
+                "business_balance": 31505422,
+                "min_business_amount": 6899804
+            },
+            {
+                "min_time": 201805181324,
+                "last_px": 4.58,
+                "avg_px": 4.566135880919522,
+                "business_amount": 6904104,
+                "business_balance": 31525077,
+                "min_business_amount": 6904104
+            },
+            {
+                "min_time": 201805181325,
+                "last_px": 4.57,
+                "avg_px": 4.566143975625231,
+                "business_amount": 6916004,
+                "business_balance": 31579470,
+                "min_business_amount": 6916004
+            },
+            {
+                "min_time": 201805181326,
+                "last_px": 4.58,
+                "avg_px": 4.566248132337553,
+                "business_amount": 6968604,
+                "business_balance": 31820375,
+                "min_business_amount": 6968604
+            },
+            {
+                "min_time": 201805181327,
+                "last_px": 4.57,
+                "avg_px": 4.566252972672914,
+                "business_amount": 6975204,
+                "business_balance": 31850546,
+                "min_business_amount": 6975204
+            },
+            {
+                "min_time": 201805181328,
+                "last_px": 4.58,
+                "avg_px": 4.56630482223121,
+                "business_amount": 7001904,
+                "business_balance": 31972828,
+                "min_business_amount": 7001904
+            },
+            {
+                "min_time": 201805181329,
+                "last_px": 4.58,
+                "avg_px": 4.56633090563684,
+                "business_amount": 7015704,
+                "business_balance": 32036026,
+                "min_business_amount": 7015704
+            },
+            {
+                "min_time": 201805181330,
+                "last_px": 4.58,
+                "avg_px": 4.56634398705411,
+                "business_amount": 7027404,
+                "business_balance": 32089544,
+                "min_business_amount": 7027404
+            },
+            {
+                "min_time": 201805181331,
+                "last_px": 4.58,
+                "avg_px": 4.56640551974648,
+                "business_amount": 7060904,
+                "business_balance": 32242951,
+                "min_business_amount": 7060904
+            },
+            {
+                "min_time": 201805181332,
+                "last_px": 4.58,
+                "avg_px": 4.5664303297003785,
+                "business_amount": 7080004,
+                "business_balance": 32330345,
+                "min_business_amount": 7080004
+            },
+            {
+                "min_time": 201805181333,
+                "last_px": 4.58,
+                "avg_px": 4.566509374108685,
+                "business_amount": 7124304,
+                "business_balance": 32533201,
+                "min_business_amount": 7124304
+            },
+            {
+                "min_time": 201805181334,
+                "last_px": 4.57,
+                "avg_px": 4.566523358630788,
+                "business_amount": 7138004,
+                "business_balance": 32595862,
+                "min_business_amount": 7138004
+            },
+            {
+                "min_time": 201805181335,
+                "last_px": 4.57,
+                "avg_px": 4.566547324192588,
+                "business_amount": 7160904,
+                "business_balance": 32700607,
+                "min_business_amount": 7160904
+            },
+            {
+                "min_time": 201805181336,
+                "last_px": 4.58,
+                "avg_px": 4.566583072976751,
+                "business_amount": 7225027,
+                "business_balance": 32993686,
+                "min_business_amount": 7225027
+            },
+            {
+                "min_time": 201805181337,
+                "last_px": 4.58,
+                "avg_px": 4.566708466069594,
+                "business_amount": 7305527,
+                "business_balance": 33362212,
+                "min_business_amount": 7305527
+            },
+            {
+                "min_time": 201805181338,
+                "last_px": 4.58,
+                "avg_px": 4.566712021266876,
+                "business_amount": 7311276,
+                "business_balance": 33388492,
+                "min_business_amount": 7311276
+            },
+            {
+                "min_time": 201805181339,
+                "last_px": 4.57,
+                "avg_px": 4.566779398660481,
+                "business_amount": 7478504,
+                "business_balance": 34152678,
+                "min_business_amount": 7478504
+            },
+            {
+                "min_time": 201805181340,
+                "last_px": 4.57,
+                "avg_px": 4.56681878732757,
+                "business_amount": 7590904,
+                "business_balance": 34666283,
+                "min_business_amount": 7590904
+            },
+            {
+                "min_time": 201805181341,
+                "last_px": 4.57,
+                "avg_px": 4.566872247513651,
+                "business_amount": 7758667,
+                "business_balance": 35432841,
+                "min_business_amount": 7758667
+            },
+            {
+                "min_time": 201805181342,
+                "last_px": 4.56,
+                "avg_px": 4.5668745901713175,
+                "business_amount": 7882867,
+                "business_balance": 36000065,
+                "min_business_amount": 7882867
+            },
+            {
+                "min_time": 201805181343,
+                "last_px": 4.57,
+                "avg_px": 4.566869141248991,
+                "business_amount": 7890867,
+                "business_balance": 36036557,
+                "min_business_amount": 7890867
+            },
+            {
+                "min_time": 201805181344,
+                "last_px": 4.57,
+                "avg_px": 4.567178687882287,
+                "business_amount": 8149467,
+                "business_balance": 37220072,
+                "min_business_amount": 8149467
+            },
+            {
+                "min_time": 201805181345,
+                "last_px": 4.57,
+                "avg_px": 4.567186641972425,
+                "business_amount": 8160067,
+                "business_balance": 37268549,
+                "min_business_amount": 8160067
+            },
+            {
+                "min_time": 201805181346,
+                "last_px": 4.58,
+                "avg_px": 4.567237137639661,
+                "business_amount": 8220167,
+                "business_balance": 37543452,
+                "min_business_amount": 8220167
+            },
+            {
+                "min_time": 201805181347,
+                "last_px": 4.58,
+                "avg_px": 4.567248915034404,
+                "business_amount": 8231367,
+                "business_balance": 37594702,
+                "min_business_amount": 8231367
+            },
+            {
+                "min_time": 201805181348,
+                "last_px": 4.57,
+                "avg_px": 4.567255077281751,
+                "business_amount": 8241467,
+                "business_balance": 37640882,
+                "min_business_amount": 8241467
+            },
+            {
+                "min_time": 201805181349,
+                "last_px": 4.58,
+                "avg_px": 4.567259620438615,
+                "business_amount": 8247467,
+                "business_balance": 37668323,
+                "min_business_amount": 8247467
+            },
+            {
+                "min_time": 201805181350,
+                "last_px": 4.58,
+                "avg_px": 4.567314086743623,
+                "business_amount": 8292967,
+                "business_balance": 37876585,
+                "min_business_amount": 8292967
+            },
+            {
+                "min_time": 201805181351,
+                "last_px": 4.57,
+                "avg_px": 4.567324183132266,
+                "business_amount": 8307067,
+                "business_balance": 37941068,
+                "min_business_amount": 8307067
+            },
+            {
+                "min_time": 201805181352,
+                "last_px": 4.64,
+                "avg_px": 4.575058578671082,
+                "business_amount": 10952792,
+                "business_balance": 50109665,
+                "min_business_amount": 10952792
+            },
+            {
+                "min_time": 201805181353,
+                "last_px": 4.65,
+                "avg_px": 4.585148833233702,
+                "business_amount": 12460893,
+                "business_balance": 57135049,
+                "min_business_amount": 12460893
+            },
+            {
+                "min_time": 201805181354,
+                "last_px": 4.64,
+                "avg_px": 4.585804345288592,
+                "business_amount": 12602293,
+                "business_balance": 57791650,
+                "min_business_amount": 12602293
+            },
+            {
+                "min_time": 201805181355,
+                "last_px": 4.64,
+                "avg_px": 4.589273709985186,
+                "business_amount": 13300293,
+                "business_balance": 61038685,
+                "min_business_amount": 13300293
+            },
+            {
+                "min_time": 201805181356,
+                "last_px": 4.64,
+                "avg_px": 4.59635140485073,
+                "business_amount": 14880193,
+                "business_balance": 68394596,
+                "min_business_amount": 14880193
+            },
+            {
+                "min_time": 201805181357,
+                "last_px": 4.64,
+                "avg_px": 4.5975138024117195,
+                "business_amount": 15282293,
+                "business_balance": 70260553,
+                "min_business_amount": 15282293
+            },
+            {
+                "min_time": 201805181358,
+                "last_px": 4.65,
+                "avg_px": 4.5982759764719585,
+                "business_amount": 15507793,
+                "business_balance": 71309112,
+                "min_business_amount": 15507793
+            },
+            {
+                "min_time": 201805181359,
+                "last_px": 4.65,
+                "avg_px": 4.600302894098363,
+                "business_amount": 16092093,
+                "business_balance": 74028502,
+                "min_business_amount": 16092093
+            },
+            {
+                "min_time": 201805181400,
+                "last_px": 4.65,
+                "avg_px": 4.60128768330299,
+                "business_amount": 16408693,
+                "business_balance": 75501117,
+                "min_business_amount": 16408693
+            },
+            {
+                "min_time": 201805181401,
+                "last_px": 4.66,
+                "avg_px": 4.601800465245257,
+                "business_amount": 16577493,
+                "business_balance": 76286315,
+                "min_business_amount": 16577493
+            },
+            {
+                "min_time": 201805181402,
+                "last_px": 4.65,
+                "avg_px": 4.6018334908506615,
+                "business_amount": 16587593,
+                "business_balance": 76333341,
+                "min_business_amount": 16587593
+            },
+            {
+                "min_time": 201805181403,
+                "last_px": 4.65,
+                "avg_px": 4.602049650849967,
+                "business_amount": 16656593,
+                "business_balance": 76654468,
+                "min_business_amount": 16656593
+            },
+            {
+                "min_time": 201805181404,
+                "last_px": 4.65,
+                "avg_px": 4.602481662286998,
+                "business_amount": 16811393,
+                "business_balance": 77374128,
+                "min_business_amount": 16811393
+            },
+            {
+                "min_time": 201805181405,
+                "last_px": 4.64,
+                "avg_px": 4.6025849100935545,
+                "business_amount": 16849793,
+                "business_balance": 77552603,
+                "min_business_amount": 16849793
+            },
+            {
+                "min_time": 201805181406,
+                "last_px": 4.63,
+                "avg_px": 4.603211469590793,
+                "business_amount": 17181293,
+                "business_balance": 79089125,
+                "min_business_amount": 17181293
+            },
+            {
+                "min_time": 201805181407,
+                "last_px": 4.63,
+                "avg_px": 4.60352329053958,
+                "business_amount": 17385793,
+                "business_balance": 80035903,
+                "min_business_amount": 17385793
+            },
+            {
+                "min_time": 201805181408,
+                "last_px": 4.63,
+                "avg_px": 4.603595342542166,
+                "business_amount": 17428993,
+                "business_balance": 80236031,
+                "min_business_amount": 17428993
+            },
+            {
+                "min_time": 201805181409,
+                "last_px": 4.62,
+                "avg_px": 4.603621178840278,
+                "business_amount": 17448793,
+                "business_balance": 80327633,
+                "min_business_amount": 17448793
+            },
+            {
+                "min_time": 201805181410,
+                "last_px": 4.63,
+                "avg_px": 4.60387258444479,
+                "business_amount": 17619293,
+                "business_balance": 81116980,
+                "min_business_amount": 17619293
+            },
+            {
+                "min_time": 201805181411,
+                "last_px": 4.64,
+                "avg_px": 4.604067997023916,
+                "business_amount": 17715893,
+                "business_balance": 81565176,
+                "min_business_amount": 17715893
+            },
+            {
+                "min_time": 201805181412,
+                "last_px": 4.64,
+                "avg_px": 4.604285582927011,
+                "business_amount": 17824693,
+                "business_balance": 82069977,
+                "min_business_amount": 17824693
+            },
+            {
+                "min_time": 201805181413,
+                "last_px": 4.65,
+                "avg_px": 4.604500682257071,
+                "business_amount": 17927993,
+                "business_balance": 82549456,
+                "min_business_amount": 17927993
+            },
+            {
+                "min_time": 201805181414,
+                "last_px": 4.65,
+                "avg_px": 4.604589657594349,
+                "business_amount": 17963693,
+                "business_balance": 82715435,
+                "min_business_amount": 17963693
+            },
+            {
+                "min_time": 201805181415,
+                "last_px": 4.65,
+                "avg_px": 4.605319830739678,
+                "business_amount": 18260393,
+                "business_balance": 84094950,
+                "min_business_amount": 18260393
+            },
+            {
+                "min_time": 201805181416,
+                "last_px": 4.64,
+                "avg_px": 4.6056975914802445,
+                "business_amount": 18417993,
+                "business_balance": 84827706,
+                "min_business_amount": 18417993
+            },
+            {
+                "min_time": 201805181417,
+                "last_px": 4.65,
+                "avg_px": 4.605782262923302,
+                "business_amount": 18455093,
+                "business_balance": 85000140,
+                "min_business_amount": 18455093
+            },
+            {
+                "min_time": 201805181418,
+                "last_px": 4.64,
+                "avg_px": 4.606164566870196,
+                "business_amount": 18663793,
+                "business_balance": 85968502,
+                "min_business_amount": 18663793
+            },
+            {
+                "min_time": 201805181419,
+                "last_px": 4.63,
+                "avg_px": 4.6062136872735335,
+                "business_amount": 18702293,
+                "business_balance": 86146758,
+                "min_business_amount": 18702293
+            },
+            {
+                "min_time": 201805181420,
+                "last_px": 4.64,
+                "avg_px": 4.6062881916434995,
+                "business_amount": 18747393,
+                "business_balance": 86355895,
+                "min_business_amount": 18747393
+            },
+            {
+                "min_time": 201805181421,
+                "last_px": 4.63,
+                "avg_px": 4.6063572132853805,
+                "business_amount": 18786093,
+                "business_balance": 86535455,
+                "min_business_amount": 18786093
+            },
+            {
+                "min_time": 201805181422,
+                "last_px": 4.63,
+                "avg_px": 4.606483855078841,
+                "business_amount": 18866893,
+                "business_balance": 86910038,
+                "min_business_amount": 18866893
+            },
+            {
+                "min_time": 201805181423,
+                "last_px": 4.64,
+                "avg_px": 4.606532300520586,
+                "business_amount": 18894293,
+                "business_balance": 87037171,
+                "min_business_amount": 18894293
+            },
+            {
+                "min_time": 201805181424,
+                "last_px": 4.63,
+                "avg_px": 4.606684714582625,
+                "business_amount": 18981693,
+                "business_balance": 87442675,
+                "min_business_amount": 18981693
+            },
+            {
+                "min_time": 201805181425,
+                "last_px": 4.64,
+                "avg_px": 4.606896284739304,
+                "business_amount": 19089293,
+                "business_balance": 87942393,
+                "min_business_amount": 19089293
+            },
+            {
+                "min_time": 201805181426,
+                "last_px": 4.65,
+                "avg_px": 4.607008774355512,
+                "business_amount": 19140893,
+                "business_balance": 88182262,
+                "min_business_amount": 19140893
+            },
+            {
+                "min_time": 201805181427,
+                "last_px": 4.65,
+                "avg_px": 4.607208470070109,
+                "business_amount": 19231293,
+                "business_balance": 88602576,
+                "min_business_amount": 19231293
+            },
+            {
+                "min_time": 201805181428,
+                "last_px": 4.65,
+                "avg_px": 4.607326597377444,
+                "business_amount": 19291793,
+                "business_balance": 88883591,
+                "min_business_amount": 19291793
+            },
+            {
+                "min_time": 201805181429,
+                "last_px": 4.65,
+                "avg_px": 4.607509440956984,
+                "business_amount": 19383893,
+                "business_balance": 89311470,
+                "min_business_amount": 19383893
+            },
+            {
+                "min_time": 201805181430,
+                "last_px": 4.65,
+                "avg_px": 4.60792416302689,
+                "business_amount": 19573777,
+                "business_balance": 90194480,
+                "min_business_amount": 19573777
+            },
+            {
+                "min_time": 201805181431,
+                "last_px": 4.66,
+                "avg_px": 4.6079905008203434,
+                "business_amount": 19603377,
+                "business_balance": 90332175,
+                "min_business_amount": 19603377
+            },
+            {
+                "min_time": 201805181432,
+                "last_px": 4.66,
+                "avg_px": 4.608221153536249,
+                "business_amount": 19702077,
+                "business_balance": 90791528,
+                "min_business_amount": 19702077
+            },
+            {
+                "min_time": 201805181433,
+                "last_px": 4.66,
+                "avg_px": 4.608350942090218,
+                "business_amount": 19754849,
+                "business_balance": 91037277,
+                "min_business_amount": 19754849
+            },
+            {
+                "min_time": 201805181434,
+                "last_px": 4.65,
+                "avg_px": 4.608442955311168,
+                "business_amount": 19797049,
+                "business_balance": 91233571,
+                "min_business_amount": 19797049
+            },
+            {
+                "min_time": 201805181435,
+                "last_px": 4.65,
+                "avg_px": 4.609010291780644,
+                "business_amount": 20080393,
+                "business_balance": 92550738,
+                "min_business_amount": 20080393
+            },
+            {
+                "min_time": 201805181436,
+                "last_px": 4.65,
+                "avg_px": 4.609074870557794,
+                "business_amount": 20116893,
+                "business_balance": 92720266,
+                "min_business_amount": 20116893
+            },
+            {
+                "min_time": 201805181437,
+                "last_px": 4.64,
+                "avg_px": 4.6094309994544185,
+                "business_amount": 20314093,
+                "business_balance": 93636410,
+                "min_business_amount": 20314093
+            },
+            {
+                "min_time": 201805181438,
+                "last_px": 4.64,
+                "avg_px": 4.609464957379191,
+                "business_amount": 20336193,
+                "business_balance": 93738969,
+                "min_business_amount": 20336193
+            },
+            {
+                "min_time": 201805181439,
+                "last_px": 4.64,
+                "avg_px": 4.609577401923901,
+                "business_amount": 20396993,
+                "business_balance": 94021518,
+                "min_business_amount": 20396993
+            },
+            {
+                "min_time": 201805181440,
+                "last_px": 4.64,
+                "avg_px": 4.609760997789023,
+                "business_amount": 20521693,
+                "business_balance": 94600100,
+                "min_business_amount": 20521693
+            },
+            {
+                "min_time": 201805181441,
+                "last_px": 4.64,
+                "avg_px": 4.609897462891403,
+                "business_amount": 20614293,
+                "business_balance": 95029777,
+                "min_business_amount": 20614293
+            },
+            {
+                "min_time": 201805181442,
+                "last_px": 4.63,
+                "avg_px": 4.610017641042007,
+                "business_amount": 20705693,
+                "business_balance": 95453610,
+                "min_business_amount": 20705693
+            },
+            {
+                "min_time": 201805181443,
+                "last_px": 4.63,
+                "avg_px": 4.6102137417601625,
+                "business_amount": 20904993,
+                "business_balance": 96376486,
+                "min_business_amount": 20904993
+            },
+            {
+                "min_time": 201805181444,
+                "last_px": 4.63,
+                "avg_px": 4.610269093958022,
+                "business_amount": 20952793,
+                "business_balance": 96598014,
+                "min_business_amount": 20952793
+            },
+            {
+                "min_time": 201805181445,
+                "last_px": 4.63,
+                "avg_px": 4.610332694531846,
+                "business_amount": 21020093,
+                "business_balance": 96909622,
+                "min_business_amount": 21020093
+            },
+            {
+                "min_time": 201805181446,
+                "last_px": 4.64,
+                "avg_px": 4.610567875255916,
+                "business_amount": 21198793,
+                "business_balance": 97738474,
+                "min_business_amount": 21198793
+            },
+            {
+                "min_time": 201805181447,
+                "last_px": 4.63,
+                "avg_px": 4.610635726285374,
+                "business_amount": 21264293,
+                "business_balance": 98041909,
+                "min_business_amount": 21264293
+            },
+            {
+                "min_time": 201805181448,
+                "last_px": 4.63,
+                "avg_px": 4.610713738114268,
+                "business_amount": 21339872,
+                "business_balance": 98392041,
+                "min_business_amount": 21339872
+            },
+            {
+                "min_time": 201805181449,
+                "last_px": 4.63,
+                "avg_px": 4.610924199267063,
+                "business_amount": 21560372,
+                "business_balance": 99413241,
+                "min_business_amount": 21560372
+            },
+            {
+                "min_time": 201805181450,
+                "last_px": 4.64,
+                "avg_px": 4.6111766794053315,
+                "business_amount": 21949972,
+                "business_balance": 101215199,
+                "min_business_amount": 21949972
+            },
+            {
+                "min_time": 201805181451,
+                "last_px": 4.63,
+                "avg_px": 4.611285590731195,
+                "business_amount": 22070072,
+                "business_balance": 101771405,
+                "min_business_amount": 22070072
+            },
+            {
+                "min_time": 201805181452,
+                "last_px": 4.62,
+                "avg_px": 4.611362486511252,
+                "business_amount": 22192572,
+                "business_balance": 102337994,
+                "min_business_amount": 22192572
+            },
+            {
+                "min_time": 201805181453,
+                "last_px": 4.62,
+                "avg_px": 4.611406340190051,
+                "business_amount": 22286272,
+                "business_balance": 102771056,
+                "min_business_amount": 22286272
+            },
+            {
+                "min_time": 201805181454,
+                "last_px": 4.62,
+                "avg_px": 4.611475287491341,
+                "business_amount": 22457372,
+                "business_balance": 103561616,
+                "min_business_amount": 22457372
+            },
+            {
+                "min_time": 201805181455,
+                "last_px": 4.62,
+                "avg_px": 4.611528076329928,
+                "business_amount": 22601672,
+                "business_balance": 104228245,
+                "min_business_amount": 22601672
+            },
+            {
+                "min_time": 201805181456,
+                "last_px": 4.63,
+                "avg_px": 4.611601239207619,
+                "business_amount": 22728072,
+                "business_balance": 104812805,
+                "min_business_amount": 22728072
+            },
+            {
+                "min_time": 201805181457,
+                "last_px": 4.62,
+                "avg_px": 4.6116337062818396,
+                "business_amount": 22770972,
+                "business_balance": 105011382,
+                "min_business_amount": 22770972
+            },
+            {
+                "min_time": 201805181458,
+                "last_px": 4.63,
+                "avg_px": 4.611903274336268,
+                "business_amount": 23086572,
+                "business_balance": 106473037,
+                "min_business_amount": 23086572
+            },
+            {
+                "min_time": 201805181459,
+                "last_px": 4.63,
+                "avg_px": 4.611997331950028,
+                "business_amount": 23186972,
+                "business_balance": 106938253,
+                "min_business_amount": 23186972
+            },
+            {
+                "min_time": 201805181500,
+                "last_px": 4.63,
+                "avg_px": 4.611997331950028,
+                "business_amount": 23186972,
+                "business_balance": 106938253,
+                "min_business_amount": 23186972
+            }
+        ]
+    }
+}
