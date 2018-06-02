@@ -1,0 +1,92 @@
+POST http://localhost:8004/api/login?loginId=wong&pwd=123456
+Accept: */*
+Cache-Control: no-cache
+loginId: wong
+pwd: 123456
+
+<> 2018-05-23T032444.500.txt
+
+###
+
+POST http://localhost:8004/api/login
+Accept: */*
+Cache-Control: no-cache
+loginId: wong
+pwd: 123456
+
+<> 2018-05-23T032227.400.txt
+
+###
+
+POST http://localhost:8004/api/login
+Accept: */*
+Cache-Control: no-cache
+uname: wong
+pwd: 123456
+
+<> 2018-05-23T032205.400.txt
+
+###
+
+POST http://localhost:8004/api/login
+Accept: */*
+Cache-Control: no-cache
+uname: wong
+pwd: 123456
+
+<> 2018-05-23T032035.403.txt
+
+###
+
+GET http://localhost:8004/api/login
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-23T031847.405.txt
+
+###
+
+GET http://localhost:8003/piccode
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-23T122530.500.txt
+
+###
+
+GET http://localhost:8003/piccode
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-23T111915.500.txt
+
+###
+
+GET http://localhost:8002/piccode
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-23T111808.500.txt
+
+###
+
+GET http://localhost:8001/piccode
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-23T111636.500.txt
+
+###
+
+GET http://localhost:8081/piccode
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/piccode
+Accept: */*
+Cache-Control: no-cache
+
+###
+

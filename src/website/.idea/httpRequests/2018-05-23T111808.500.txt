@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\ApterWong\AppData\Local\Programs\Python\Python36\lib\site-packages\tornado\web.py", line 1541, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "H:\stockMatchs\www\handlers\verify_code.py", line 27, in get
+    raise e
+  File "H:\stockMatchs\www\handlers\verify_code.py", line 24, in get
+    self.redis.set("pic_code_%s" % name, VERIFY_CODE_EXPIRES_SECONDS, text.lower())
+AttributeError: 'list' object has no attribute 'lower'
