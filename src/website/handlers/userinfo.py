@@ -99,6 +99,9 @@ class LoginHandler(BaseHandler):
             retdata = user_json_data
         ))
 
+        logging.info(self.session._session_id)
+        logging.info(user_json_data)
+
 
 class LogoutHandler(BaseHandler):
     """
