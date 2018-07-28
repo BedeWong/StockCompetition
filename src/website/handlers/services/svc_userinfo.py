@@ -36,6 +36,7 @@ class SVC_userinfo(object):
                 logging.error("delete_user:user obj is not a User instance.")
         except Exception as e:
             logging.error(e)
+            dbsession.rollback()
             raise e
 
     @staticmethod
@@ -71,6 +72,7 @@ class SVC_userinfo(object):
             dbsession.commit()
         except Exception as e:
             logging.error(e)
+            dbsession.rollback()
             raise e
 
     @staticmethod
@@ -85,6 +87,7 @@ class SVC_userinfo(object):
             user = dbsession.query(User).get(id)
         except Exception as e:
             logging.error(e)
+            dbsession.rollback()
             raise e
         return user
 
@@ -94,21 +97,37 @@ class SVC_userinfo(object):
         if not isinstance(name, str):
             raise TypeError("name 类型错误", name)
 
-        user = dbsession.query(User).filter_by(u_name=name).one()
+        try:
+            user = dbsession.query(User).filter_by(u_name=name).one()
+        except Exception as e:
+            logging.error(e)
+            dbsession.rollback()
+            raise e
         return user
 
     @staticmethod
     def get_user_byemail(email):
         if not isinstance(email, str):
             raise TypeError("name 类型错误", email)
-        user = dbsession.query(User).filter_by(u_email=email).one()
+
+        try:
+            user = dbsession.query(User).filter_by(u_email=email).one()
+        except Exception as e:
+            logging.error(e)
+            dbsession.rollback()
+            raise e
         return user
 
     @staticmethod
     def get_user_bymobile(mobile):
         if not isinstance(mobile, str):
             raise TypeError("name 类型错误", mobile)
-        user = dbsession.query(User).filter_by(u_mobilephone=mobile).one()
+        try:
+            user = dbsession.query(User).filter_by(u_mobilephone=mobile).one()
+        except Exception as e:
+            logging.error(e)
+            dbsession.rollback()
+            raise e
         return user
 
 #### test
