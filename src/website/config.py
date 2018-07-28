@@ -17,7 +17,7 @@ mysql_opt = {
     "database" : "stockcontest"
 }
 
-mysqlurl = "mysql+mysqlconnector://wong:wong@127.0.0.1:3306/stockcontest?charset=utf8"
+mysqlurl = "mysql+mysqlconnector://wong:wong@localhost:3306/stockcontest?charset=utf8"
 
 # 日志配置
 log_path = os.path.join(os.path.dirname(__file__), "logs/log.log")

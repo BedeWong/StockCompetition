@@ -136,6 +136,7 @@ def test_query():
 
 def main():
     test_query()
+    test_query()
 
 
 if __name__ == '__main__':
