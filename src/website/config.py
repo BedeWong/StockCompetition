@@ -4,18 +4,20 @@ import os
 
 # redis 配置
 redis_opt = {
-    "host" : "120.79.208.53",
+    "host" : "127.0.0.1",
     "port" : "6379",
     "password" : "wong"
 }
 
 # 数据库链接
 mysql_opt = {
-    "host": "120.79.208.53",
+    "host": "127.0.0.1",
     "user" : "wong",
     "password" : "wong",
     "database" : "stockcontest"
 }
+
+mysqlurl = "mysql+mysqlconnector://wong:wong@127.0.0.1:3306/stockcontest?charset=utf8"
 
 # 日志配置
 log_path = os.path.join(os.path.dirname(__file__), "logs/log.log")
