@@ -8,6 +8,7 @@ urls = [
     (r'/api/login', userinfo.LoginHandler),
     (r'/api/logout', userinfo.LogoutHandler),
     (r'/api/register', userinfo.RegisterHanler),
+    (r'/api/getuserinfo', userinfo.GetUserInfo),
     (r'/piccode', verify_code.PicCodeHandler),
     (r'/api/checkpic', verify_code.SMSCodeHandler),
 ]

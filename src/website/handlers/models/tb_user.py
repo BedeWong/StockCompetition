@@ -1,11 +1,11 @@
 #coding=utf-8
 
-from sqlalchemy import Column, String, Integer, DECIMAL, DateTime, TIMESTAMP
+from sqlalchemy import Column, String, Integer, DECIMAL, DateTime
 
 import datetime
 import json
 
-from handlers.models.basemodel import BaseModel, Engin
+from handlers.models.basemodel import BaseModel
 
 class User(BaseModel):
     """用户表"""
@@ -37,7 +37,7 @@ class User(BaseModel):
 
 
     def __repr__(self):
-        return "<User: %s>" % self.to_json();
+        return "TABLE <User: %s>" % self.to_json();
 
     def to_dict(self):
         return dict(

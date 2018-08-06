@@ -71,3 +71,27 @@ http://vip.stock.finance.sina.com.cn/quotes_service/view/cn_price_list.php?&symb
 ```
 http://vip.stock.finance.sina.com.cn/quotes_service/api/jsonp.php/var%20continueTime=/CN_StockForGDTXService.getStockStatus04Info?code=sh600283
 ```
+
+##### 板块
+> 获取板块数据
+```
+http://money.finance.sina.com.cn/q/view/newFLJK.php?param=class
+class : 概念
+industry ： 行业
+area ： 地域
+json:
+{
+    "gn_bdgn": "gn_bdgn,百度概念,15,15.846,-0.36466666666667,-2.2495476229643,112190318,1196066805,sh601127,0.875,17.300,0.150,小康股份",
+    "gn_xmgn": "gn_xmgn,小米概念,39,16.690263157895,-0.24,-1.4175798554442,314490703,4758379192,sz300408,1.073,24.480,0.260,三环集团"
+}
+{
+    "hangye_ZA01": "hangye_ZA01,农业,15,7.6826666666667,-0.14666666666667,-1.8732970027248,77233207,521416013,,0,,,",
+    "hangye_ZA03": "hangye_ZA03,林业,5,11.284,-0.214,-1.8611932510002,5953240,46976921,,0,,,"
+}
+```
+##### 获取个股涨幅数据列表
+> 这个接口获取涨幅排名的股数， 根据这个接口的返回值 使用 hq.sina.com 获取行情数据
+```
+http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?page=1&num=40&sort=changepercent&asc=0&node=hs_a
+http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?page=1&num=40&sort=changepercent&asc=1&node=hs_a
+```

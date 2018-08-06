@@ -4,7 +4,7 @@ import os
 
 # redis 配置
 redis_opt = {
-    "host" : "127.0.0.1",
+    "host" : "120.79.208.53",
     "port" : "6379",
     "password" : "wong"
 }
@@ -28,6 +28,7 @@ settings = {
     "debug" : True,
     "cookie_secret" : "FhLXI+BRRomtuaG47hoXEg3JCdi0BUi8vrpWmoxaoyI=",
     # "xsrf_cookies" : True
+    # "autoreload" : False
 }
 
 def main():
