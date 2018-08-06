@@ -77,7 +77,8 @@ class LoginHandler(BaseHandler):
             res = self.redis.hget("tb_users", "uid:%d" % userid)
             if res:
                 logging.debug(res)
-                self.session.clear_session(res)
+                self.session.clear_session(res, userid)
+                logging.debug("tb_users hset uid:%d" % userid)
             self.redis.hset("tb_users", "uid:%d" % userid, self.session._session_id)
         except Exception as e:
             logging.error(e)
@@ -157,6 +158,24 @@ class RegisterHanler(BaseHandler):
                               u_mobilephone = umobile,
                               u_pwd = pwd
                               )
+
+
+class GetUserInfo(BaseHandler):
+    """用於檢測用戶的token是否過期，過期返回錯誤碼，未過期返回用戶數據"""
+
+    @required_login
+    def post(self):
+
+        data = self.get_current_user()
+        logging.debug("GetUserInfo:data type:%s data:%s" % (type(data), data))
+        self.write(dict(
+                errcode=RET.RET_OK,
+                errmsg="",
+                token=self.session._session_id,
+                retdata=data
+            ))
+
+
 
 def main():
     pass

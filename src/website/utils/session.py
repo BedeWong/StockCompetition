@@ -17,7 +17,7 @@ class Session(object):
 
         self._request_handler   = request_obj
         # self._session_id        = request_obj.get_secure_cookie('session_id')
-        self._session_id = request_obj.get_argument("token", None)
+        self._session_id = request_obj.get_argument("utoken", None)
 
         if not self._session_id:
             self._session_id = uuid.uuid4().hex
@@ -31,7 +31,7 @@ class Session(object):
                 logging.error(e)
                 raise e
 
-            if not self.data:
+            if not jsondata:
                 self.data = {}
             else:
                 self.data = json.loads(jsondata)
@@ -60,16 +60,19 @@ class Session(object):
             raise e
         self._request_handler.clear_cookie("session_id")
 
-    def clear_session(self, session_id):
+    def clear_session(self, session_id, userid):
         if not isinstance(session_id, bytes):
             raise TypeError("session_id 不正确")
 
         try:
             logging.debug("session_id:%s" % session_id.decode('utf8'))
             self._request_handler.redis.delete("session_id:%s" % session_id.decode('utf8'))
+            logging.debug("tb_users uid:%s" % userid)
+            self._request_handler.redis.hdel("tb_users", "uid:%d" % userid)
         except Exception as e:
             logging.error(e)
             raise e
+
 
 def main():
     pass
