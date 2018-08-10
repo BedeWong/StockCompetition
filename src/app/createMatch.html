@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.logobox {
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">創建比賽</h1>
+		</header>
+		<!--
+        	作者：offline
+        	时间：2018-07-25
+        	描述：表單
+        -->
+        <div id="" class="mui-content">
+		<form class="mui-input-group">
+		    <div class="mui-input-row">
+		        <label>比賽名稱：</label>
+		        <input type="text"  placeholder="給你的比賽取一個響亮的名字吧" name="name">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>比賽描述：</label>
+		        <input type="text" placeholder="描述一下你的比賽" name="describe">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>开始于：</label>
+		        <input type="date" name="starttm" />
+		    </div>
+		    <div class="mui-input-row">
+		        <label>结束于：</label>
+		        <input type="date" name="endtm" />
+		    </div>
+		    <div class="mui-input-row">
+		        <label>logo：</label>
+		        <input type="file" name="logofile" />
+		    </div>
+		     <div class="mui-button-row" style="text-align: center;">
+		        <label style="float: left; padding-left: 15px;">初始資金：</label>
+		        <input name="radio1" type="radio" checked="checked" style="display: inline;">50W
+		        <input name="radio1" type="radio" style="display: inline;">100W
+		        <input name="radio1" type="radio" style="display: inline;">500W
+		        <input name="radio1" type="radio" style="display: inline;">1000W
+		    </div>
+		    <div class="mui-button-row">
+		        <button type="button" class="mui-btn mui-btn-primary" >提交</button>
+		    </div>
+		    
+		</form>
+        	
+        </div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+
+</html>

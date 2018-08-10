@@ -162,7 +162,10 @@
 					};
 					//检查 "登录状态" 开始
 					if (settings.autoLogin && state.token) {
-						toMain();
+						app.getUserInfo(function(ok){
+							if(ok)
+								toMain();
+						});
 					} else {
 						app.setState(null);
 						//第三方登录
@@ -232,7 +235,6 @@
 							password: passwordBox.value
 						};
 						app.login(loginInfo, function(err) {
-							console.log(err)
 							if (err) {
 								plus.nativeUI.toast(err);
 								return;

@@ -177,114 +177,162 @@
 		}
 	},
 	"dependencies": {
-	  "pages": {
-	    "setting.html": {
-	      "href": "setting.html",
-	      "resources": [
-	        "js/mui.min.js",
-	        "js/mui.view.js",
-	        "libs/easymob-webim-sdk/jquery-1.11.1.js",
-	        "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-	        "libs/easymob-webim-sdk/json2.js",
-	        "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-	        "js/feedback.js",
-	        "js/feedback-page.js",
-	        "js/mui.locker.js",
-	        "js/app.js",
-	        "css/mui.min.css",
-	        "fonts/mui.ttf",
-	        "css/feedback-page.css",
-	        "images/iconfont-tianjia.png"
-	      ],
-	      "refer": [
-	        "login.html"
-	      ],
-	      "priority": 1
-	    },
-	    "main.html": {
-	      "href": "main.html",
-	      "resources": [
-	        "css/mui.min.css",
-	        "fonts/mui.ttf",
-	        "js/mui.min.js",
-	        "js/app.js"
-	      ],
-	      "refer": [
-	        "setting.html"
-	      ],
-	      "priority": 1
-	    },
-	    "unlock.html": {
-	      "href": "unlock.html",
-	      "resources": [
-	        "css/mui.min.css",
-	        "fonts/mui.ttf",
-	        "js/mui.min.js",
-	        "js/mui.locker.js",
-	        "js/app.js"
-	      ],
-	      "refer": [
-	        "login.html",
-	        "main.html"
-	      ],
-	      "priority": 0
-	    },
-	    "forget_password.html": {
-	      "href": "forget_password.html",
-	      "resources": [
-	        "css/mui.min.css",
-	        "fonts/mui.ttf",
-	        "css/style.css",
-	        "js/mui.min.js",
-	        "js/app.js"
-	      ],
-	      "priority": 1
-	    },
-	    "reg.html": {
-	      "href": "reg.html",
-	      "resources": [
-	        "css/mui.min.css",
-	        "fonts/mui.ttf",
-	        "css/style.css",
-	        "js/mui.min.js",
-	        "js/app.js"
-	      ],
-	      "refer": [
-	        "login.html"
-	      ],
-	      "priority": 3
-	    },
-	    "login.html": {
-	      "href": "login.html",
-	      "resources": [
-	        "css/mui.min.css",
-	        "fonts/mui.ttf",
-	        "css/style.css",
-	        "js/mui.min.js",
-	        "js/mui.enterfocus.js",
-	        "js/app.js",
-	        "images/qihoo.png",
-	        "images/qq.png",
-	        "images/sinaweibo.png",
-	        "images/weixin.png"
-	      ],
-	      "refer": [
-	        "unlock.html",
-	        "forget_password.html",
-	        "main.html",
-	        "reg.html"
-	      ],
-	      "priority": 0
-	    }
-	  },
-	  "idle": {
-	    "resources": [
-	      "js/service.js",
-	      "libs/easymob-webim-sdk/quickstart.md",
-	      "images/user-photo.png",
-	      "README.md"
-	    ]
-	  }
+		"pages": {
+			"setting.html": {
+				"href": "setting.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/mui.view.js",
+					"libs/easymob-webim-sdk/jquery-1.11.1.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"libs/easymob-webim-sdk/json2.js",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/feedback.js",
+					"js/feedback-page.js",
+					"js/mui.locker.js",
+					"js/app.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/feedback-page.css",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 1
+			},
+			"main.html": {
+				"href": "main.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/app.js",
+					"setting.html",
+					"index.html",
+					"matchs.html",
+					"discuss.html"
+				],
+				"refer": [
+					"login.html",
+					"my.html"
+				],
+				"priority": 1
+			},
+			"unlock.html": {
+				"href": "unlock.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/mui.locker.js",
+					"js/app.js"
+				],
+				"refer": [
+					"login.html",
+					"main.html"
+				],
+				"priority": 0
+			},
+			"forget_password.html": {
+				"href": "forget_password.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/app.js"
+				],
+				"priority": 1
+			},
+			"reg.html": {
+				"href": "reg.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/app.js"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 3
+			},
+			"login.html": {
+				"href": "login.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/mui.enterfocus.js",
+					"js/app.js",
+					"images/qihoo.png",
+					"images/qq.png",
+					"images/sinaweibo.png",
+					"images/weixin.png"
+				],
+				"refer": [
+					"unlock.html",
+					"forget_password.html",
+					"main.html",
+					"reg.html",
+					"setting.html"
+				],
+				"priority": 0
+			},
+			"my.html": {
+				"resources": [],
+				"refer": [
+					"setting.html"
+				],
+				"priority": 0
+			},
+			"matchs.html": {
+				"resources": [],
+				"refer": [
+					"createMatch.html",
+					"searchMatchs.html"
+				],
+				"priority": 0
+			},
+			"index.html": {
+				"resources": [],
+				"refer": [
+					"market.html",
+					"myfavoritestock.html",
+					"dalao.html",
+					"bankuai.html",
+					"mystockposition.html",
+					"setting.html"
+				],
+				"priority": 0
+			},
+			"market.html": {
+				"resources": [],
+				"refer": [
+					"indexDetail.html",
+					"bankuaiStockList.html"
+				],
+				"priority": 0
+			},
+			"bankuaiStockList.html": {
+				"resources": [],
+				"refer": [
+					"stockDetail.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/service.js",
+				"libs/easymob-webim-sdk/quickstart.md",
+				"images/user-photo.png",
+				"README.md"
+			]
+		}
 	},
 	"unpackage":[
 	  "README.md"

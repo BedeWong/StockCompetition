@@ -1,0 +1,24 @@
+.tabwidget {
+	height: 40px;
+	width: 100%;
+	border: 1px solid;
+	border-color: #AAAAAA;
+	background-color:#EEEEEE;
+	/*text-align: center;*/
+	overflow: hidden;
+	font-size: 16px;
+}
+
+
+.tabitem{
+	display: inline;
+	text-align: center;
+	width: 25%;
+	line-height: 40px;
+	border-right: solid 1px;
+}
+
+.curtab {
+	color: #555555;
+	background-color: #F9F9F9;
+}

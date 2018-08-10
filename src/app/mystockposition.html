@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/stockpos.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">我的持倉</h1>
+		</header>
+		<div id="" class="mui-content">
+			<div id="" class="posinfo">
+				<div id="" class="posinfo-left">
+					<div id="earn_rate" class="posinfo-item">
+						縂盈利率:<span>{{20%}}</span>
+					</div>
+					<div id="" class="posinfo-item">
+						月盈利率
+					</div>
+					<div id="" class="posinfo-item">
+						總資產
+					</div>
+					<div id="" class="posinfo-item">
+						可用資產
+					</div>
+					<div id="" class="posinfo-item">
+						縂盈虧
+					</div>
+				</div>
+				<div id="" class="posinfo-right">
+					<div id="rank" class="posinfo-item">
+						排名
+					</div>
+					<div id="" class="posinfo-item">
+						成功率
+					</div>
+					<div id="" class="posinfo-item">
+						最新市值
+					</div>
+					<div id="" class="posinfo-item">
+						倉位
+					</div>
+					<div id="" class="posinfo-item">
+						<span >&tilde;
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<div id="" class="duibibar">
+				與滬深300對比
+			</div>
+			<div id="" class="duibibar-2">
+				<div id="" class="duibibar-3">
+					
+				</div>
+				<div id="" class="duibibar-3">
+					滬深
+				</div>
+				<div id="" class="duibibar-3">
+					我的
+				</div>
+				<div id="" class="duibibar-3">
+					漲幅差
+				</div>
+			</div>
+			<div id="" class="duibibar-2">
+				<div id="" class="duibibar-3">
+					本月
+				</div>
+				<div id="" class="duibibar-3">
+					{{滬深}}
+				</div>
+				<div id="" class="duibibar-3">
+					{{2.2}}
+				</div>
+				<div id="" class="duibibar-3">
+					{{0.8%}}
+				</div>
+			</div>
+			<div id="" class="duibibar-2">
+				<div id="" class="duibibar-3">
+					今年
+				</div>
+				<div id="" class="duibibar-3">
+					{{滬深}}
+				</div>
+				<div id="" class="duibibar-3">
+					{{2.2}}
+				</div>
+				<div id="" class="duibibar-3">
+					{{0.8%}}
+				</div>
+			</div>
+			<div id="" class="duibibar-2">
+				<div id="" class="duibibar-3">
+					注冊以來
+				</div>
+				<div id="" class="duibibar-3">
+					{{滬深}}
+				</div>
+				<div id="" class="duibibar-3">
+					{{2.2}}
+				</div>
+				<div id="" class="duibibar-3">
+					{{0.8%}}
+				</div>
+			</div>
+			
+			<div id="" class="duibibar" style="margin-top: 20px;border-top: 0px;">
+				持倉信息
+			</div>
+			<div id="">
+				<div id="stock-name" class="line-box" style="height: 50px; line-height: 25px;">
+					{{樂心醫療}}<br/>{{SZ	300562}}
+				</div>
+				<div class="line-box">
+					<div id="cur-prie" class="line-box-item">
+						當前價
+					</div>
+					<div id="cur-profit" class="line-box-item">
+						浮動盈虧
+					</div>
+				</div>
+				<div class="line-box">
+					<div id="prime-cost" class="line-box-item">
+						成本價
+					</div>
+					<div id="cur-mv" class="line-box-item">
+						最新市值
+					</div>
+				</div>
+				<div class="line-box">
+					<div id="position" class="line-box-item">
+						持倉數
+					</div>
+					<div id="cur-mv" class="line-box-item">
+						當前可賣
+					</div>
+				</div>
+				<div class="line-box">
+					<div  class="line-box-item" style="text-align: center;">
+						<button id='buy' class="mui-btn mui-btn-block mui-btn-primary">買入</button>
+					</div>
+					<div class="line-box-item">
+						<button id='sale' class="mui-btn mui-btn-block mui-btn-danger">賣出</button>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<!--
+    	作者：offline
+    	时间：2018-08-06
+    	描述：行情頁面。
+    -->
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta charset="GBK">-->
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/market.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">行情</h1>
+		</header>
+		<div id="" class="mui-content">
+			<div style="width: 100%;display: inline-block; text-align: center;">
+				<div class="mui-input-row mui-search">
+					<input id="search" type="search" class="mui-input-clear" placeholder="股票名/代碼" />
+				</div>
+			</div>
+			
+			<div id="" class="stockindex">
+				<div id="sh50index" class="index">
+					上證指數
+				</div>
+				<div id="szindex" class="index">
+					深證指數
+				</div>
+				<div id="secondboardindex" class="index">
+					創業板
+				</div>
+				<div id="hs300index" class="index">
+					滬深300
+				</div>
+			</div>
+			
+			<!--
+            	描述：摺叠面板，板塊分類，行業分類
+            -->
+             <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">概念漲幅</a>
+		            <div class="mui-collapse-content" id="classify">  <!-- 行业板块 -->
+		                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
+		                	<p>{{it[0]}}</p>
+		                	<p v-if="it[1]>0.0" style="color: red;">{{it[1]}}%</p>
+		                	<p v-else style="color: green;">{{it[1]}}%</p>
+		                	<p>{{it[2]}}</p>
+		                </div>
+		            </div>
+		        </li>
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">行業漲幅</a>
+		            <div class="mui-collapse-content" id="vmindustry">
+		                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
+		                	<p>{{it[0]}}</p>
+		                	<p v-if="it[1]>0.0" style="color: red;">{{it[1]}}%</p>
+		                	<p v-else style="color: green;">{{it[1]}}%</p>
+		                	<p>{{it[2]}}</p>
+		                </div>
+		            </div>
+		        </li>
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">漲幅榜</a>
+		            <div class="mui-collapse-content" id="vmriselist">
+		                <div id="" class="stockname" v-for="it in datas" >
+		                	<p>{{it.name}}</p>
+		                	<p>{{it.trade}}</p>
+		                	<p v-if="it.changepercent>0.0" style="color: red;">{{it.changepercent}}%</p>
+		                	<p v-else style="color: green;">{{it.changepercent}}%</p>
+		                </div>
+		            </div>
+		        </li>
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">跌幅榜</a>
+		            <div class="mui-collapse-content" id="vmfalllist">
+		                <div id="" class="stockname" v-for="it in datas">
+		                	<p>{{it.name}}</p>
+		                	<p>{{it.trade}}</p>
+		                	<p v-if="it.changepercent>0.0" style="color: red;">{{it.changepercent}}%</p>
+		                	<p v-else style="color: green;">{{it.changepercent}}%</p>
+		                </div>
+		            </div>
+		        </li>
+		    </ul>
+		    <!--
+            	描述：結束摺叠面板，開始搜索框
+            -->
+            <div id="searchbox" class="">
+            	
+            </div>
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/market.js"></script>
+	<script type="text/javascript">
+		mui.plusReady(function(){
+			console.log("行情頁面點加載。。。"); 
+			
+			bankuaiStockListPage = mui.preload({
+				url:"bankuaiStockList.html",
+				id:"bankuaiStockList",//默认使用当前页面的url作为id
+			});
+			
+			var indexDetailPage = mui.preload({
+			    url:"indexDetail.html",
+			    id:"indexDetail",//默认使用当前页面的url作为id
+			});
+			
+			mui('.stockindex').on('tap', '.index', function(){
+				var id = this.getAttribute('id');
+				var target = hq_obj.id2IndexDetailMap[id];
+				
+				console.log(target);
+				
+				mui.fire(indexDetailPage,'display',{id:target});
+				//打开指數詳情
+				mui.openWindow({
+					id:'indexDetail'
+				});
+			});
+		});
+		
+	</script>
+</html>

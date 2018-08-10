@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/indexDetail.css" rel="stylesheet" />
+		<script src="js/jquery-min.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title"></h1>
+		</header>
+		<div id="" class="mui-content">
+			<div id="dataDetail">
+			<div id="container-1" class="">
+				<div id="price-box">
+					<span id="cur-price">
+						{{datas[3]}}
+					</span><br />
+					<span id="change-point">
+						{{datas[33]}}
+					</span>
+					
+					<span id="change-per" v-if="datas[1]" >
+						<span v-if="datas[34]>0" style="color: red;">
+							{{datas[34]}}%
+						</span>
+						<span v-if="datas[34]<0" style="color: green;">
+							{{datas[34]}}%
+						</span>
+					</span>
+					<span id="change-per" v-else>
+						0.0%
+					</span>
+				</div>
+				<div id="kaipan-box">
+					<span id="kaipan-price">
+						今開：{{datas[1]}}
+					</span><br />
+					<span id="turn-volume">
+						成交額：{{datas[9]}}億元
+					</span>
+				</div>
+				<div id="close-box">
+					<span id="close-price">
+						昨收：{{datas[2]}}
+					</span><br />
+					<span id="quake-range">
+						振幅：{{datas[35]}}%
+					</span>
+				</div>
+			</div>
+			<div id="container-2">
+				<div id="height-price">
+					最高價：{{datas[4]}}
+				</div>
+				<div id="low-price">
+					最低價：{{datas[5]}}
+				</div>
+				<div id="volume">
+					成交量：{{datas[8]}}万手
+				</div>
+			</div>
+			<div id="container-3" >
+				<div id="raise-count">
+					漲：{{401}}
+				</div>
+				<div id="nor-count">
+					平：{{170}}
+				</div>
+				<div id="fall-count">
+					跌：{{913}}
+				</div>
+			</div>
+			</div>  <!-- 第一個vue數據範圍 -->
+			
+			<!--
+            	作者：offline
+            	时间：2018-08-08
+            	描述：part chart
+            -->
+            <div id="container-chart">
+            	<div id="container-4" style="background-color: #E8E8E8;">
+            		<div id="tab-min" class="tab-chart tab-chart-cur">
+            			分時
+            		</div>
+            		<div id="tab-day" class="tab-chart">
+            			日
+            		</div>
+            		<div id="tab-week" class="tab-chart">
+            			周
+            		</div>
+            		<div id="tab-month" class="tab-chart" style="border-right: 0px;">
+            			月
+            		</div>
+            	</div>
+            	<div id="charts">
+            		<div id="chart-min" class="chart-detail">
+            			<img id="img-min" src="" style="width: 100%;"/>
+            		</div>
+            		<div id="chart-day" class="chart-detail mui-hidden">
+            			<img id="img-day" src=""/>
+            		</div>
+            		<div id="chart-week" class="chart-detail mui-hidden">
+            			<img id="img-week" src=""/>
+            		</div>
+            		<div id="chart-month" class="chart-detail mui-hidden">
+            			<img id="img-month" src=""/>
+            		</div>
+            	</div>
+            </div> <!--      end 圖表  -->
+            
+            <div id="stock-list">
+            	<div id="container-5">
+	            	<div id="tab-raise">
+	            		上漲
+	            	</div>
+	            	<div id="tab-fall" style="border-right: 0px;">
+	            		下跌
+	            	</div>
+            	</div>
+            	<div id="container-6">
+            		<div id="item-raise">
+	            		<div id="stock-item">
+	            			<div id="stock-name">
+	            				{{中海油服}}
+	            			</div>
+	            			<div id="stock-price">
+	            				{{10.36}}
+	            			</div>
+	            			<div id="stock-changepoint">
+	            				{{+9.98}}%
+	            			</div>
+	            		</div>
+	            	</div>
+	            	<div id="item-fall" class="mui-hidden">
+	            		<div id="stock-name">
+	            				{{中海油服}}
+            			</div>
+            			<div id="stock-price">
+            				{{10.36}}
+            			</div>
+            			<div id="stock-changepoint">
+            				{{+9.98}}%
+            			</div>
+	            	</div> <!--      end 下跌股  -->
+            	</div>  <!--      end 漲跌  -->
+            </div> <!--      end 漲跌 + tab切換按鈕  -->
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/indexDetail.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		
+		var img_baseurl = 'http://image.sinajs.cn/newchart/';
+		var detailData = NaN;
+		
+		var dataDetail = new Vue({
+			el:'#dataDetail',
+			data:{
+				datas:{}
+			},
+			methods:{
+				resetData:function(){//重置数据
+					Object.assign(this.$data, {});
+				}
+			}
+		});
+		
+		function cbHandler(data) {
+			console.log(data);
+			
+			var ret = data.match(/\"[^\"]*\"/).toString();
+			ret = ret.split(",");
+			
+			console.log(ret);
+			console.log(ret.length);
+			
+			ret.push((ret[3]-ret[2]).toFixed(2))  // 33    點數
+			ret.push((ret[33] / ret[1]*100).toFixed(2));  // 34  漲幅
+			ret.push(((ret[4]-ret[5])/ret[3]*100).toFixed(2));		// 35  振幅
+			
+			ret[1] = parseFloat(ret[1]).toFixed(2);
+			ret[2] = parseFloat(ret[2]).toFixed(2);
+			ret[3] = parseFloat(ret[3]).toFixed(2);
+			ret[4] = parseFloat(ret[4]).toFixed(2);
+			ret[5] = parseFloat(ret[5]).toFixed(2);
+			ret[8] = parseFloat(ret[8]/10000).toFixed(2);
+			ret[9] = parseFloat(ret[9]/100000000).toFixed(2);
+			
+			dataDetail.resetData();
+			dataDetail.datas = ret;
+		};
+		
+		window.addEventListener("display", function(event){
+			console.log(event.detail.id);
+			
+			mui(".mui-title")[0].innerText = event.detail.id.name + '(' + event.detail.id.code + ')';
+			
+			lst = [];
+			lst.push(event.detail.id.reqcode);
+			
+			hq_obj.get_hq_index(cbHandler, lst);
+			
+			// 初始化第一張K綫圖  分時綫
+			mui("#img-min")[0].setAttribute('src', img_baseurl+"min/n/" + event.detail.id.code + '.gif');
+			
+			detailData = event.detail.id;
+		});
+
+	</script>
+</html>

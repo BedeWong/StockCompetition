@@ -1,0 +1,35 @@
+
+.blockname {
+	width: 23%;
+	height: 60px;
+	display: inline-block;
+	margin: 2px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+.stockname {
+	width: 100%;
+}
+
+.stockname p{
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	width: 32%;
+}
+
+.stockindex {
+	margin-top: 0px;
+	text-align: center;	
+}
+
+.index {
+	background-color: darkgrey;
+	line-height: 80px;
+	height: 80px;
+	width: 46%;
+	margin: 5px;
+	display: inline-block;
+}

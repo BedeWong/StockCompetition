@@ -6,3 +6,17 @@ body {
 	padding: 0px;
 }
 .mui-content{height: 100%;}
+
+
+.create_match {
+	margin: 0px,0px, 0px, 0px;
+	padding: 0px, 0px, 0px, 0px;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float:right;
+}

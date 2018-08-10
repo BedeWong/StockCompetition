@@ -1,13 +1,61 @@
 {
 	"main.html": {
 		"refer": [
-			"setting.html"
+			"setting.html",
+			"login.html",
+			"index.html",
+			"my.html",
+			"matchs.html",
+			"discuss.html"
+		],
+		"resources": [
+			"setting.html",
+			"index.html",
+			"matchs.html",
+			"discuss.html"
 		]
 	},
 	"login.html": {
 		"refer": [
 			"main.html",
-			"reg.html"
+			"reg.html",
+			"setting.html"
+		],
+		"resources": [
+			"css/style.css",
+			"fonts/mui.ttf"
+		]
+	},
+	"my.html": {
+		"refer": [
+			"setting.html"
+		]
+	},
+	"matchs.html": {
+		"refer": [
+			"createMatch.html",
+			"searchMatchs.html"
+		]
+	},
+	"index.html": {
+		"refer": [
+			"market.html",
+			"myfavoritestock.html",
+			"dalao.html",
+			"bankuai.html",
+			"mystockposition.html",
+			"setting.html"
+		]
+	},
+	"market.html": {
+		"refer": [
+			"indexDetail.html",
+			"bankuaiStockList.html"
+		]
+	},
+	"bankuaiStockList.html": {
+		"refer": [
+			"stockDetail.html"
 		]
 	}
 }

@@ -1,0 +1,52 @@
+#stock-title p{
+	margin: 0px;
+	padding: 0px;
+	padding-left: 10px;
+	width: 24%;
+	line-height: 30px;
+	display: inline-block;
+}
+
+#stock-title{
+	background-color: #CCCCCC;
+	margin-top: -10px;
+	width: 100%;
+	height: 30px;
+	text-align: left;
+}
+
+.stock-box{
+	margin: 5px;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid;
+}
+
+.stock-box p{
+	padding: 0px;
+	line-height: 40px;
+}
+
+.stock-name {
+	line-height: 20px;
+	display: inline-block;
+	width: 24%;
+}
+
+.stock-price {
+	line-height: 40px;
+	display: inline-block;
+	width: 24%;
+}
+
+.stock-inc {
+	line-height: 50px;
+	display: inline-block;
+	width: 24%;
+}
+
+.stock-opt {
+	line-height: 50px;
+	display: inline-block;
+	width: 24%;
+}

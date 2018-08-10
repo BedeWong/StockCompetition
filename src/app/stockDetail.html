@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/stockDetail.css" rel="stylesheet" />
+		<script src="js/jquery-min.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title"></h1>
+		</header>
+		<div id="" class="mui-content">
+			<div id="dataDetail">
+			<div id="container-1" class="">
+				<div id="price-box">
+					<span id="cur-price">
+						{{datas.cur_price}}
+					</span><br />
+					<span id="change-point">
+						{{datas.change_price}}
+					</span>
+					
+					<span id="change-per" v-if="datas.jinkai" >
+						<span v-if="datas[34]>0" style="color: red;">
+							{{datas.change_per}}%
+						</span>
+						<span v-if="datas[34]<0" style="color: green;">
+							{{datas.change_per}}%
+						</span>
+					</span>
+					<span id="change-per" v-else>
+						0.0%
+					</span>
+				</div>
+				<div id="kaipan-box">
+					<span id="kaipan-price">
+						今開：{{datas.jinkai}}
+					</span><br />
+					<span id="turn-volume">
+						成交額：{{datas.turn_volume}}{{datas.turn_volume_unit}}
+					</span>
+				</div>
+				<div id="close-box">
+					<span id="close-price">
+						昨收：{{datas.zuoshou}}
+					</span><br />
+					<span id="change-hand">
+						換手率：{{datas.change_hand}}%
+					</span>
+				</div>
+			</div>
+			<div id="container-2">
+				<div id="height-price">
+					最高價：{{datas.hight}}
+				</div>
+				<div id="low-price">
+					最低價：{{datas.low}}
+				</div>
+				<div id="volume">
+					成交量：{{datas.turn_count}}{{datas.turn_count_unit}}
+				</div>
+			</div>
+			<div id="container-3" >
+				<div id="quake-range">
+					振幅：{{datas.quake_range}}%
+				</div>
+				<div id="total-capital">
+					總市值：{{datas.total_capital}}{{datas.total_capital_unit}}
+				</div>
+				<div id="pe">
+					市盈率：{{datas.pe}}
+				</div>
+			</div>
+			<div id="container-5" >
+				<div id="invol">
+					内槃：{{datas.invol}}手
+				</div>
+				<div id="outvol">
+					外槃：{{datas.outvol}}手
+				</div>
+				<div id="cur-capital">
+					流通市值：{{datas.cur_capital}}{{datas.cur_capital_unit}}
+				</div>
+			</div>
+			</div>  <!-- 第一個vue數據範圍 -->
+			
+			<!--
+            	作者：offline
+            	时间：2018-08-08
+            	描述：part chart
+            -->
+            <div id="container-chart">
+            	<div id="container-6" style="background-color: #E8E8E8;">
+            		<div id="tab-min" class="tab-chart tab-chart-cur">
+            			分時
+            		</div>
+            		<div id="tab-day" class="tab-chart">
+            			日
+            		</div>
+            		<div id="tab-week" class="tab-chart">
+            			周
+            		</div>
+            		<div id="tab-month" class="tab-chart" style="border-right: 0px;">
+            			月
+            		</div>
+            	</div>
+            	<div id="charts">
+            		<div id="chart-min" class="chart-detail">
+            			<img id="img-min" src="" style="width: 100%;"/>
+            		</div>
+            		<div id="chart-day" class="chart-detail mui-hidden">
+            			<img id="img-day" src=""/>
+            		</div>
+            		<div id="chart-week" class="chart-detail mui-hidden">
+            			<img id="img-week" src=""/>
+            		</div>
+            		<div id="chart-month" class="chart-detail mui-hidden">
+            			<img id="img-month" src=""/>
+            		</div>
+            	</div>
+            </div> <!--      end 圖表  -->
+            
+            <div id="container-news">
+            	<div class="content">
+            		新聞/公告
+            	</div>
+            </div>
+            
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/stockDetail.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		
+		var img_baseurl = 'http://image.sinajs.cn/newchart/';
+		var pramaData = NaN;   // 父頁面傳送過來的數據
+		var dataDetail_cache = {};       // 行情獲取的數據，做緩存，多個url請求往此處寫， 更新完 賦值給 Vue對象
+		
+		var dataDetail = new Vue({
+			el:'#dataDetail',
+			data:{
+				datas:{}
+			},
+			methods:{
+				resetData:function(){//重置数据
+					Object.assign(this.$data, {});
+				}
+			}
+		});
+		
+		function cbHandler(data) {
+			data = data.replace(/[\r\n]/g, "");
+			console.log(data);
+			eval(data);
+			
+			var stockData = JSON.stringify(eval("hq_str_" + pramaData.symbol)).split(',');
+			var stockData_i = JSON.stringify(eval("hq_str_" + pramaData.symbol + '_i')).split(',');
+			
+			console.log(stockData.length);
+			console.log(stockData_i.length);
+			
+			dataDetail_cache['jinkai'] = parseFloat(stockData[1]).toFixed(2);
+			dataDetail_cache['zuoshou'] = parseFloat(stockData[2]).toFixed(2);
+			dataDetail_cache['cur_price'] = parseFloat(stockData[3]).toFixed(2);	
+			dataDetail_cache['hight'] = parseFloat(stockData[4]).toFixed(2);
+			dataDetail_cache['low'] = parseFloat(stockData[5]).toFixed(2); 
+			
+			var tmp = stockData[8];
+			if(tmp / 10000 > 1) {
+				dataDetail_cache['turn_count'] = parseFloat( tmp/10000).toFixed(2);
+				dataDetail_cache['turn_count_unit'] = '萬手';
+			}else {
+				dataDetail_cache['turn_count'] = parseFloat( tmp).toFixed(2);
+				dataDetail_cache['turn_count_unit'] = '手';
+			}
+			
+			tmp = stockData[9];
+			if(tmp / 100000000 > 1) {
+				dataDetail_cache['turn_volume'] = parseFloat( tmp/100000000).toFixed(2);
+				dataDetail_cache['turn_volume_unit'] = '億元';
+			}else {
+				dataDetail_cache['turn_volume'] = parseFloat( tmp/10000).toFixed(2);
+				dataDetail_cache['turn_volume_unit'] = '萬元';
+			}
+			
+			dataDetail_cache['change_price'] = (stockData[3]-stockData[2]).toFixed(2);// 33    點數
+			dataDetail_cache['change_per']  = (stockData[33] / stockData[1]*100).toFixed(2); // 34  漲幅
+			dataDetail_cache['quake_range']  = ((stockData[4]-stockData[5])/stockData[3]*100).toFixed(2)// 35  振幅
+			
+			dataDetail_cache['total_capital'] = (stockData_i[7] * dataDetail_cache['cur_price'] * 10000).toFixed(2);			// 總市值
+			tmp = dataDetail_cache['total_capital'];
+			if(tmp / 100000000 > 1) {
+				dataDetail_cache['total_capital'] = parseFloat( tmp/100000000).toFixed(2);
+				dataDetail_cache['total_capital_unit'] = '億元';
+			}else {
+				dataDetail_cache['total_capital'] = parseFloat( tmp/10000).toFixed(2);
+				dataDetail_cache['total_capital_unit'] = '萬元';
+			}
+			
+			dataDetail_cache['cur_capital']   = (stockData_i[8] * dataDetail_cache['cur_price'] * 10000).toFixed(2);			// 流通市值
+			tmp = dataDetail_cache['cur_capital'];
+			if(tmp / 100000000 > 1) {
+				dataDetail_cache['cur_capital'] = parseFloat( tmp/100000000).toFixed(2);
+				dataDetail_cache['cur_capital_unit'] = '億元';
+			}else {
+				dataDetail_cache['cur_capital'] = parseFloat( tmp/10000).toFixed(2);
+				dataDetail_cache['cur_capital_unit'] = '萬元';
+			}
+			
+			dataDetail_cache['change_hand']	  = (dataDetail_cache['turn_volume'] / stockData['cur_capital'] / 100).toFixed(2); /**  / 10000 * 100 */   // 換手率
+			dataDetail_cache['pe']			= (dataDetail_cache['total_capital'] / stockData_i[13] / 100000000).toFixed(2);				//  pe
+			
+//			dataDetail.resetData();
+			dataDetail.datas = dataDetail_cache;
+		};
+		
+		function cb_invo_outvol(dat) {
+			console.log(dat);
+			
+			eval(dat);
+			
+			dataDetail_cache['invol'] = (trade_INVOL_OUTVOL[0] / 100).toFixed(0);
+			dataDetail_cache['outvol'] = (trade_INVOL_OUTVOL[1]/100).toFixed(0);
+			
+//			Vue.set(dataDetail.datas, 'invol', (trade_INVOL_OUTVOL[0] / 100).toFixed(0));
+//			Vue.set(dataDetail.datas, 'outvol', (trade_INVOL_OUTVOL[1] / 100).toFixed(0));
+			
+//			dataDetail.resetData();
+			dataDetail.datas = dataDetail_cache;
+
+//          test
+//			for(var it in dataDetail_cache) {
+//				console.log(it);
+//				console.log(dataDetail_cache[it]);
+//			}
+		};
+		
+		window.addEventListener("display", function(event){
+			console.log(event.detail.data);
+			
+			mui(".mui-title")[0].innerText = event.detail.data.name + '(' + event.detail.data.symbol + ')';
+			
+			lst = [];
+			lst.push(event.detail.data.symbol);
+			lst.push(event.detail.data.symbol + '_i');
+			
+			hq_obj.get_hq_index(cbHandler, lst);
+			
+			// 獲取内盤外盤數據
+			hq_obj.get_stock_tradeList(cb_invo_outvol, event.detail.data.symbol, 1);
+			
+			// 初始化第一張K綫圖  分時綫
+			mui("#img-min")[0].setAttribute('src', img_baseurl+"min/n/" + event.detail.data.symbol + '.gif');
+			
+			pramaData = event.detail.data;
+
+		});
+
+	</script>
+</html>

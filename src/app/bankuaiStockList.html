@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/bankuaiStockList.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title"></h1>
+		</header>
+		<div class="mui-content" id='lstDatas'>
+			<!--<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">-->
+					<div id="list-head" style="background-color: #CCCCCC;">
+						<div>
+							股票名
+						</div>
+						<div>
+							現價
+						</div>
+						<div >
+							漲跌
+						</div>
+						<div >
+							漲幅
+						</div>
+						<div>
+							操作
+						</div>
+					</div><!-- head-->
+					<div id="list-content" class="" v-for="it in datas" >
+						<div id="stock-name" style="height: 50px;" :symbol="it.symbol" @tap="openStockDetail(it)">
+							<div>
+								{{it.name}}<br/>
+								{{it.symbol}}
+							</div>
+						</div>
+						<div id="stock-price">
+							{{it.trade}}
+						</div>
+						<div id="stock-changeprice">
+							{{parseFloat(it.pricechange).toFixed(2)}}
+						</div>
+						<div id="stock-cheange-per" v-if="parseFloat(it.changepercent).toFixed(2) < 0" style="color: green;">
+							{{parseFloat(it.changepercent).toFixed(2)}}%
+						</div>
+						<div id="stock-cheange-per" v-else style="color: red;">
+							{{parseFloat(it.changepercent).toFixed(2)}}%
+						</div>
+						<div class="stock-opt">
+							<span class="mui-icon mui-icon-plus addstock2favorite" :symbol="it.symbol"  @tap="addStock2Favorite(it)">
+							</span>
+						</div>
+					</div>
+				<!--</div>
+			</div>-->   <!-- scroll 部分-->
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript">	
+		
+		var stockDetailPage = NaN;
+		
+		mui.plusReady(function(){
+			stockDetailPage= mui.preload({
+				url:"stockDetail.html",
+				id:"stockDetail",//默认使用当前页面的url作为id
+			});
+		});
+		/***
+		 * 數據Vue
+		 */
+		var lstDatas = new Vue({
+			el:'#lstDatas',
+			data:{
+				datas:{}
+			},
+			methods:{
+				resetData:function(){//重置数据
+					Object.assign(this.$data, {});
+				},
+				openStockDetail:function(item){
+					console.log(item.symbol);
+					
+					mui.fire(stockDetailPage,'display',{data:item});
+					//打开個股詳情
+					mui.openWindow({
+						id:'stockDetail'
+					});
+				},
+				/***
+				 *  添加到自選股列表
+				 * @param {Object} item:一條個股記錄
+				 */
+				addStock2Favorite:function(item) {
+					console.log(item.symbol);
+					console.log(item.name);
+				}
+			}
+		});
+		
+		function fillData(dat){
+			console.log("fillData calling.");
+			console.log(dat.length);
+			lstDatas.datas = dat;
+		};	
+		
+		/***
+		 * dataDetail: 全局數據，父頁面傳送而來，保存下來便於處理
+		 * dataDetail[3] : 板塊名稱代碼，指數名稱代碼
+		 */
+		var dataDetail = NaN;
+		window.addEventListener("display", function(event){
+			console.log("bankuaiStockList display.");
+			console.log(event.detail.data[0]);
+			
+			var title_el = mui(".mui-title")[0];
+			title_el.innerText = event.detail.data[0] + " 板块成分股";
+			
+			dataDetail = event.detail.data;
+			
+			/**
+			 * 請求數據, 先獲取成分股書量，根據數量獲取股票列表
+			 */
+			
+			var stockCount = 0;
+			var getCountCb = function(data){
+				if(data <= 0) {
+					console.log(data);
+				}
+				
+				stockCount = parseInt(data);
+				console.log(stockCount);
+				
+				var res = [];
+				var fn_cb = function(data){
+					var r = eval(data);
+					if(!r) {
+						fillData(res);
+						return ;
+					}
+					
+					for(it in r) {
+						res.push(r[it]);
+					}
+				};
+				
+				var idx = 0;
+				for(; idx<stockCount/100; idx++) {
+					hq_obj.get_bankuai_stocklist(fn_cb, idx+1, dataDetail[3]);
+				}
+				if (stockCount % 100 > 0) {
+					console.log(stockCount % 100);
+					hq_obj.get_bankuai_stocklist(fn_cb, idx+1, dataDetail[3]);
+				}
+			};
+			
+			hq_obj.get_bankuai_stockcount(getCountCb, dataDetail[3]);
+		});
+		
+	</script>
+	<script src="js/bankuaiStockList.js"></script>
+</html>

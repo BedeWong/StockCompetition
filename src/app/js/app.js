@@ -1,12 +1,13 @@
 
-baseurl = 'http://10.254.248.15:8001';
+//baseurl = 'http://192.168.191.2:8001';
+baseurl = 'http://120.79.208.53:8001';
 
-urls = {
+window.urls = {
 	url_picCode : baseurl+'/piccode',
 	url_getSMSCode : baseurl+'/api/checkpic',
-	url_login : baseurl + '/api/login'
+	url_login : baseurl + '/api/login',
+	url_getUserinfo : baseurl + '/api/getuserinfo',
 };
-
 
 /**
  * 演示程序当前的 “注册/登录” 等操作，是基于 “本地存储” 完成的
@@ -34,7 +35,6 @@ urls = {
 //		});
 		
 		console.log("ajax...");
-		console.log(JSON.stringify(loginInfo));
 		console.log($.param(loginInfo));
 		var authed = false;
 		$.ajax(urls.url_login, {
@@ -47,8 +47,8 @@ urls = {
 	        },
 			success : function(dat) {
 				console.log(dat.errcode);
-				console.log(dat.errmsg);
 				console.log(dat.token);
+				console.log(dat.retdata);
 				if(dat.errcode == 0) {
 					$.toast("登录成功!");
 					authed = true;
@@ -58,7 +58,7 @@ urls = {
 				}
 				
 				if (authed) {
-					return owner.createState(loginInfo, dat.token, callback);
+					return owner.createState(dat, callback);
 				} else {
 					return callback('用户名或密码错误');
 				}
@@ -69,12 +69,75 @@ urls = {
 			}
 		});
 	};
-
-	owner.createState = function(info, token, callback) {
+	
+	owner.getUserInfo = function(cb) {
+		cb = cb || $.noop;
 		var state = owner.getState();
-		state.account = info.loginId;
-		state.token = token;
-		state.pwd   = info.password;
+		
+		udata = {
+			uname : state.uname,
+			utoken : state.token
+		};
+		
+		var authed = false;
+		$.ajax(urls.url_getUserinfo, {
+			data : $.param(udata),
+			type : 'POST',
+			timeout : 5000,
+			crossDomain: true,
+	        xhrFields: {
+	            withCredentials: true
+	        },
+			success : function(dat) {
+				console.log(dat.errcode);
+				console.log(dat.token);
+				console.log(dat.retdata);
+				if(dat.errcode == 0) {
+					$.toast("登录成功!");
+					authed = true;
+				}//成功返回
+				else {
+					authed = false;
+				}
+				
+				if (authed) {
+					owner.createState(dat, $.noop);
+					return cb(authed);
+				}
+			},//end success
+			error: function(code, type, msg) {  
+                $.alert("error:" + code + "\ntype = " + type + "\nmsg:" + msg);  
+           		authed = false;
+           		return cb(authed);
+			}
+		});
+	};
+
+	owner.createState = function(resp, callback) {
+		var state = owner.getState();
+		state.token = resp.token;
+		
+		/*用戶信息*/
+		userinfo = resp.retdata;
+		state.uid = userinfo.uid;
+		state.uname = userinfo.uname;
+		state.uaddress = userinfo.uaddress;
+		state.umobile = userinfo.umobile;
+		state.usex = userinfo.usex;
+		state.uvisitors = userinfo.uvisitors;
+		state.uheadurl = userinfo.uheadurl;
+		state.udescibe = userinfo.udescibe;
+		state.udescimg = userinfo.udescimg;
+		state.ulevel = userinfo.ulevel;
+		state.utype = userinfo.utype;
+		state.uearnrate = userinfo.uearnrate;
+		state.uearnratemon = userinfo.uearnratemon;
+		state.uwinrate = userinfo.uwinrate;
+		state.umoney = userinfo.umoney;
+		state.ulastlogin = userinfo.ulastlogin;
+		state.uemail = userinfo.uemail;
+		state.urank = userinfo.urank;
+		
 		owner.setState(state);
 		return callback();
 	};
@@ -187,6 +250,89 @@ urls = {
 			}
 		}
 	}
+	
+	$.plusReady(function() {
+		var settingPage = $.preload({
+			"id": 'setting',
+			"url": 'setting.html'
+		});
+		
+		var self = plus.webview.currentWebview();
+		console.log(self.id);
+		if(self.id != "main") {
+			console.log(self.id + " , " + self.getTitle() + "  return.");
+			return ;
+		}
+		
+		//--  雙擊返回退出
+		$.oldBack = mui.back;
+		var backButtonPress = 0;
+		$.back = function(event) {
+			backButtonPress++;
+			if (backButtonPress > 1) {
+				plus.runtime.quit();
+			} else {
+				plus.nativeUI.toast('再按一次退出应用');
+			}
+			setTimeout(function() {
+				backButtonPress = 0;
+			}, 1000);
+			return false;
+		};
+		
+		// 配置頁面
+		var subpages = ['index.html','matchs.html', 'discuss.html', 'my.html'];
+      	var subpage_style = {
+		    top: '0px',  
+		    bottom: '51px'  
+		}; 
+
+		//  底部tab切換
+  		for (var i = 0; i < subpages.length; i++){
+  			var sub = plus.webview.create(
+  				subpages[i],
+  				subpages[i],
+  				subpage_style
+  			);
+  			if (i >0){	//隐藏其他页面
+  				sub.hide(); 
+  			}
+  			self.append(sub); //加入子页面
+  		}
+  		
+  		//选择卡切换
+  		var changeTab = function(e,targetTab){
+  			var curTab = document.getElementsByClassName('mui-active')[0].getAttribute('href');
+  			var curWebView = plus.webview.getWebviewById(curTab);
+      		var targetWebView = plus.webview.getWebviewById(targetTab);
+      		if (targetWebView == curWebView){ 
+      			// 传递 回到顶部 自定义事件（需要 触发 loaded 事件之后 fire 才生效，即页面加载完毕才生效）
+      			mui.fire(targetWebView,'backTop',{});
+      			console.log("未點擊新頁面。");
+      			return ;
+      		}
+      		
+      		//显示目标选择卡
+      		targetWebView.show();
+      		//隐藏原选择卡
+      		curWebView.hide();
+  		};
+  		// 监听选择卡点击事件
+      	mui('.mui-bar-tab').on('tap','a',function(e){
+      		// 获取目标选择卡id
+      		var targetTab = this.getAttribute('href');
+      		
+      		console.log(targetTab);
+      		
+      		var state = owner.getState();
+      		if(state) {
+      			console.log(state.uname);
+      			console.log(state.uid);
+      		}
+      		// 切换选择卡
+      		changeTab(this,targetTab);
+      	});
+	});  // end plusReady
 }(mui, window.app = {}));
 
 
