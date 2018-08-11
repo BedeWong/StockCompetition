@@ -27,7 +27,7 @@ class SVC_userinfo(object):
         user =  None
         try:
             if isinstance(arg, int):
-                user = dbsession.query(User).filter(User.id==arg).one()
+                user = dbsession.query(User).filter_by(id=arg).one()
 
             if user is not None:
                 dbsession.delete(user)
