@@ -27,60 +27,43 @@
 				<p>漲跌</p>
 				<p>操作</p>
 			</div>
-		
-			<div id="" class="stock-box">
-				<div id="" class="stock-name">
-					<p style="line-height: 20px;">{{平安銀行}}</p>
-					<p style="line-height: 20px;">{{sz000001}}</p>
-				</div>
-				<div id="" class="stock-price">
-					{{123.9}}
-				</div>
-				<div id="" class="stock-inc">
-					{{1.1%}}
-				</div>
-				<div id="" class="stock-opt">
-					<button type="button" class="mui-btn mui-btn-danger">刪除</button>
-				</div>
-			</div>
 			
-			<div id="" class="stock-box">
+			<div id="stockListVm">
+			<div id="" class="stock-box" v-for="it in datas">
 				<div id="" class="stock-name">
-					<p style="line-height: 20px;">{{平安銀行}}</p>
-					<p style="line-height: 20px;">{{sz000001}}</p>
+					<p style="line-height: 20px;">{{it.name}}</p>
+					<p style="line-height: 20px;">{{it.code}}</p>
 				</div>
 				<div id="" class="stock-price">
-					{{123.9}}
+					{{it.cur_price}}
 				</div>
-				<div id="" class="stock-inc">
-					{{1.1%}}
+				<!-- 漲跌幅--->
+				<div id="" class="stock-inc" v-if="it.change_per < 0" style="color: green;">
+					{{it.change_per}}%
 				</div>
-				<div id="" class="stock-opt">
-					<button type="button" class="mui-btn mui-btn-danger">刪除</button>
+				<div id="" class="stock-inc" v-else-if="it.change_per == 0" >
+					{{it.change_per}}%
 				</div>
-			</div>
-			
-			<div id="" class="stock-box">
-				<div id="" class="stock-name">
-					<p style="line-height: 20px;">{{平安銀行}}</p>
-					<p style="line-height: 20px;">{{sz000001}}</p>
+				<div id="" class="stock-inc" v-else-if="it.change_per > 0" style="color: red;">
+					{{it.change_per}}%
 				</div>
-				<div id="" class="stock-price">
-					{{123.9}}
-				</div>
-				<div id="" class="stock-inc">
-					{{1.1%}}
-				</div>
-				<div id="" class="stock-opt">
-					<button type="button" class="mui-btn mui-btn-danger">刪除</button>
+				
+				<div class="stock-opt">
+					<button type="button" class="mui-btn mui-btn-danger" @tap='delstockRequest(it, delFavoriteStock)'>刪除</button>
 				</div>
 			</div>
-		</div>
+		</div>		<!--  data id -->
+		</div>   
 		
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/vue.min.js"></script>
 	<script type="text/javascript">
-		mui.init()
+		mui.init();
+		
 	</script>
+	<script type="text/javascript" src="js/myfavoritestock.js" ></script>
 </html>

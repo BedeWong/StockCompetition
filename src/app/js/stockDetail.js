@@ -46,6 +46,37 @@
 	
 	mui('#stock-add2favorite')[0].addEventListener('tap', function(ev){
 		console.log("添加到自選股。");
+		
+		var  postdata = {}
+					
+		app.fillToken(postdata);
+		
+		postdata['code'] = pramaData.symbol;
+		postdata['name'] = pramaData.name;
+		postdata['uid'] = app.getState().uid;
+		
+		for(var it in postdata) {
+			console.log(it + " : " + postdata[it]);
+		}
+		
+		mui.ajax({
+            type: "post",
+			url: urls.url_addStock2Favorite,
+			data:postdata,
+            timeout: 3000,
+            success: function(data) {
+            	console.log("success:addStock2Favorite");
+            	
+            	if(data['errcode'] == 0){
+            		plus.nativeUI.toast(data['errmsg']);
+            	} else {
+            		plus.nativeUI.toast(data['errmsg']);
+            	}
+            },
+            error: function(xhr, type, errorThrown) {
+                plus.nativeUI.toast(errorThrown);
+            }
+        });// ajax
 	});
 	
 	mui('#stock-chat')[0].addEventListener('tap', function(ev){

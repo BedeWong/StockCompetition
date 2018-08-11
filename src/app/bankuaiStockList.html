@@ -108,9 +108,16 @@
 					console.log(item.name);
 					
 					var  postdata = {}
+					
+					app.fillToken(postdata);
+					
 					postdata['code'] = item.symbol;
 					postdata['name'] = item.name;
 					postdata['uid'] = app.getState().uid;
+					
+					for(var it in postdata) {
+						console.log(it + " : " + postdata[it]);
+					}
 					
 					mui.ajax({
 			            type: "post",

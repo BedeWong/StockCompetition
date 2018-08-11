@@ -5,9 +5,14 @@ baseurl = 'http://120.79.208.53:8001';
 window.urls = {
 	url_picCode : baseurl+'/piccode',
 	url_getSMSCode : baseurl+'/api/checkpic',
+	
 	url_login : baseurl + '/api/login',
 	url_getUserinfo : baseurl + '/api/getuserinfo',
+	
 	url_addStock2Favorite :baseurl + '/api/addstock2favorite',
+	url_getFavoriteStock : baseurl + '/api/getfavoritestocklist',
+	url_delFromFavoriteStock : baseurl + '/api/delstockfromfavorite',
+	url_checkStockInFavorite : baseurl + '/api/checkstockinfavorite',
 };
 
 /**
@@ -183,6 +188,18 @@ window.urls = {
 		//var settings = owner.getSettings();
 		//settings.gestures = '';
 		//owner.setSettings(settings);
+	};
+	
+	/***
+	 *  填充token
+	 * @param {Object} data
+	 */
+	owner.fillToken = function(data) {
+		if(typeof(data) != 'object'){
+			console.log("fillToken err");
+		}
+		
+		data.utoken = owner.getState().token;
 	};
 
 	var checkEmail = function(email) {
