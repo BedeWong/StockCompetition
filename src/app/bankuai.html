@@ -7,76 +7,94 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/bankuai.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">板塊</h1>
-		</header>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">板塊</h1>
+	</header>
 		
+	<div id="" class="mui-content">
 		<ul class="mui-table-view"> 
-		        <li class="mui-table-view-cell mui-collapse">
-		            <a class="mui-navigate-right" href="#">概念漲幅</a>
-		            <div class="mui-collapse-content">
-		                <div id="" class="blockname">
-		                	<p>{{醫藥}}</p>
-		                	<p>{{1.9%}}</p>
-		                	<p>{{長生醫藥}}</p>
-		                </div>
-		                <div id="" class="blockname">
-		                	<p>{{醫藥}}</p>
-		                	<p>{{2.9%}}</p>
-		                	<p>{{武漢生物}}</p>
-		                </div>
-		                <div id="" class="blockname">
-		                	<p>{{醫藥}}</p>
-		                	<p>{{1.9%}}</p>
-		                	<p>{{長生醫藥}}</p>
-		                </div>
-		                <div id="" class="blockname">
-		                	<p>{{醫藥}}</p>
-		                	<p>{{1.9%}}</p>
-		                	<p>{{長生醫藥}}</p>
-		                </div>
-		            </div>
-		        </li>
-		        <li class="mui-table-view-cell mui-collapse">
-		            <a class="mui-navigate-right" href="#">行業漲幅</a>
-		            <div class="mui-collapse-content">
-		                <div id="" class="blockname">
-		                	<p>{{醫藥}}</p>
-		                	<p>{{1.9%}}</p>
-		                	<p>{{長生醫藥}}</p>
-		                </div>
-		            </div>
-		        </li>
-		        <li class="mui-table-view-cell mui-collapse">
-		            <a class="mui-navigate-right" href="#">漲幅榜</a>
-		            <div class="mui-collapse-content">
-		                <div id="" class="stockname">
-		                	<p>{{平安銀行}}</p>
-		                	<p>{{16.9}}</p>
-		                	<p>{{1.8%}}</p>
-		                </div>
-		            </div>
-		        </li>
-		        <li class="mui-table-view-cell mui-collapse">
-		            <a class="mui-navigate-right" href="#">跌幅榜</a>
-		            <div class="mui-collapse-content">
-		                <div id="" class="stockname">
-		                	<p>{{貴州茅臺}}</p>
-		                	<p>{{555.2}}</p>
-		                	<p>{{-2.2%}}</p>
-		                </div>
-		            </div>
-		        </li>
-		    </ul>
-		
+	        <li class="mui-table-view-cell mui-collapse mui-active">
+	            <a class="mui-navigate-right" href="#">概念分類</a>
+	            <div class="mui-collapse-content" id="classify">  <!-- 行业板块 -->
+	                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
+	                	<p>{{it[0]}}</p>
+	                	<p v-if="it[1]>0.0" style="color: red;">{{it[1]}}%</p>
+	                	<p v-else style="color: green;">{{it[1]}}%</p>
+	                	<p>{{it[2]}}</p>
+	                </div>
+	            </div>
+	        </li>
+	        <li class="mui-table-view-cell mui-collapse">
+	            <a class="mui-navigate-right" href="#">地域分類</a>
+	            <div class="mui-collapse-content" id="vmarea">  <!-- 行业板块 -->
+	                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
+	                	<p>{{it[0]}}</p>
+	                	<p v-if="it[1]>0.0" style="color: red;">{{it[1]}}%</p>
+	                	<p v-else style="color: green;">{{it[1]}}%</p>
+	                	<p>{{it[2]}}</p>
+	                </div>
+	            </div>
+	        </li>
+	        <li class="mui-table-view-cell mui-collapse">
+	            <a class="mui-navigate-right" href="#">行業分類</a>
+	            <div class="mui-collapse-content" id="vmindustry">
+	                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
+	                	<p>{{it[0]}}</p>
+	                	<p v-if="it[1]>0.0" style="color: red;">{{it[1]}}%</p>
+	                	<p v-else style="color: green;">{{it[1]}}%</p>
+	                	<p>{{it[2]}}</p>
+	                </div>
+	            </div>
+	        </li>
+	        <li class="mui-table-view-cell mui-collapse">
+	            <a class="mui-navigate-right" href="#">漲幅榜</a>
+	            <div class="mui-collapse-content" id="vmriselist">
+	                <div id="" class="stockname" v-for="it in datas" >
+	                	<p>{{it.name}}</p>
+	                	<p>{{it.trade}}</p>
+	                	<p v-if="it.changepercent>0.0" style="color: red;">{{it.changepercent}}%</p>
+	                	<p v-else style="color: green;">{{it.changepercent}}%</p>
+	                </div>
+	            </div>
+	        </li>
+	        <li class="mui-table-view-cell mui-collapse">
+	            <a class="mui-navigate-right" href="#">跌幅榜</a>
+	            <div class="mui-collapse-content" id="vmfalllist">
+	                <div id="" class="stockname" v-for="it in datas">
+	                	<p>{{it.name}}</p>
+	                	<p>{{it.trade}}</p>
+	                	<p v-if="it.changepercent>0.0" style="color: red;">{{it.changepercent}}%</p>
+	                	<p v-else style="color: green;">{{it.changepercent}}%</p>
+	                </div>
+	            </div>
+	        </li>
+	    </ul>
+	</div>
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/bankuai.js"></script>
 	<script type="text/javascript">
-		mui.init()
+		mui.init();
+		
+		mui.plusReady(function(){
+			bankuaiStockListPage = mui.preload({
+				url:"bankuaiStockList.html",
+				id:"bankuaiStockList",//默认使用当前页面的url作为id
+			});
+			
+		});
+		
+	
+			
+		
 	</script>
 </html>

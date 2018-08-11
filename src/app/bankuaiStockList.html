@@ -106,6 +106,31 @@
 				addStock2Favorite:function(item) {
 					console.log(item.symbol);
 					console.log(item.name);
+					
+					var  postdata = {}
+					postdata['code'] = item.symbol;
+					postdata['name'] = item.name;
+					postdata['uid'] = app.getState().uid;
+					
+					mui.ajax({
+			            type: "post",
+						url: urls.url_addStock2Favorite,
+						scriptCharset:"GBK",
+						data:postdata,
+			            timeout: 3000,
+			            success: function(data) {
+			            	console.log("success:addStock2Favorite");
+			            	
+			            	if(data['errcode'] == 0){
+			            		plus.nativeUI.toast(data['errmsg']);
+			            	} else {
+			            		plus.nativeUI.toast(data['errmsg']);
+			            	}
+			            },
+			            error: function(xhr, type, errorThrown) {
+			                plus.nativeUI.toast(errorThrown);
+			            }
+			        });// ajax
 				}
 			}
 		});

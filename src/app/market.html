@@ -46,8 +46,8 @@
             	描述：摺叠面板，板塊分類，行業分類
             -->
              <ul class="mui-table-view"> 
-		        <li class="mui-table-view-cell mui-collapse">
-		            <a class="mui-navigate-right" href="#">概念漲幅</a>
+		        <li class="mui-table-view-cell mui-collapse  mui-active">
+		            <a class="mui-navigate-right" href="#">概念分類</a>
 		            <div class="mui-collapse-content" id="classify">  <!-- 行业板块 -->
 		                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
 		                	<p>{{it[0]}}</p>
@@ -58,7 +58,7 @@
 		            </div>
 		        </li>
 		        <li class="mui-table-view-cell mui-collapse">
-		            <a class="mui-navigate-right" href="#">行業漲幅</a>
+		            <a class="mui-navigate-right" href="#">行業分類</a>
 		            <div class="mui-collapse-content" id="vmindustry">
 		                <div class="blockname" v-for="it in datas" @tap="open_detail(it)">
 		                	<p>{{it[0]}}</p>

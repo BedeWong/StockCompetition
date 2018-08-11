@@ -57,5 +57,10 @@
 		"refer": [
 			"stockDetail.html"
 		]
+	},
+	"bankuai.html": {
+		"refer": [
+			"bankuaiStockList.html"
+		]
 	}
 }

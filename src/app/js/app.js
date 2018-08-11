@@ -7,6 +7,7 @@ window.urls = {
 	url_getSMSCode : baseurl+'/api/checkpic',
 	url_login : baseurl + '/api/login',
 	url_getUserinfo : baseurl + '/api/getuserinfo',
+	url_addStock2Favorite :baseurl + '/api/addstock2favorite',
 };
 
 /**

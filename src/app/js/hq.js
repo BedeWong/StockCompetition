@@ -22,10 +22,14 @@
 	obj.url_STOCKDATA = 'https://hq.sinajs.cn/etag.php';
 	
 	/***
-	 * 獲取個股公告、新聞
+	 * 獲取個股公告
 	 */
 	obj.url_NOTICEDATA = 'http://vip.stock.finance.sina.com.cn/api/jsonp.php/var%20noticeData=/CB_AllService.getMemordlistbysymbol';
 	
+	/***
+	 * 獲取個股公告，新聞
+	 */
+	obj.url_NEWSDATA = 'http://news.sinajs.cn/rn=&maxcnt=20&dcnt=10&list=';
 	
 	/***
 	 * 獲取成分股股數
@@ -135,12 +139,12 @@
             timeout: 3000,
             success: function(data) {
             	console.log("success:get_FLJK_area");
-            	
-            	var ret = JSON.stringify(S_Finance_bankuai_iarea);
-				ret = ret.length ? JSON.parse(ret[0]) : "";
+            	console.log(data);
+            	var dict = eval("S_Finance_bankuai_area");
+            	var ret = {};
 				
-				for(var it in ret) {
-					var lst = ret[it];
+				for(var it in dict) {
+					var lst = dict[it];
 					lst = lst.split(',');
 					ret[it] = lst;
 				}
@@ -238,8 +242,25 @@
 	/***
 	 * 獲取個股公告
 	 */
-	obj.get_notice_data = function() {
+	obj.get_notice_data = function(cb, code) {
+		var url = obj.url_NEWSDATA + code + ',gg_' + code + ",ntc_" + code;
+		url = url.replace(/rn=/g, 'rn='+(new Date()).valueOf());
+		console.log(url);
 		
+		mui.ajax({
+            type: "get",
+			url: url,
+			scriptCharset:"GBK",
+			dataType:'script',
+            timeout: 3000,
+            success: function(data) {
+            	console.log("success:get_notice_data");
+            	cb(data);
+            },
+            error: function(xhr, type, errorThrown) {
+                plus.nativeUI.toast(errorThrown);
+            }
+        });
 	},
 	
 	/***

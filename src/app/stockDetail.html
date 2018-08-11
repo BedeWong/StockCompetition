@@ -130,8 +130,12 @@
             <div id="container-news">
             	<div class="content">
             		新聞/公告
-            		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
             	</div>
+        		<ul class="mui-table-view" v-for="it in datas">
+				    <li class="mui-table-view-cell">
+				    	[{{it[0]}}] {{it[2]}}
+				    </li>
+				</ul>
             </div>
             
             <div id="bottom-bar">
@@ -243,6 +247,28 @@
 			dataDetail.datas = dataDetail_cache;
 		};
 		
+		
+		var newsVm = new Vue({
+			el:'#container-news',
+			data:{
+				datas:{}
+			},
+			methods:{
+				resetData:function(){//重置数据
+					Object.assign(this.$data, {});
+				}
+			}
+		});
+		function cb_news(dat) {
+			dat = dat.replace(/[\r\n]/g, "");
+			console.log(dat);
+			
+			eval(dat);
+			items = eval('finance_news');
+			
+			newsVm.datas = items;
+		};
+		
 		window.addEventListener("display", function(event){
 			console.log(event.detail.data);
 			
@@ -257,12 +283,16 @@
 			// 獲取内盤外盤數據
 			hq_obj.get_stock_tradeList(cb_invo_outvol, event.detail.data.symbol, 1);
 			
+			// 獲取新聞公告
+			hq_obj.get_notice_data(cb_news, event.detail.data.symbol);
+			
 			// 初始化第一張K綫圖  分時綫
 			mui("#img-min")[0].setAttribute('src', img_baseurl+"min/n/" + event.detail.data.symbol + '.gif');
 			
 			pramaData = event.detail.data;
 
 		});
+		
 
 	</script>
 </html>

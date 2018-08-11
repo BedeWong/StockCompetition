@@ -323,6 +323,13 @@
 					"stockDetail.html"
 				],
 				"priority": 0
+			},
+			"bankuai.html": {
+				"resources": [],
+				"refer": [
+					"bankuaiStockList.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {
