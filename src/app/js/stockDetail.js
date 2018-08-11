@@ -40,5 +40,15 @@
 		$(this).addClass("tab-chart-cur").siblings().removeClass('tab-chart-cur');   // 當前點擊tab標簽
 	});
 
-		
+	mui('#stock-buy')[0].addEventListener('tap', function(ev){
+		console.log("購買按鈕點擊。");
+	});
+	
+	mui('#stock-add2favorite')[0].addEventListener('tap', function(ev){
+		console.log("添加到自選股。");
+	});
+	
+	mui('#stock-chat')[0].addEventListener('tap', function(ev){
+		console.log("聊股按鈕點擊。");
+	});
 })(mui);

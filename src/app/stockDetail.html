@@ -130,9 +130,15 @@
             <div id="container-news">
             	<div class="content">
             		新聞/公告
+            		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
             	</div>
             </div>
             
+            <div id="bottom-bar">
+            	<button type="button" class="mui-btn"  id="stock-buy">買入</button>
+            	<button type="button" class="mui-btn" id="stock-add2favorite">添加到自選股</button>
+            	<button type="button" class="mui-btn" id="stock-chat">聊股</button>
+            </div>
 		</div>
 		
 	</body>
@@ -223,7 +229,6 @@
 			dataDetail_cache['change_hand']	  = (dataDetail_cache['turn_volume'] / stockData['cur_capital'] / 100).toFixed(2); /**  / 10000 * 100 */   // 換手率
 			dataDetail_cache['pe']			= (dataDetail_cache['total_capital'] / stockData_i[13] / 100000000).toFixed(2);				//  pe
 			
-//			dataDetail.resetData();
 			dataDetail.datas = dataDetail_cache;
 		};
 		
@@ -235,17 +240,7 @@
 			dataDetail_cache['invol'] = (trade_INVOL_OUTVOL[0] / 100).toFixed(0);
 			dataDetail_cache['outvol'] = (trade_INVOL_OUTVOL[1]/100).toFixed(0);
 			
-//			Vue.set(dataDetail.datas, 'invol', (trade_INVOL_OUTVOL[0] / 100).toFixed(0));
-//			Vue.set(dataDetail.datas, 'outvol', (trade_INVOL_OUTVOL[1] / 100).toFixed(0));
-			
-//			dataDetail.resetData();
 			dataDetail.datas = dataDetail_cache;
-
-//          test
-//			for(var it in dataDetail_cache) {
-//				console.log(it);
-//				console.log(dataDetail_cache[it]);
-//			}
 		};
 		
 		window.addEventListener("display", function(event){
