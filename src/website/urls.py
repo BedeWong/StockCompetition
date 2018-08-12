@@ -3,7 +3,7 @@
 from handlers import userinfo
 from handlers import verify_code
 from handlers import favorite_stocks
-
+from handlers import user_stocks
 
 urls = [
     (r'/api/login', userinfo.LoginHandler),
@@ -18,6 +18,8 @@ urls = [
     (r'/api/delstockfromfavorite', favorite_stocks.DelStockHandler),
     (r'/api/checkstockinfavorite', favorite_stocks.CheckStockHandler),
     (r'/api/getfavoritestocklist', favorite_stocks.GetStockListHandler),
+
+    (r'/api/getholdstocklist', user_stocks.GetStockList),
 ]
 
 def main():
