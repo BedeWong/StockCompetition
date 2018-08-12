@@ -31,7 +31,7 @@ class UserStock(BaseModel):
             uid = self.u_id,
             code = self.s_stock_code,
             name = self.s_stock_name,
-            price = self.s_stock_price,
+            price = (float)(self.s_stock_price),
             count = self.s_stock_count,
             count_can_sale = self.s_stock_can_sale
         )
