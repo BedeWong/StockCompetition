@@ -19,7 +19,7 @@ class UserStock(BaseModel):
     s_stock_name = Column(String(16), nullable=False)                  # 股票名字
     s_stock_count = Column(Integer, default=0)                      # 持股數
     s_stock_price = Column(DECIMAL(15, 4), nullable=False)          # 持股成本價
-    s_stock_can_sale = Column(Integer, default=0)                   # 當前能賣出的股數
+    s_stock_freeze = Column(Integer, default=0)                   # 凍結的股數 A股T+1交易
     s_date          = Column(DateTime, default=datetime.now())      # 持股時間
 
 
@@ -33,7 +33,7 @@ class UserStock(BaseModel):
             name = self.s_stock_name,
             price = (float)(self.s_stock_price),
             count = self.s_stock_count,
-            count_can_sale = self.s_stock_can_sale
+            freeze = self.s_stock_freeze
         )
 
 ##################################################  TEST
