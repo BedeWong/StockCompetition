@@ -229,7 +229,7 @@
 			dataType:'script',
             timeout: 3000,
             success: function(data) {
-            	console.log("success:get_hq_stock");
+//          	console.log("success:get_hq_stock");
 //          	var obj = eval(data);
             	cb(data);
             },

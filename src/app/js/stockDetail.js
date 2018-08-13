@@ -39,9 +39,44 @@
 		targetdiv.removeClass("mui-hidden").siblings().addClass("mui-hidden");
 		$(this).addClass("tab-chart-cur").siblings().removeClass('tab-chart-cur');   // 當前點擊tab標簽
 	});
+	
+	// 點擊買入 跳轉到交易頁面
+	var pg_trade =  $$.noop;
+	
+	/***
+	 * 跳轉到交易頁面
+	 * @param {Object} item：
+	 * 			item.uid 用戶
+	 * 			item.code  股票代碼
+	 * 			item.name  股票名字
+	 * 			item.type  買入/賣出
+	 */
+	function toTrade(item){
+		
+		item.type = 'buy';   // 買入
+		
+		//test
+		console.log(JSON.stringify(item));
+		
+		mui.fire(pg_trade,'display',{data:item});
+		//打开個股詳情
+		mui.openWindow({
+			id:'trade',
+			extras:{
+				data:item  //扩展参数
+			}
+		});
+	}
 
 	mui('#stock-buy')[0].addEventListener('tap', function(ev){
 		console.log("購買按鈕點擊。");
+		
+		var arg = {}
+		app.fillToken(arg)
+		arg.code = pramaData.symbol;
+		arg.name = pramaData.name;
+		
+		toTrade(arg);
 	});
 	
 	mui('#stock-add2favorite')[0].addEventListener('tap', function(ev){
@@ -55,9 +90,9 @@
 		postdata['name'] = pramaData.name;
 		postdata['uid'] = app.getState().uid;
 		
-		for(var it in postdata) {
-			console.log(it + " : " + postdata[it]);
-		}
+//		for(var it in postdata) {
+//			console.log(it + " : " + postdata[it]);
+//		}
 		
 		mui.ajax({
             type: "post",
@@ -81,5 +116,14 @@
 	
 	mui('#stock-chat')[0].addEventListener('tap', function(ev){
 		console.log("聊股按鈕點擊。");
+	});
+	
+	
+	$$.plusReady(function(){
+		console.log("stock detail page plusReady.");
+		pg_trade = mui.preload({
+			url:"trade.html",
+			id:"trade",//默认使用当前页面的url作为id
+		});
 	});
 })(mui);

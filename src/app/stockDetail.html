@@ -151,12 +151,11 @@
 	<script src="js/jquery-min.js"></script>
 	<script src="js/hq.js"></script>
 	<script src="js/vue.min.js"></script>
-	<script src="js/stockDetail.js"></script>
 	<script type="text/javascript">
 		mui.init();
 		
 		var img_baseurl = 'http://image.sinajs.cn/newchart/';
-		var pramaData = NaN;   // 父頁面傳送過來的數據
+		var pramaData = {};   // 父頁面傳送過來的數據
 		var dataDetail_cache = {};       // 行情獲取的數據，做緩存，多個url請求往此處寫， 更新完 賦值給 Vue對象
 		
 		var dataDetail = new Vue({
@@ -207,7 +206,7 @@
 			}
 			
 			dataDetail_cache['change_price'] = (stockData[3]-stockData[2]).toFixed(2);// 33    點數
-			dataDetail_cache['change_per']  = (stockData[33] / stockData[1]*100).toFixed(2); // 34  漲幅
+			dataDetail_cache['change_per']  = ((dataDetail_cache.jinkai - stockData[2]) / stockData[2]*100).toFixed(2); // 34  漲幅
 			dataDetail_cache['quake_range']  = ((stockData[4]-stockData[5])/stockData[3]*100).toFixed(2)// 35  振幅
 			
 			dataDetail_cache['total_capital'] = (stockData_i[7] * dataDetail_cache['cur_price'] * 10000).toFixed(2);			// 總市值
@@ -295,4 +294,5 @@
 		
 
 	</script>
+	<script src="js/stockDetail.js"></script>
 </html>

@@ -13,6 +13,16 @@ window.urls = {
 	url_getFavoriteStock : baseurl + '/api/getfavoritestocklist',
 	url_delFromFavoriteStock : baseurl + '/api/delstockfromfavorite',
 	url_checkStockInFavorite : baseurl + '/api/checkstockinfavorite',
+	
+	// 獲取持有的股票信息
+	url_getMyStocks : baseurl + "/api/getholdstocklist",
+	
+	// 股票交易相關
+	url_buystock : baseurl + "/api/buystock",
+	url_salestock : baseurl + "/api/salestock",
+	url_getTradeHistory: baseurl + "/api/gettradehistory",
+	url_getInvokeStock : baseurl + "/api/invokestock",
+	
 };
 
 /**
@@ -199,7 +209,10 @@ window.urls = {
 			console.log("fillToken err");
 		}
 		
-		data.utoken = owner.getState().token;
+		var state = owner.getState()
+		
+		data.utoken = state.token;
+		data.uid = state.uid;
 	};
 
 	var checkEmail = function(email) {

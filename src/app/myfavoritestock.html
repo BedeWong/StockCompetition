@@ -30,7 +30,7 @@
 			
 			<div id="stockListVm">
 			<div id="" class="stock-box" v-for="it in datas">
-				<div id="" class="stock-name">
+				<div id="" class="stock-name" @tap='toStockDetail(it)'>
 					<p style="line-height: 20px;">{{it.name}}</p>
 					<p style="line-height: 20px;">{{it.code}}</p>
 				</div>

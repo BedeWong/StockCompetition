@@ -57,8 +57,24 @@
 			                plus.nativeUI.toast(errorThrown);
 			            }
 			        });// ajax
+				},
+				
+				/***
+				 * 轉到股票詳情頁面
+				 * @param {Object} item：個股信息
+				 */
+				toStockDetail:function(item){
+					console.log("toStockDetail..");
+					
+					item.symbol = item.code;
+					
+					mui.fire(stockDetailPage,'display',{data:item});
+					//打开個股詳情
+					mui.openWindow({
+						id:'stockDetail'
+					});
 				}
-			}
+			}     // end method area
 	});
 	
 	
@@ -90,9 +106,9 @@
 			}
 				
 			//test
-			for(var it in data){
-				console.log(it + ': ' + JSON.stringify(data[it]) );
-			}
+//			for(var it in data){
+//				console.log(it + ': ' + JSON.stringify(data[it]) );
+//			}
 			
 			// 賦值數據到模型
 			stockListVm.datas = data;
@@ -130,8 +146,27 @@
         });// ajax
 	};
 	
+	/*******
+	 *  點擊跳轉到股票詳情頁
+	 */
+	var stockDetailPage = NaN;
+	
+	/**
+	 * plusReady 處理：
+	 */
 	mui.plusReady(function(){
-			getStock();
+		
+		stockDetailPage= mui.preload({
+			url:"stockDetail.html",
+			id:"stockDetail",//默认使用当前页面的url作为id
+		});
+		
+		getStock();
+	});
+	
+	window.addEventListener('display', function(){
+		console.log("myfavorite stock page display.")
+//		getStock();
 	});
 	
 })(mui);

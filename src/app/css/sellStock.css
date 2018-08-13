@@ -1,0 +1,45 @@
+
+#list-head {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	background-color: #CCCCCC;
+}
+
+#list-head li {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	width: 23%;
+	line-height: 40px;
+	display: inline-block;
+}
+
+#list-data {
+	width: 100%;
+}
+
+.list-data-item {
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	background-color: #DEDEDE;
+	margin-top: 6px;
+}
+
+.list-data-item  div{
+	margin: 0px;
+	padding: 0px;
+	width: 22%;
+	line-height: 40px;
+	display: inline-block;
+}
+
+.stock-name span{
+	height: 50%;
+	line-height: 20px;
+	width: 100%;
+	text-align: center;
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/sellStock.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">賣出</h1>
+		</header>
+		<div id="" class="mui-content"> 
+			<ul id="list-head">
+				<li>
+					股名
+				</li>
+				<li >
+					成本價
+				</li>
+				<li >
+					現價
+				</li>
+				<li >
+					可買(股)
+				</li>
+			</ul>
+			
+			<div id="list-data">
+				<div v-for="it in datas" class='list-data-item' @tap="tradeDetail(it)">
+					<div class="stock-name">
+						<span class="stock-name-name" style="font-size: 14px;">
+							{{it.name}}
+						</span>
+						<!--<span class="stock-name-code" style="font-size: 12px;">
+							{{it.code}}
+						</span>-->
+					</div>
+					<div >
+						{{it.price}}
+					</div>
+					<div >
+						{{it.cur_price}}
+					</div>
+					<div >
+						{{it.count}}
+					</div>
+				</div>	
+			</div>  <!-- data area --->
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript">
+//		mui.init()
+
+	</script>
+	<script type="text/javascript" src="js/sellStock.js" ></script>
+</html>

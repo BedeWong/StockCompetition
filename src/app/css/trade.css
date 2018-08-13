@@ -1,0 +1,122 @@
+
+.data-item, .stock-name, .stock-price, .stock-invol, .stock-outvol{
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.stock-name {
+	height: 40px;
+}
+
+.stock-name div, .stock-price div{
+	width: 48%;
+	line-height:40px ;
+	display: inline-block;
+}
+
+.stock-name-code, .stock-price-per {
+	padding-left: 5px;
+	text-align: left;
+}
+
+.stock-name-name, .stock-price-cur {
+	text-align: right;
+	padding-right: 5px;
+}
+
+.invol-text, .outvol-text {
+	width: 18%;
+	line-height: 40px;
+	display: inline-block;
+}
+
+.invol-data, .outvol-data {
+	width: 80%;
+	height: 40px;
+	display: inline-block;
+}
+
+.invol-data-text div, .outvol-data-text div {
+	width: 18%;
+	font-size: 14px;
+	display: inline-block;
+}
+
+.invol-data-data div, .outvol-data-data div{
+	width: 18%;
+	font-size: 14px;
+	display: inline-block;
+}
+
+.invol-data-data2 div, .outvol-data-data2 div{
+	width: 18%;
+	font-size: 14px;
+	display: inline-block;
+}
+
+/**
+ * 價格輸入框**/
+.buy-price-container {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.mui-numbox-input {
+	width: 40%;
+}
+
+.price-ref-container {
+	width: 100%;
+	height: 40px;
+}
+
+.price-ref-container div{
+	width: 49%;
+	display: inline-block;
+	line-height: 40px;
+}
+
+.height-price{
+	text-align: right;
+	padding-right: 5px;
+}
+.low-price{
+	text-align: left;
+	padding-left: 5px;
+}
+
+.button-bar {
+	margin-top: 30px;
+}
+
+.button-bar button {
+	width: 80%;
+}
+
+
+#mark-box {
+	text-align: center;
+	background-color: #EEEEEE;
+	width: 100%;
+	height: 100%;
+	top: 50px;
+	left: 0px;
+	position: fixed;
+}
+
+#mark-box div{
+	margin: 0px auto;
+	text-align: center;
+	width: 80%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	border-right: 1px solid;
+}
+
+#box-confirm, #box-cancel {
+	width:80%;
+	line-height: 40px;
+}

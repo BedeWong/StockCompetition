@@ -211,11 +211,11 @@
 					"setting.html",
 					"index.html",
 					"matchs.html",
-					"discuss.html"
+					"discuss.html",
+					"my.html"
 				],
 				"refer": [
-					"login.html",
-					"my.html"
+					"login.html"
 				],
 				"priority": 1
 			},
@@ -328,6 +328,37 @@
 				"resources": [],
 				"refer": [
 					"bankuaiStockList.html"
+				],
+				"priority": 0
+			},
+			"myfavoritestock.html": {
+				"resources": [],
+				"refer": [
+					"stockDetail.html"
+				],
+				"priority": 0
+			},
+			"mystockposition.html": {
+				"resources": [],
+				"refer": [
+					"myfavoritestock.html",
+					"historytradelist.html",
+					"sellStock.html",
+					"rebackStock.html"
+				],
+				"priority": 0
+			},
+			"sellStock.html": {
+				"resources": [],
+				"refer": [
+					"trade.html"
+				],
+				"priority": 0
+			},
+			"stockDetail.html": {
+				"resources": [],
+				"refer": [
+					"trade.html"
 				],
 				"priority": 0
 			}
