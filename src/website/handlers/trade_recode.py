@@ -25,9 +25,6 @@ class BuyStockHander(BaseHandler):
         stock_price = (float)(self.get_argument("price"))
         stock_amount = (int)(self.get_argument("amount"))
 
-        logging.debug(stock_price)
-        logging.debug(stock_amount)
-
         try:
             SVC_TradeRecode.add_recode(u_id, 1, stock_price, stock_amount, stock_code, stock_name)
         except Exception as e:
