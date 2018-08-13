@@ -36,6 +36,7 @@ class SVC_UserStocks(object):
         try:
             stock = dbsession.query(UserStock).filter_by(u_id=uid).filter_by(s_stock_code=stock_code).one()
         except NoResultFound as e:
+            dbsession.rollback()
             logging.error(e)
 
         # 沒記錄，沒買過
@@ -51,6 +52,7 @@ class SVC_UserStocks(object):
                 dbsession.add(stock)
                 dbsession.commit()
             except Exception as e:
+                dbsession.rollback()
                 logging.error(e)
                 raise e
 
@@ -63,6 +65,7 @@ class SVC_UserStocks(object):
                 dbsession.merge(stock)
                 dbsession.commit()
             except Exception as e:
+                dbsession.rollback()
                 logging.error(e)
                 raise e
 
@@ -90,6 +93,7 @@ class SVC_UserStocks(object):
         try:
             stock = dbsession.query(UserStock).filter_by(u_id=uid).filter_by(s_stock_code=stock_code).one()
         except NoResultFound as e:
+            dbsession.rollback()
             logging.error(e)
 
         if stock == None:
@@ -103,6 +107,7 @@ class SVC_UserStocks(object):
                 dbsession.commit()
             except Exception as e:
                 logging.error(e)
+                dbsession.rollback()
                 raise e
         ## 數據有錯誤
         elif stock.s_stock_count < stock_count:
@@ -117,6 +122,7 @@ class SVC_UserStocks(object):
                 dbsession.commit()
             except Exception as e:
                 logging.error(e)
+                dbsession.rollback()
                 raise e
 
         return True, ""
@@ -137,6 +143,7 @@ class SVC_UserStocks(object):
             lst = dbsession.query(UserStock).filter_by(u_id=uid).limit(lmt).all()
         except Exception as e:
             logging.error(e)
+            dbsession.rollback()
             raise e
 
         res = []
