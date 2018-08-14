@@ -7,20 +7,62 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/rebackStock.css" rel="stylesheet" />
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">設置</h1>
+		    <h1 class="mui-title">撤单</h1>
 		</header>
-		
+		<div id="" class="mui-content">
+			<div id="data-area" style="width:100%">
+				<div class="trade-item" v-for="it in datas" >
+					<div class="line-1">						
+						<div class="stock-name" style="display: inline-block;">
+							股票名：{{it.name}}
+						</div>
+						<div class="stock-code" style="display: inline-block;">
+							({{it.code}})
+						</div>
+						<div class="stock-time">
+							委托時間：{{it.submit_time}}
+						</div>
+					</div>
+					
+					<div class="line-1">
+						<div class="stock-price" style="width: 32%;">
+							成本價：{{it.price}}
+						</div>
+						<div class="stock-amount" style="width: 32%;">
+							委托數：{{it.amount}}股
+						</div>
+						<div class="stock-volume" style="width: 32%;">
+							總金額：{{it.volume}}
+						</div>
+					</div>
+					
+					<div class="line-1">
+						<div class="stock-type">
+							類型：{{it.type}}
+						</div>
+						<div class="stock-button">
+							<button type="button" class="mui-btn mui-btn-outlined" @tap="revoke(it)">撤單</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
 		
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/vue.min.js"></script>
 	<script type="text/javascript">
 //		mui.init()
 
 	</script>
+	<script type="text/javascript" src="js/rebackStock.js" ></script>
 </html>

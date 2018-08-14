@@ -21,7 +21,7 @@ window.urls = {
 	url_buystock : baseurl + "/api/buystock",
 	url_salestock : baseurl + "/api/salestock",
 	url_getTradeHistory: baseurl + "/api/gettradehistory",
-	url_getInvokeStock : baseurl + "/api/invokestock",
+	url_invokeStock : baseurl + "/api/invokestock",
 	
 };
 

@@ -12,7 +12,8 @@
 			"setting.html",
 			"index.html",
 			"matchs.html",
-			"discuss.html"
+			"discuss.html",
+			"my.html"
 		]
 	},
 	"login.html": {
@@ -61,6 +62,29 @@
 	"bankuai.html": {
 		"refer": [
 			"bankuaiStockList.html"
+		]
+	},
+	"myfavoritestock.html": {
+		"refer": [
+			"stockDetail.html"
+		]
+	},
+	"mystockposition.html": {
+		"refer": [
+			"myfavoritestock.html",
+			"historytradelist.html",
+			"sellStock.html",
+			"rebackStock.html"
+		]
+	},
+	"sellStock.html": {
+		"refer": [
+			"trade.html"
+		]
+	},
+	"stockDetail.html": {
+		"refer": [
+			"trade.html"
 		]
 	}
 }

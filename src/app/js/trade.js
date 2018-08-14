@@ -37,28 +37,28 @@
 			dataCache.jinkai = parseFloat(stockData[1]).toFixed(2);    // 今開
 			dataCache.cur_price = parseFloat(stockData[3]).toFixed(2);  // 現價
 			dataCache.zuoshou = parseFloat(stockData[2]).toFixed(2);  // 作收
-			dataCache.change_per = ((dataCache.jinkai - stockData[2]) / stockData[2]*100).toFixed(2); // 34  漲幅
+			dataCache.change_per = ((dataCache.cur_price - stockData[2]) / stockData[2]*100).toFixed(2); // 34  漲幅
 			
-			dataCache.sale1_c = stockData[20];
+			dataCache.sale1_c = parseFloat(stockData[20]).toFixed(0);
 			dataCache.sale1 = parseFloat(stockData[21]).toFixed(2);
-			dataCache.sale2_c = stockData[22];
+			dataCache.sale2_c = parseFloat(stockData[22]).toFixed(0);
 			dataCache.sale2 = parseFloat(stockData[23]).toFixed(2);
-			dataCache.sale3_c = stockData[24];
+			dataCache.sale3_c = parseFloat(stockData[24]).toFixed(0);
 			dataCache.sale3 = parseFloat(stockData[25]).toFixed(2);
-			dataCache.sale4_c = stockData[26];
+			dataCache.sale4_c = parseFloat(stockData[26]).toFixed(0);
 			dataCache.sale4 = parseFloat(stockData[27]).toFixed(2);
-			dataCache.sale5_c =stockData[28];
+			dataCache.sale5_c = parseFloat(stockData[28]).toFixed(0);
 			dataCache.sale5 = parseFloat(stockData[29]).toFixed(2);
 			
-			dataCache.buy1_c = stockData[10];
+			dataCache.buy1_c = parseFloat(stockData[10]).toFixed(0);
 			dataCache.buy1 = parseFloat(stockData[11]).toFixed(2);
-			dataCache.buy2_c = stockData[12];
+			dataCache.buy2_c = parseFloat(stockData[12]).toFixed(0);
 			dataCache.buy2 = parseFloat(stockData[13]).toFixed(2);
-			dataCache.buy3_c = stockData[14];
+			dataCache.buy3_c = parseFloat(stockData[14]).toFixed(0);
 			dataCache.buy3 = parseFloat(stockData[15]).toFixed(2);
-			dataCache.buy4_c = stockData[16];
+			dataCache.buy4_c = parseFloat(stockData[16]).toFixed(0);
 			dataCache.buy4 = parseFloat(stockData[17]).toFixed(2);
-			dataCache.buy5_c = stockData[18];
+			dataCache.buy5_c = parseFloat(stockData[18]).toFixed(0);
 			dataCache.buy5 = parseFloat(stockData[19]).toFixed(2);
 			
 			if(!b_price_box){
@@ -98,7 +98,7 @@
 				charge = 5;
 			}
 			
-			console.log("price:" + price + ", count:"+ count + ", vol:" + vol + ", charge:" + charge);
+			console.log("price:" + dataCache.price + ", count:"+ dataCache.count + ", vol:" + dataCache.vol + ", charge:" + charge);
 			
 			$('#box-stock-price')[0].innerText = "委托價：" + dataCache.price;
 			$('#box-stock-count')[0].innerText = "賣出 " + dataCache.count + " 股";
@@ -134,6 +134,8 @@
 		 */
 		mui('#box-stock-ok')[0].addEventListener('tap', function(event){
 			$('#mark-box').addClass('mui-hidden');
+			
+			console.log("委托下單確認：" + dataCache.name);
 			
 			var url;
 			var postdata = {}
