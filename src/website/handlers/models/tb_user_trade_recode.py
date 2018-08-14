@@ -41,10 +41,10 @@ class TradeRecode(BaseModel):
             status = self.t_status,
             submit_time = self.t_submit_time,
             finish_time = self.t_finish_time,
-            charge = self.t_charge,
-            price = self.t_stock_price,
+            charge = (float)(self.t_charge),
+            price = (float)(self.t_stock_price),
             amount = self.t_stock_amount,
-            volume = self.t_volume
+            volume = (float)(self.t_volume)
         )
 
 
