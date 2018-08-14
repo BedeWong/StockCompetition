@@ -126,7 +126,7 @@ class SVC_TradeRecode(object):
             return res
 
         for it in lst:
-            res.append(it)
+            res.append(it.to_json())
 
         return res
 
