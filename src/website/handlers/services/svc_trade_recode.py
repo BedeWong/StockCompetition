@@ -81,14 +81,14 @@ class SVC_TradeRecode(object):
 
 
     @staticmethod
-    def get_recode_list(uid, type=0, page=1, limit=40, finished=False):
+    def get_recode_list(uid, type=0, page=1, limit=40, ext=None):
         """
         獲取用戶的交易記錄（不管是否已成交）
         :param uid:
         :param type:  0：所有的   1買入  2 賣出
         :param page:    頁
         :param limit:   每頁加載數據量
-        :param finished： 是否已完成的
+        :param ext： 選項  finished 只加載已完成   unfinished 只加載未完成 all 加載所有
         :return: a list container all objects
         """
 
@@ -103,8 +103,17 @@ class SVC_TradeRecode(object):
             if type != 0:
                 query = query.filter_by(t_type=type)
 
-            if finished:
-                query = query.filter_by(t_status=2)
+            ##### finished 已完成的
+            ##### unfinished 未完成的
+            ##### all 所有的
+            if ext == 'finished':
+                query = query.filter_by(t_status=1)
+            elif ext == 'unfinished':
+                query = query.filter_by(t_status=0)
+            elif ext == 'all':
+                pass
+            else:
+                logging.warning("ext parameter err. %s", ext)
 
             lst = query.limit(limit).offset((page-1)*limit).all()
         except Exception as e:

@@ -82,7 +82,7 @@ class GetTradeHistoryHandler(BaseHandler):
         type = (int)(self.get_argument("tradetype", 0))   # 默認所有的數據都要加載
         page = (int)(self.get_argument("page", 1))
         limit = (int)(self.get_argument("limit", 40))
-        finished = (int)(self.get_argument("finished", 0))
+        finished = (int)(self.get_argument("ext", 'all'))
 
         if finished:
             finished = True
