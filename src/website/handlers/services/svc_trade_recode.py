@@ -140,7 +140,7 @@ class SVC_TradeRecode(object):
         """
 
         if not isinstance(id, int):
-            logging.error("id not a int object")
+            logging.error("id not a int object %s", id)
             raise Exception("參數錯誤")
 
         recode = None

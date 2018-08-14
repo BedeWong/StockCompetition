@@ -113,7 +113,7 @@ class InvokeStockHandler(BaseHandler):
         :return:
         """
         u_id = self.get_argument("uid")
-        id = self.get_argument("id")
+        id = (int)(self.get_argument("id"))
 
         try:
             SVC_TradeRecode.revoke_order(u_id, id)
