@@ -31,6 +31,14 @@ settings = {
     # "autoreload" : False
 }
 
+# 上传文件
+upload_path = os.path.join(os.path.dirname(__file__), "upload/")
+
+b_qiniucloud = False
+
+# 比赛相关
+default_logo = 'images/qq.png'
+
 def main():
     pass
 
