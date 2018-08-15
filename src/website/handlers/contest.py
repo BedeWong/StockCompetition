@@ -17,6 +17,7 @@ class ContestCreate(BaseHandler):
 
     @required_login
     def post(self, *args, **kwargs):
+        logging.debug(self.request.arguments)
         u_id = self.get_argument("uid")
         title = self.get_argument("title")
         desc = self.get_argument("desc")
