@@ -5,6 +5,7 @@ from handlers import verify_code
 from handlers import favorite_stocks
 from handlers import user_stocks
 from handlers import trade_recode
+from handlers import contest
 
 urls = [
     (r'/api/login', userinfo.LoginHandler),
@@ -29,6 +30,9 @@ urls = [
     (r'/api/salestock', trade_recode.SaleStockHandler),
     (r'/api/gettradehistory', trade_recode.GetTradeHistoryHandler),
     (r'/api/invokestock', trade_recode.InvokeStockHandler),
+
+    # 比賽相關
+    (r'/api/cretecontest', contest.ContestCreate),
 ]
 
 def main():
