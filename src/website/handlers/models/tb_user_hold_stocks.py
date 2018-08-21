@@ -11,7 +11,7 @@ class UserStock(BaseModel):
     用戶持倉的股票
     """
 
-    __tablename__ = 'tb_user_stocks'
+    __tablename__ = 'tb_user_hold_stocks'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     u_id = Column(Integer, nullable=False)                          # 用戶id

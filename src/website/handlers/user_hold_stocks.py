@@ -6,7 +6,7 @@ from utils.commons import required_login
 from utils.response_code import RET, RETMSG_MAP
 from handlers.basehandler import BaseHandler
 
-from handlers.services.svc_user_stocks import SVC_UserStocks
+from handlers.services.svc_user_hold_stocks import SVC_UserStocks
 
 class GetStockList(BaseHandler):
     """

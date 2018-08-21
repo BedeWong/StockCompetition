@@ -31,7 +31,7 @@ class LoginHandler(BaseHandler):
         logging.debug(self.request.body)
         loginid = self.get_argument("loginId")
         pwd     = self.get_argument("password")
-        logging.debug(loginid, pwd)
+        logging.debug(loginid + ", " + pwd)
 
         if not all([loginid, pwd]):
             return self.write(dict(errcode=RET.RET_PARAMERR, errmsg=RETMSG_MAP[RET.RET_PARAMERR]))
