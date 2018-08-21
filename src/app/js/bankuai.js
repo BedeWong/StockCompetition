@@ -212,13 +212,13 @@ function openBankuaiStockListPage(item){
 	};
 	
 	function refreshData(){
-//		hq_obj.get_FLJK_class(show_classify_fn);
+		hq_obj.get_FLJK_class(show_classify_fn);
 //		
-//    	hq_obj.get_FLJK_industry(show_industy_fn);
+      	hq_obj.get_FLJK_industry(show_industy_fn);
       	
       	hq_obj.get_FLJK_area(show_area_fn);
 //    	
-//    	hq_obj.get_rank_list_data(show_riselist_fn, 0);
+      	hq_obj.get_rank_list_data(show_riselist_fn, 0);
 //    	
       	hq_obj.get_rank_list_data(show_falllist_fn, 1);
 	};

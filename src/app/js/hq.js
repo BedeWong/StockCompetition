@@ -151,7 +151,7 @@
             	cb(ret);
             },
             error: function(xhr, type, errorThrown) {
-                plus.nativeUI.toast(errorThrown);
+                mui.toast(errorThrown);
             }
         });
 	},
@@ -182,7 +182,7 @@
             	cb(obj);
             },
             error: function(xhr, type, errorThrown) {
-                plus.nativeUI.toast(errorThrown);
+                mui.toast(errorThrown);
             }
         });
 	},
@@ -208,7 +208,7 @@
             	cb(data);
             },
             error: function(xhr, type, errorThrown) {
-                plus.nativeUI.toast(errorThrown);
+                mui.toast(errorThrown);
             }
         });
 	},

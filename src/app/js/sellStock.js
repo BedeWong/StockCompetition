@@ -2,6 +2,9 @@
 
 (function($$){
 	
+	// 父頁面傳送過來的參數
+	var param = {}
+	
 	// 點擊股票 可以賣出、跳轉到交易頁面
 	var pg_trade =  $$.noop;
 	
@@ -16,6 +19,7 @@
 	function toTrade(item){
 		
 		item.type = 'sale';   // 賣出
+		item.contestid = param.contestid;
 		
 		mui.fire(pg_trade,'display',{data:item});
 		//打开個股詳情
@@ -111,8 +115,9 @@
 		
 	});
 	
-	window.addEventListener('display', function(){
-		console.log("sell stock page display.")
+	window.addEventListener('display', function(event){
+		param = event.detail.data;
+		console.log("sell stock page display.:" + JSON.stringify(param))
 		getStockList();
 	});
 	

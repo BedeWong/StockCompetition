@@ -140,10 +140,20 @@
 			var url;
 			var postdata = {}
 			
-			if (dataCache.type == 'buy'){
-				url = urls.url_buystock;
-			}else if(dataCache.type == 'sale'){
-				url = urls.url_salestock;
+			//  比賽落單
+			if(dataCache.contestid) {
+				postdata.cid = dataCache.contestid;
+				if (dataCache.type == 'buy'){
+					url = urls.url_contestStockBuy;
+				}else if(dataCache.type == 'sale'){
+					url = urls.url_contestStockSale;
+				}
+			}else {       //  落單
+				if (dataCache.type == 'buy'){
+					url = urls.url_buystock;
+				}else if(dataCache.type == 'sale'){
+					url = urls.url_salestock;
+				}
 			}
 			
 			postdata.code = dataCache.code;

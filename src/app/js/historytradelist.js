@@ -2,6 +2,8 @@
 	
 	$$.init();
 	
+	var param = {};
+	
 	var dataAreaVm = new Vue({
 		el:'#data-area',
 		data:{
@@ -55,11 +57,18 @@
 		var  postdata = {}
 					
 		app.fillToken(postdata);
+		app.fillRn(postdata);
 		postdata.ext = 'all';   // 所有未完成的交易記錄
+		
+		var url = urls.url_getTradeHistory;
+		if(param.contestid != undefined) {
+			url = urls.url_contestHistoryList;
+			postdata.cid = param.contestid;    // 附帶比賽id 參數
+		}
 		
 		$$.ajax({
             type: "get",
-			url: urls.url_getTradeHistory,
+			url: url,
 			data:postdata,
             timeout: 3000,
             success: function(data) {
@@ -78,8 +87,9 @@
         });// ajax
 	};
 	
-	window.addEventListener('display', function(){
-		console.log("history lsit page display.");
+	window.addEventListener('display', function(event){
+		param = event.detail.data || {};
+		console.log("history lsit page display.:" + JSON.stringify(param));
 		
 		getStockList();
 	});

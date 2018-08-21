@@ -1,6 +1,7 @@
 (function($$){
 	
 	$$.init();
+	var param = {};
 	
 	var dataAreaVm = new Vue({
 		el:'#data-area',
@@ -18,18 +19,24 @@
 			revoke: function(item) {
 				console.log(item.name)
 				
+				var url = urls.url_invokeStock;
 				var  postdata = {}
 				postdata.id = item.id;
 					
 				app.fillToken(postdata);
 				
+				if(param.contestid != undefined) {
+					url = urls.url_contestStockInvoke;
+					postdata.contestid = param.contestid;
+				}
+				
 				$$.ajax({
 		            type: "post",
-					url: urls.url_invokeStock,
+					url: url,
 					data:postdata,
 		            timeout: 3000,
 		            success: function(data) {
-		            	console.log("success:" + urls.url_getMyStocks);
+		            	console.log("success:" + url);
 		            	
 		            	if(data['errcode'] != 0){
 		            		plus.nativeUI.toast(data['errmsg']);
@@ -76,13 +83,19 @@
 		app.fillToken(postdata);
 		postdata.ext = 'unfinished';   // 所有未完成的交易記錄
 		
+		var url = urls.url_getTradeHistory;
+		if(param.contestid != undefined) {
+			url = urls.url_contestHistoryList;
+			postdata.cid = param.contestid;    // 附帶比賽id 參數
+		}
+		
 		$$.ajax({
             type: "get",
-			url: urls.url_getTradeHistory,
+			url: url,
 			data:postdata,
             timeout: 3000,
             success: function(data) {
-            	console.log("success:" + urls.url_getMyStocks);
+            	console.log("success:" + url);
             	
             	if(data['errcode'] != 0){
             		plus.nativeUI.toast(data['errmsg']);
@@ -97,8 +110,9 @@
         });// ajax
 	};
 	
-	window.addEventListener('display', function(){
-		console.log("reback stock page display.");
+	window.addEventListener('display', function(event){
+		param = event.detail.data || {};
+		console.log("reback stock page display.:" + JSON.stringify(param));
 		
 		getStockList();
 	});

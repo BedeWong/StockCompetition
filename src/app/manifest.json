@@ -212,7 +212,8 @@
 					"index.html",
 					"matchs.html",
 					"discuss.html",
-					"my.html"
+					"my.html",
+					"contest.html"
 				],
 				"refer": [
 					"login.html"
@@ -344,7 +345,8 @@
 					"myfavoritestock.html",
 					"historytradelist.html",
 					"sellStock.html",
-					"rebackStock.html"
+					"rebackStock.html",
+					"trade.html"
 				],
 				"priority": 0
 			},
@@ -358,6 +360,35 @@
 			"stockDetail.html": {
 				"resources": [],
 				"refer": [
+					"trade.html"
+				],
+				"priority": 0
+			},
+			"contest.html": {
+				"resources": [
+					"images/qq.png"
+				],
+				"refer": [
+					"searchMatchs.html",
+					"contestDetail.html",
+					"createMatch.html"
+				],
+				"priority": 0
+			},
+			"contestDetail.html": {
+				"resources": [],
+				"refer": [
+					"contestTrade.html"
+				],
+				"priority": 0
+			},
+			"contestTrade.html": {
+				"resources": [],
+				"refer": [
+					"historytradelist.html",
+					"sellStock.html",
+					"rebackStock.html",
+					"myfavoritestock.html",
 					"trade.html"
 				],
 				"priority": 0

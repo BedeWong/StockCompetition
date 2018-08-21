@@ -15,7 +15,7 @@
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">我的持倉</h1>
 		</header>
-		<div id="" class="mui-content">
+		<div id="" class="mui-content" >
 			<div id="" class="posinfo">
 				<div id="" class="posinfo-left">
 					<div id="earn_rate" class="posinfo-item">
@@ -117,42 +117,44 @@
 			<div id="" class="duibibar" style="margin-top: 20px;border-top: 0px;">
 				持倉信息
 			</div>
-			<div id="">
+			<div id="list-data">
+			<div id="" v-for="it in datas">
 				<div id="stock-name" class="line-box" style="height: 50px; line-height: 25px;">
-					{{樂心醫療}}<br/>{{SZ	300562}}
+					{{it.name}}<br/>{{it.code}}
 				</div>
 				<div class="line-box">
 					<div id="cur-prie" class="line-box-item">
-						當前價
+						當前價:{{it.cur_price}}
 					</div>
 					<div id="cur-profit" class="line-box-item">
-						浮動盈虧
+						浮動盈虧:{{it.yingkui}}
 					</div>
 				</div>
 				<div class="line-box">
 					<div id="prime-cost" class="line-box-item">
-						成本價
+						成本價:{{it.price}}
 					</div>
 					<div id="cur-mv" class="line-box-item">
-						最新市值
+						最新市值:{{it.mv}}
 					</div>
 				</div>
 				<div class="line-box">
 					<div id="position" class="line-box-item">
-						持倉數
+						持倉數:{{it.allcount}}
 					</div>
 					<div id="cur-mv" class="line-box-item">
-						當前可賣
+						當前可賣:{{it.count}}
 					</div>
 				</div>
 				<div class="line-box">
 					<div  class="line-box-item" style="text-align: center;">
-						<button id='buy' class="mui-btn mui-btn-block" style="width: 100%;">買入</button>
+						<button id='buy' class="mui-btn mui-btn-block" style="width: 100%;" @tap="buyStock(it)">買入</button>
 					</div>
 					<div class="line-box-item">
-						<button id='sale' class="mui-btn mui-btn-block" style="width: 100%;">賣出</button>
+						<button id='sale' class="mui-btn mui-btn-block" style="width: 100%;" @tap="saleStock(it)">賣出</button>
 					</div>
 				</div>
+			</div>
 			</div>
 			
 			<div id="bottom-bar">
@@ -161,11 +163,21 @@
 	        	<button type="button" class="mui-btn" id="stock-reback">撤單</button>
 	        	<button type="button" class="mui-btn" id="stock-history">交易記錄</button>
 	        </div>
+	        <div id="" style="height: 40px; width: 100%;">
+	        	<!--
+                	作者：offline
+                	时间：2018-08-14
+                	描述：這個div 用於撐起content box， 不要擋住買入賣出按鈕
+                -->
+	        </div>
 		</div>
 		
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/hq.js"></script>
+	<script src="js/vue.min.js"></script>
 	<script type="text/javascript">
 		mui.init();
 	</script>

@@ -1,6 +1,7 @@
 
-//baseurl = 'http://192.168.191.2:8001';
-baseurl = 'http://120.79.208.53:8001';
+//baseurl = 'http://192.168.43.188:8001';
+baseurl = 'http://192.168.191.4:8001';
+//baseurl = 'http://120.79.208.53:8001';
 
 window.urls = {
 	url_picCode : baseurl+'/piccode',
@@ -9,20 +10,37 @@ window.urls = {
 	url_login : baseurl + '/api/login',
 	url_getUserinfo : baseurl + '/api/getuserinfo',
 	
-	url_addStock2Favorite :baseurl + '/api/addstock2favorite',
-	url_getFavoriteStock : baseurl + '/api/getfavoritestocklist',
-	url_delFromFavoriteStock : baseurl + '/api/delstockfromfavorite',
-	url_checkStockInFavorite : baseurl + '/api/checkstockinfavorite',
+	url_addStock2Favorite :baseurl + '/api/favoritestock/add',
+	url_getFavoriteStock : baseurl + '/api/favoritestock/list',
+	url_delFromFavoriteStock : baseurl + '/api/favoritestock/del',
+	url_checkStockInFavorite : baseurl + '/api/favoritestock/checkin',
 	
 	// 獲取持有的股票信息
-	url_getMyStocks : baseurl + "/api/getholdstocklist",
+	url_getMyStocks : baseurl + "/api/holdstocks/list",
 	
 	// 股票交易相關
-	url_buystock : baseurl + "/api/buystock",
-	url_salestock : baseurl + "/api/salestock",
-	url_getTradeHistory: baseurl + "/api/gettradehistory",
-	url_invokeStock : baseurl + "/api/invokestock",
+	url_buystock : baseurl + "/api/stocks/buy",
+	url_salestock : baseurl + "/api/stocks/sale",
+	url_getTradeHistory: baseurl + "/api/stocks/history/tradelist",
+	url_invokeStock : baseurl + "/api/stocks/invoke",
 	
+	// 比賽相關
+	url_createContest : baseurl + '/api/contest/create',
+	url_joinContest : baseurl + '/api/contest/join',
+	url_quitContest : baseurl + '/api/contest/quit',
+	url_listContest : baseurl + '/api/contest/list',
+	url_listUserContest : baseurl + '/api/contest/list/user',
+	url_checkInContest : baseurl + '/api/contest/checkin',
+	url_listContestRank : baseurl + '/api/contest/detail/ranklist',
+	
+	// 比賽持倉：
+	url_listContestUserStocks : baseurl + "/api/contest/stocks/list",
+	url_contestUserInfo : baseurl + "/api/contest/userinfo",
+	
+	url_contestStockBuy : baseurl + "/api/contest/stocks/buy",
+	url_contestStockSale : baseurl + "/api/contest/stocks/sale",
+	url_contestStockInvoke : baseurl + "/api/contest/stocks/invoke",
+	url_contestHistoryList : baseurl + "/api/contest/stocks/history/tradelist",
 };
 
 /**
@@ -214,6 +232,14 @@ window.urls = {
 		data.utoken = state.token;
 		data.uid = state.uid;
 	};
+	
+	/***
+	 * 填充隨機值，强制服務器刷新數據
+	 * @param {Object} data
+	 */
+	owner.fillRn = function(data){
+		data.rn =  (new Date()).getTime() / 1000; 
+	};
 
 	var checkEmail = function(email) {
 		email = email || '';
@@ -312,7 +338,7 @@ window.urls = {
 		};
 		
 		// 配置頁面
-		var subpages = ['index.html','matchs.html', 'discuss.html', 'my.html'];
+		var subpages = ['index.html','contest.html', 'discuss.html', 'my.html'];
       	var subpage_style = {
 		    top: '0px',  
 		    bottom: '51px'  
@@ -345,6 +371,10 @@ window.urls = {
       		
       		//显示目标选择卡
       		targetWebView.show();
+      		
+      		//發送display事件
+      		mui.fire(targetWebView,'display',{});
+      		
       		//隐藏原选择卡
       		curWebView.hide();
   		};

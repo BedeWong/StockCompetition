@@ -1,5 +1,8 @@
 (function($$){
 	
+	// 父頁面床送過來的數據
+	var param_data = {};
+	
 	var stockListVm = new Vue({
 		el:'#stockListVm',
 			data:{
@@ -68,6 +71,9 @@
 					
 					item.symbol = item.code;
 					
+					//  標識是不是比賽相關的展示頁面， 用於在股票詳情頁面點擊購買時，區分下單類型
+					item.contestid = param_data.contestid;
+					
 					mui.fire(stockDetailPage,'display',{data:item});
 					//打开個股詳情
 					mui.openWindow({
@@ -93,12 +99,11 @@
 		
 		hq_obj.get_hq_stock(function(rdat){
 			rdat = rdat.replace(/[\r\n]/g, "");
-			console.log(rdat);
+
 			eval(rdat);
 			
 			for(var it in data) {
 				var hq = eval('hq_str_s_' + data[it].code);
-//				console.log(JSON.stringify(hq));
 				
 				hq = JSON.stringify(hq).split(',');
 				data[it].cur_price = hq[1];          // 現價
@@ -164,8 +169,9 @@
 		getStock();
 	});
 	
-	window.addEventListener('display', function(){
-		console.log("myfavorite stock page display.")
+	window.addEventListener('display', function(event){
+		param_data = event.detail.data;
+		console.log("myfavorite stock page display.:" + JSON.stringify(param_data));
 //		getStock();
 	});
 	

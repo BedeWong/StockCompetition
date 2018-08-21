@@ -75,6 +75,7 @@
 		app.fillToken(arg)
 		arg.code = pramaData.symbol;
 		arg.name = pramaData.name;
+		arg.contestid = pramaData.contestid;
 		
 		toTrade(arg);
 	});

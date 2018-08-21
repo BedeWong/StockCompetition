@@ -6,14 +6,16 @@
 			"index.html",
 			"my.html",
 			"matchs.html",
-			"discuss.html"
+			"discuss.html",
+			"contest.html"
 		],
 		"resources": [
 			"setting.html",
 			"index.html",
 			"matchs.html",
 			"discuss.html",
-			"my.html"
+			"my.html",
+			"contest.html"
 		]
 	},
 	"login.html": {
@@ -74,7 +76,8 @@
 			"myfavoritestock.html",
 			"historytradelist.html",
 			"sellStock.html",
-			"rebackStock.html"
+			"rebackStock.html",
+			"trade.html"
 		]
 	},
 	"sellStock.html": {
@@ -84,6 +87,30 @@
 	},
 	"stockDetail.html": {
 		"refer": [
+			"trade.html"
+		]
+	},
+	"contest.html": {
+		"refer": [
+			"searchMatchs.html",
+			"contestDetail.html",
+			"createMatch.html"
+		],
+		"resources": [
+			"images/qq.png"
+		]
+	},
+	"contestDetail.html": {
+		"refer": [
+			"contestTrade.html"
+		]
+	},
+	"contestTrade.html": {
+		"refer": [
+			"historytradelist.html",
+			"sellStock.html",
+			"rebackStock.html",
+			"myfavoritestock.html",
 			"trade.html"
 		]
 	}

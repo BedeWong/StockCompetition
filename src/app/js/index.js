@@ -40,11 +40,17 @@
 	
 	mui("#box_4")[0].addEventListener('tap', function(){
 		console.log("我的持仓  buttion taped.");
-		var webview = mui.openWindow({
-			url:'mystockposition.html',
-			extras:{
-				name:'testval'  //扩展参数
-			}
+		
+		var webview = mui.preload({
+			id:'mystockposition',
+			url:'mystockposition.html'
+		});
+		
+		//传值给详情页面，通知加载新数据
+		mui.fire(webview, 'display',{});
+		
+		mui.openWindow({
+			id:"mystockposition"
 		});
 	});
 	
