@@ -1,38 +1,52 @@
 #coding=utf-8
 
-from handlers import userinfo
+from handlers import user_info
 from handlers import verify_code
 from handlers import favorite_stocks
-from handlers import user_stocks
-from handlers import trade_recode
+from handlers import user_hold_stocks
+from handlers import trade
 from handlers import contest
+from handlers import contest_trade
 
 urls = [
-    (r'/api/login', userinfo.LoginHandler),
-    (r'/api/logout', userinfo.LogoutHandler),
-    (r'/api/register', userinfo.RegisterHanler),
-    (r'/api/getuserinfo', userinfo.GetUserInfo),
+    (r'/api/login', user_info.LoginHandler),
+    (r'/api/logout', user_info.LogoutHandler),
+    (r'/api/register', user_info.RegisterHanler),
+    (r'/api/getuserinfo', user_info.GetUserInfo),
 
     (r'/piccode', verify_code.PicCodeHandler),
     (r'/api/checkpic', verify_code.SMSCodeHandler),
 
     # 用戶自選股
-    (r'/api/addstock2favorite', favorite_stocks.AddStock2FavoriteHandler),
-    (r'/api/delstockfromfavorite', favorite_stocks.DelStockHandler),
-    (r'/api/checkstockinfavorite', favorite_stocks.CheckStockHandler),
-    (r'/api/getfavoritestocklist', favorite_stocks.GetStockListHandler),
+    (r'/api/favoritestock/add', favorite_stocks.AddStock2FavoriteHandler),
+    (r'/api/favoritestock/del', favorite_stocks.DelStockHandler),
+    (r'/api/favoritestock/checkin', favorite_stocks.CheckStockHandler),
+    (r'/api/favoritestock/list', favorite_stocks.GetStockListHandler),
 
     # 持倉股票
-    (r'/api/getholdstocklist', user_stocks.GetStockList),
+    (r'/api/holdstocks/list', user_hold_stocks.GetStockList),
 
     # 股票交易記錄相關
-    (r'/api/buystock', trade_recode.BuyStockHander),
-    (r'/api/salestock', trade_recode.SaleStockHandler),
-    (r'/api/gettradehistory', trade_recode.GetTradeHistoryHandler),
-    (r'/api/invokestock', trade_recode.InvokeStockHandler),
+    (r'/api/stocks/buy', trade.BuyStockHander),
+    (r'/api/stocks/sale', trade.SaleStockHandler),
+    (r'/api/stocks/history/tradelist', trade.GetTradeHistoryHandler),
+    (r'/api/stocks/invoke', trade.InvokeStockHandler),
 
     # 比賽相關
-    (r'/api/cretecontest', contest.ContestCreate),
+    (r'/api/contest/create', contest.ContestCreate),
+    (r'/api/contest/join', contest.ContestJoin),
+    (r'/api/contest/list', contest.Contest_get_list),
+    (r'/api/contest/list/user', contest.Contest_get_user_contest),
+    (r'/api/contest/quit', contest.ContestQuit),
+    (r'/api/contest/detail/ranklist', contest.Contest_get_contest_rank),
+    (r'/api/contest/checkin', contest.Contest_check_in_contest),
+    (r'/api/contest/userinfo', contest.ContestUserInfo),
+
+    (r'/api/contest/stocks/list', contest_trade.ListContestStocks),
+    (r'/api/contest/stocks/buy', contest_trade.BuyStockHander),
+    (r'/api/contest/stocks/sale', contest_trade.SaleStockHandler),
+    (r'/api/contest/stocks/invoke', contest_trade.InvokeStockHandler),
+    (r'/api/contest/stocks/history/tradelist', contest_trade.GetTradeHistoryHandler),
 ]
 
 def main():
