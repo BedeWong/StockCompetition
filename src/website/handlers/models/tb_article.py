@@ -18,7 +18,7 @@ class Article(BaseModel):
     a_pub_time = Column(DateTime, default=datetime.now())
     a_modify_time = Column(DateTime, default=datetime.now(), onupdate=datetime.now())
     a_status = Column(Integer, default=0)         # 贴子状态：  0 审核中
-                                                  #        1 通过审核  2 关闭
+                                                  #        1 通过审核  2 关闭(刪除)
     a_upcounts = Column(Integer, default=0)
     a_interviews = Column(Integer, default=0)
     a_replys = Column(Integer, default=0)
@@ -26,11 +26,21 @@ class Article(BaseModel):
     def __repr__(self):
         return "TABLE <Airticle: %s>" % self.to_json()
 
-    def to_josn(self):
-        return ""
+    def to_json(self):
+        return dict(
+            id = self.id,
+            uid = self.u_id,
+            title = self.a_title,
+            content = self.a_content,
+            pubtime = str(self.a_pub_time),
+            upcounts = self.a_upcounts,
+            interviews = self.a_interviews,
+            replays = self.a_replys
+        )
 
+from handlers.models.basemodel import Engin
 def main():
-    pass
+    BaseModel.metadata.create_all(Engin)
 
 
 if __name__ == '__main__':

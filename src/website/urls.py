@@ -7,6 +7,10 @@ from handlers import user_hold_stocks
 from handlers import trade
 from handlers import contest
 from handlers import contest_trade
+from handlers import article
+from handlers import reply
+from handlers import user_follower
+from handlers import dongtai
 
 urls = [
     (r'/api/login', user_info.LoginHandler),
@@ -47,6 +51,34 @@ urls = [
     (r'/api/contest/stocks/sale', contest_trade.SaleStockHandler),
     (r'/api/contest/stocks/invoke', contest_trade.InvokeStockHandler),
     (r'/api/contest/stocks/history/tradelist', contest_trade.GetTradeHistoryHandler),
+
+    # 話題 評論
+    (r'/api/article/add', article.addArticle),
+    (r'/api/article/del', article.delArticle),
+    (r'/api/article/upcount/check', article.checkUpcount),
+    (r'/api/article/list/id', article.getArticleById),
+    (r'/api/article/list/uid', article.getArtilceByUid),
+    (r'/api/article/hot', article.getHotArticle),
+    (r'/api/article/newest', article.getNewestArticle),
+    (r'/api/article/upcount', article.UpcountArticle),
+
+    (r'/api/reply/add', reply.addReply),
+    (r'/api/reply/del', reply.delReply),
+    (r'/api/reply/upcount', reply.upcountReply),
+    (r'/api/reply/upcount/check', reply.checkUpcount),
+    (r'/api/reply/addreply', reply.addReplyReply),
+    (r'/api/reply/newest', reply.getNewestReply),
+    (r'/api/article/reply/list', reply.getArticleReplys),
+
+    # 動態
+    (r'/api/dongtai/list/uid', dongtai.GetDongTaiByUid),
+    (r'/api/dongtai/list/user', dongtai.getDongTaiByUser),
+
+    #follower 粉絲關係
+    (r'/api/follower/add', user_follower.FollowerRelationAdd),
+    (r'/api/follower/del', user_follower.FollowerRelationDel),
+    (r'/api/follower/count', user_follower.GetFollowersCount),
+    (r'/api/follower/check', user_follower.CheckUserFollowerRelation),
 ]
 
 def main():

@@ -18,7 +18,10 @@ class UserFollowers(BaseModel):
         return "TABLE <UserFollowers: %s>" % self.to_json()
 
     def to_json(self):
-        return ""
+        return dict(
+            uid  = self.u_id,
+            fuid = self.u_follower_id
+        )
 
 
 def main():

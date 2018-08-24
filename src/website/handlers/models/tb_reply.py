@@ -19,16 +19,26 @@ class Reply(BaseModel):
     r_time = Column(DateTime, default=datetime.now())
     r_content = Column(String(2048), default="")
     r_upcounts = Column(Integer, default=0)
+    r_status = Column(Integer, default=0)
 
     def __repr__(self):
         return "TABLE <Reply: %s>" % self.to_json()
 
-    def to_josn(self):
-        return ""
+    def to_json(self):
+        return dict(
+            id = self.id,
+            airticleid = self.a_id,
+            uid = self.u_id,
+            replyid = self.r_reply_id,
+            pubtime = str(self.r_time),
+            content = self.r_content,
+            upcounts = self.r_upcounts
+        )
 
 
+from handlers.models.basemodel import Engin
 def main():
-    pass
+    BaseModel.metadata.create_all(Engin)
 
 
 if __name__ == '__main__':

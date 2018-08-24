@@ -17,11 +17,16 @@ class ReplyUpcounts(BaseModel):
     def __repr__(self):
         return "TABLE <ReplyUpcounts: %s>" % self.to_json()
 
-    def to_josn(self):
-        return ""
+    def to_json(self):
+        return dict(
+            id=self.id,
+            replyid=self.a_id,
+            uid=self.u_id
+        )
 
+from handlers.models.basemodel import Engin
 def main():
-    pass
+    BaseModel.metadata.create_all(Engin)
 
 
 if __name__ == '__main__':

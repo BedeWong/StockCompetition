@@ -5,6 +5,17 @@ from handlers.models.basemodel import BaseModel
 
 from datetime import  date
 
+class Dongtaitype(object):
+    follower = 1                ## 關注
+    reply = 2                   ## 回復
+    upcount_topic = 3                 ##  點贊 話題
+    upcount_reply = 4               ## 點贊回復
+    pub_topic = 5               # 發表話題
+    pub_reply = 6               # 發表回復
+    buy_sale_stock = 7          # 買賣股票
+    invoke_stock = 8            # 撤單
+    mark_article = 9               # 收藏文章
+
 class UserDongtai(BaseModel):
     """
     用户动态model，获取用户的动态
@@ -24,11 +35,20 @@ class UserDongtai(BaseModel):
 
 
     def to_json(self):
-        return ""
+        return dict(
+            id = self.id,
+            type = self.d_type,
+            uid = self.u_id,
+            fuid = self.u_refuid,
+            time = (str)(self.d_time),
+            extmsg = self.d_extmsg,
+            aid = self.d_refaid
+        )
 
 
+from handlers.models.basemodel import Engin
 def main():
-    pass
+    BaseModel.metadata.create_all(Engin)
 
 
 if __name__ == '__main__':
