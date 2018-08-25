@@ -37,6 +37,8 @@ class SVC_Article(object):
             dbsession.rollback()
             raise e
 
+        return article.id
+
 
     @staticmethod
     def delArticle(uid, id):
@@ -240,7 +242,8 @@ import  traceback
 
 def test_add():
     try:
-        SVC_Article.addArticle("27052237", "測試標題1", "測試一下啦， 内容要點寫，我都唔知講D咩好")
+        res = SVC_Article.addArticle("27052237", "測試標題1", "測試一下啦， 内容要點寫，我都唔知講D咩好")
+        print(res)
         SVC_Article.addArticle("27052237", "測試標題2", "測試一下啦， 内容要點寫，我都唔知講D咩好")
         SVC_Article.addArticle("27052237", "測試標題dsagh", "測試一下啦， 内容要點寫，我都唔知講D咩好")
         SVC_Article.addArticle("27052245", "測試標題fgthui", "測試一下啦， 内容要點寫，我都唔知講D咩好")
@@ -292,8 +295,8 @@ def test_get_newest():
 
 
 def main():
-    # test_add()
-    test_del()
+    test_add()
+    # test_del()
     # test_get_by_id()
     # test_get_newest()
     # test_getbyuid()

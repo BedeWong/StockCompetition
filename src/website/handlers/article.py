@@ -5,6 +5,7 @@ from utils.commons import required_login
 from utils.response_code import RET, RETMSG_MAP
 from handlers.basehandler import BaseHandler
 from handlers.services.svc_article import SVC_Article
+from handlers.services.svc_dongtai import SVC_Dongtai
 
 class addArticle(BaseHandler):
     """
@@ -24,7 +25,8 @@ class addArticle(BaseHandler):
         content = self.get_argument("content")
 
         try:
-            SVC_Article.addArticle(uid, title, content)
+            aid =  SVC_Article.addArticle(uid, title, content)
+            SVC_Dongtai.add_dongtai_pub_topic(uid, aid, title)
         except Exception as e:
             logging.error(e)
             self.write(dict(

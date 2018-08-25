@@ -37,6 +37,8 @@ class SVC_Reply(object):
             dbsession.rollback()
             raise e
 
+        return reply.id
+
 
     @staticmethod
     def delReply(uid, rid):

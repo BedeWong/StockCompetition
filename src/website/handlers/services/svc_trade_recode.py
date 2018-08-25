@@ -4,11 +4,14 @@ from handlers.models.basemodel import dbsession
 from handlers.models.tb_user_trade_recode import TradeRecode
 from handlers.models.tb_user import User
 
+from handlers.services.svc_dongtai import SVC_Dongtai
+
 # exceptions
 from sqlalchemy.orm.exc import NoResultFound
 
 import logging
 import  traceback
+import json
 
 class SVC_TradeRecode(object):
     """
@@ -78,6 +81,14 @@ class SVC_TradeRecode(object):
             dbsession.rollback()
             logging.error(e)
             raise e
+
+        ###  添加到動態記錄
+        try:
+            SVC_Dongtai.add_dongtai_trade(uid, json.dumps(recode))
+        except Exception as e:
+            logging.error(e)
+            raise e
+
 
 
     @staticmethod
@@ -187,6 +198,13 @@ class SVC_TradeRecode(object):
             dbsession.rollback()
             logging.error(e)
             raise e
+
+        try:
+            SVC_Dongtai.add_dongtai_invoke(uid, json.dumps(recode))
+        except Exception as e:
+            logging.error(e)
+            raise e
+        
 
 
 #####################################################################3

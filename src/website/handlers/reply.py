@@ -5,6 +5,7 @@ from utils.commons import required_login
 from utils.response_code import RET, RETMSG_MAP
 from handlers.basehandler import BaseHandler
 from handlers.services.svc_reply import SVC_Reply
+from handlers.services.svc_dongtai import SVC_Dongtai
 
 
 #查看是否已經點贊了
@@ -25,7 +26,7 @@ class checkUpcount(BaseHandler):
 
         res = False
         try:
-            res = SVC_Reply.checkUpcount()
+            res = SVC_Reply.checkUpcount(uid, rid)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -56,8 +57,9 @@ class getNewestReply(BaseHandler):
         page = self.get_argument("page", 0)
         count = self.get_argument("count", 40)
 
+        res = None
         try:
-            SVC_Reply.getNewestReply(page, count)
+            res = SVC_Reply.getNewestReply(page, count)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -160,7 +162,8 @@ class addReply(BaseHandler):
 
         res = None
         try:
-            SVC_Reply.addReply(uid, aid, content)
+            rid = SVC_Reply.addReply(uid, aid, content)
+            SVC_Dongtai.add_dongtai_reply(uid, rid, content)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -215,7 +218,7 @@ class upcountReply(BaseHandler):
         :return:
         """
         uid = self.get_argument('uid')
-        # aid = self.get_argument("aid")
+        aid = self.get_argument("aid")
         rid = self.get_argument("rid")
         try:
             SVC_Reply.upcountReply(uid, rid)
