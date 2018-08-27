@@ -1,7 +1,7 @@
 
 //baseurl = 'http://192.168.43.188:8001';
-baseurl = 'http://192.168.191.4:8001';
-//baseurl = 'http://120.79.208.53:8001';
+//baseurl = 'http://192.168.191.4:8001';
+baseurl = 'http://120.79.208.53:8001';
 
 window.urls = {
 	url_picCode : baseurl+'/piccode',
@@ -41,6 +41,35 @@ window.urls = {
 	url_contestStockSale : baseurl + "/api/contest/stocks/sale",
 	url_contestStockInvoke : baseurl + "/api/contest/stocks/invoke",
 	url_contestHistoryList : baseurl + "/api/contest/stocks/history/tradelist",
+	
+	// 討論處理接口
+	url_airticlePublish : baseurl + '/api/article/add',
+	url_topichot : baseurl + '/api/article/hot',						// 获取 热门， 最新、 我的关注、与我相关的动态
+	url_topiccare : baseurl + '/api/dongtai/list/user',
+	url_topicnewest : baseurl + '/api/article/newest',
+	url_topicmine : baseurl + '/api/article/list/uid',
+	url_topiccheckupcount : baseurl + "/api/article/upcount/check",
+	url_topicUpcount : baseurl + '/api/article/upcount',
+	url_getTopic : baseurl + '/api/article/id',
+	
+	url_replyDel : baseurl + '/api/reply/del',
+	url_replyAdd : baseurl + "/api/reply/add",
+	url_replyUpcount : baseurl + '/api/reply/upcount',
+	url_replyCheckUpcount : baseurl + '/api/reply/upcount/check',
+	url_replyAddReply : baseurl + '/api/reply/addreply',
+	url_replyNewest : baseurl + '/api/reply/newest',
+	url_replyListByArticle : baseurl + '/api/article/reply/list',
+	
+	// 動態
+	url_dongtaiByUid : baseurl + '/api/dongtai/list/uid',
+	url_dongtaiByUser : baseurl + '/api/dongtai/list/user',
+	
+	// 粉絲關係
+	url_followerAdd : baseurl + '/api/follower/add',     // 關注
+	url_followerDel : baseurl + '/api/follower/del',
+	url_followerCount : baseurl + '/api/follower/count',
+	url_followerCheck : baseurl + '/api/follower/check',
+	
 };
 
 /**
