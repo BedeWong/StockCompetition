@@ -22,7 +22,7 @@ class checkUpcount(BaseHandler):
         """
 
         uid = self.get_argument("uid")
-        rid = self.get_argument("rid")
+        rid = (int)(self.get_argument("rid"))
 
         res = False
         try:
@@ -87,9 +87,9 @@ class getArticleReplys(BaseHandler):
         :return:
         """
 
-        aid = self.get_argument("aid")
-        page = self.get_argument("page")
-        count = self.get_argument("count")
+        aid = (int)(self.get_argument("aid"))
+        page = (int)(self.get_argument("page", 0))
+        count = (int)(self.get_argument("count", 40))
 
         res = None
         try:
@@ -122,8 +122,8 @@ class addReplyReply(BaseHandler):
         """
 
         uid = self.get_argument("uid")
-        aid = self.get_argument("aid")
-        rid = self.get_argument("rid")
+        aid = (int)(self.get_argument("aid"))
+        rid = (int)(self.get_argument("rid"))
         content = self.get_argument("content")
 
         try:
@@ -157,7 +157,7 @@ class addReply(BaseHandler):
         """
 
         uid = self.get_argument("uid")
-        aid = self.get_argument("aid")
+        aid = (int)(self.get_argument("aid"))
         content = self.get_argument('content')
 
         res = None
@@ -190,7 +190,7 @@ class delReply(BaseHandler):
 
         uid  = self.get_argument("uid")
         # aid = self.get_argument("aid")
-        rid = self.get_argument("rid")
+        rid = (int)(self.get_argument("rid"))
 
         try:
             SVC_Reply.delReply(uid, rid)
@@ -218,8 +218,8 @@ class upcountReply(BaseHandler):
         :return:
         """
         uid = self.get_argument('uid')
-        aid = self.get_argument("aid")
-        rid = self.get_argument("rid")
+        aid = (int)(self.get_argument("aid"))
+        rid = (int)(self.get_argument("rid"))
         try:
             SVC_Reply.upcountReply(uid, rid)
         except Exception as e:

@@ -55,7 +55,7 @@ class delArticle(BaseHandler):
         """
 
         uid = self.get_argument("uid")
-        aid = self.get_argument("aid")
+        aid = (int)(self.get_argument("aid"))
 
         try:
             SVC_Article.delArticle(uid, aid)
@@ -83,7 +83,7 @@ class getArticleById(BaseHandler):
         :return:
         """
 
-        aid = self.get_argument("aid")
+        aid = (int)(self.get_argument("aid"))
         res = None
         try:
             res = SVC_Article.getArticleById(aid)
@@ -176,9 +176,9 @@ class getHotArticle(BaseHandler):
         :return:
         """
 
-        latest = self.get_argument("latest")
-        page = self.get_argument("page", 0)
-        count = self.get_argument("count", 40)
+        latest = (int)(self.get_argument("latest", 7))
+        page = (int)(self.get_argument("page", 0))
+        count = (int)(self.get_argument("count", 40))
 
         res = None
         try:
@@ -208,7 +208,7 @@ class checkUpcount(BaseHandler):
         """
 
         uid = self.get_argument("uid")
-        aid  = self.get_argument("aid")
+        aid  = (int)(self.get_argument("aid"))
 
         res = False
         try:
@@ -239,7 +239,7 @@ class UpcountArticle(BaseHandler):
         """
 
         uid = self.get_argument("uid")
-        aid = self.get_argument("aid")
+        aid = (int)(self.get_argument("aid"))
         try:
             SVC_Article.upcountArticle(aid, uid)
         except Exception as e:

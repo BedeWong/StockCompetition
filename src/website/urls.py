@@ -56,7 +56,7 @@ urls = [
     (r'/api/article/add', article.addArticle),
     (r'/api/article/del', article.delArticle),
     (r'/api/article/upcount/check', article.checkUpcount),
-    (r'/api/article/list/id', article.getArticleById),
+    (r'/api/article/id', article.getArticleById),
     (r'/api/article/list/uid', article.getArtilceByUid),
     (r'/api/article/hot', article.getHotArticle),
     (r'/api/article/newest', article.getNewestArticle),
