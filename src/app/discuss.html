@@ -26,36 +26,169 @@
 			<h1 class="mui-title" id="title">討論</h1>
 		</header>
 		<div class="mui-content mui-scroll-wrapper" id="pullrefreshArea">
-		<div class="mui-scroll">
-			<div class="tabwidget">
-				<div id="tab1" class="tabitem fl curtab">
-					最熱
+			<div class="mui-scroll">
+				<div class="tabwidget">
+					<div id="tab1" class="tabitem fl curtab">
+						最熱
+					</div>
+					<div id="tab2" class="tabitem fl">
+						最新
+					</div>
+					<div id="tab3" class="tabitem fl">
+						關注
+					</div>
+					<div id="tab4" class="tabitem fl">
+						我的
+					</div>
+				</div>      <!--   end tabwidget     -->
+				
+				<div id="hot" class="">
+					<div id="hotvm">
+					<div v-for="it in datas">
+						<div>{{it}}</div>
+						<div class="head">
+							<div id="head-img" style="line-height: 30px;">
+								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
+							</div>
+							<div id="head-type">
+								{{it.uname}} {{it.type}}了話題
+							</div>
+							<div id="head-time">
+								{{it.time}}之前
+							</div>
+						</div>
+						<div class="title">
+							{{it.title}}新手到來！！！
+						</div>
+						<div class="content">
+							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						</div>
+						<div class="tail">
+							<div class="upcount">
+								{{it.upcounts}}<span class="mui-icon mui-icon-plus"></span>
+							</div>
+							<div class="replay">
+								{{it.replays}}<span class="mui-icon mui-icon-chat"></span>
+							</div>
+							<div class="viewcount">
+								{{it.interviews}}<span class="mui-icon mui-icon-search"></span>
+							</div>
+						</div>
+					</div>				
+					</div>
 				</div>
-				<div id="tab2" class="tabitem fl">
-					最新
+				<div id="newest" class="mui-hidden">
+					<div id="newestvm">
+					<div v-for="it in datas">
+						<div class="head">
+							<div id="head-img" style="line-height: 30px;">
+								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
+							</div>
+							<div id="head-type">
+								{{it.uname}} {{it.type}}了話題
+							</div>
+							<div id="head-time">
+								{{it.time}}之前
+							</div>
+						</div>
+						<div class="title">
+							{{it.title}}新手到來！！！
+						</div>
+						<div class="content">
+							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						</div>
+						<div class="tail">
+							<div class="upcount">
+								{{it.upcount}}<span class="mui-icon mui-icon-plus"></span>
+							</div>
+							<div class="replay">
+								{{it.replay}}<span class="mui-icon mui-icon-chat"></span>
+							</div>
+							<div class="viewcount">
+								{{it.viewcount}}<span class="mui-icon mui-icon-search"></span>
+							</div>
+						</div>
+					</div>
+					</div>
 				</div>
-				<div id="tab3" class="tabitem fl">
-					關注
+				<div id="care" class="mui-hidden">
+					<div id="carevm">
+					<div id="" v-for="it in datas">
+						<div class="head">
+							<div id="head-img" style="line-height: 30px;">
+								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
+							</div>
+							<div id="head-type">
+								{{it.uname}} {{it.type}}了話題
+							</div>
+							<div id="head-time">
+								{{it.time}}之前
+							</div>
+						</div>
+						<div class="title">
+							{{it.title}}新手到來！！！
+						</div>
+						<div class="content">
+							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						</div>
+						<div class="tail">
+							<div class="upcount">
+								{{it.upcount}}<span class="mui-icon mui-icon-plus"></span>
+							</div>
+							<div class="replay">
+								{{it.replay}}<span class="mui-icon mui-icon-chat"></span>
+							</div>
+							<div class="viewcount">
+								{{it.viewcount}}<span class="mui-icon mui-icon-search"></span>
+							</div>
+						</div>
+					</div>
+					</div>
 				</div>
-				<div id="tab4" class="tabitem fl">
-					我的
+				<div id="mine" class="mui-hidden">
+					<div id="minevm">
+					<div id="" v-for="it in datas">
+						<div class="head">
+							<div id="head-img" style="line-height: 30px;">
+								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
+							</div>
+							<div id="head-type">
+								{{it.uname}} {{it.type}}了話題
+							</div>
+							<div id="head-time">
+								{{it.time}}之前
+							</div>
+						</div>
+						<div class="title">
+							{{it.title}}新手到來！！！
+						</div>
+						<div class="content">
+							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						</div>
+						<div class="tail">
+							<div class="upcount">
+								{{it.upcount}}<span class="mui-icon mui-icon-plus"></span>
+							</div>
+							<div class="replay">
+								{{it.replay}}<span class="mui-icon mui-icon-chat"></span>
+							</div>
+							<div class="viewcount">
+								{{it.viewcount}}<span class="mui-icon mui-icon-search"></span>
+							</div>
+						</div>
+					</div>
+					</div>
 				</div>
-			</div>      <!--   end tabwidget     -->
 			
-			<div id="hot">
 			</div>
-			<div id="newest">
+			<div id="publish" class="mui-hidden" style="text-align:center;">
+				<button type="button" class="mui-btn mui-btn-warning" >發表帖子</button>
 			</div>
-			<div id="care">
-			</div>
-			<div id="mine">
-			</div>
-			
-		</div>
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/vue.min.js"></script>
 	<script src="js/discuss.js"></script>
 	<script>
 		

@@ -392,6 +392,13 @@
 					"trade.html"
 				],
 				"priority": 0
+			},
+			"discuss.html": {
+				"resources": [],
+				"refer": [
+					"newTopic.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

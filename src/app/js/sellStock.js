@@ -19,7 +19,9 @@
 	function toTrade(item){
 		
 		item.type = 'sale';   // 賣出
-		item.contestid = param.contestid;
+		if(param.contestid != undefined) {
+			item.contestid = param.contestid;
+		}
 		
 		mui.fire(pg_trade,'display',{data:item});
 		//打开個股詳情
@@ -55,6 +57,10 @@
 		for(var it in data) {
 			code_lst.push('s_' + data[it].code);
 			console.log(data[it].code);
+		}
+		
+		if(code_lst.length == 0) {
+			return ;
 		}
 		
 		hq_obj.get_hq_stock(function(rdat){
@@ -116,7 +122,7 @@
 	});
 	
 	window.addEventListener('display', function(event){
-		param = event.detail.data;
+		param = event.detail.data || {};
 		console.log("sell stock page display.:" + JSON.stringify(param))
 		getStockList();
 	});

@@ -72,7 +72,9 @@
 					item.symbol = item.code;
 					
 					//  標識是不是比賽相關的展示頁面， 用於在股票詳情頁面點擊購買時，區分下單類型
-					item.contestid = param_data.contestid;
+					if(param_data.contestid != undefined) {
+						item.contestid = param_data.contestid;
+					}
 					
 					mui.fire(stockDetailPage,'display',{data:item});
 					//打开個股詳情
@@ -170,7 +172,7 @@
 	});
 	
 	window.addEventListener('display', function(event){
-		param_data = event.detail.data;
+		param_data = event.detail.data || {};
 		console.log("myfavorite stock page display.:" + JSON.stringify(param_data));
 //		getStock();
 	});

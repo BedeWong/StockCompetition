@@ -113,5 +113,10 @@
 			"myfavoritestock.html",
 			"trade.html"
 		]
+	},
+	"discuss.html": {
+		"refer": [
+			"newTopic.html"
+		]
 	}
 }
