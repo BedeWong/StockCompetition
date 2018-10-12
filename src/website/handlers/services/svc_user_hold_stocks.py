@@ -150,7 +150,8 @@ class SVC_UserStocks(object):
         for it in lst:
             res.append(it.to_json())
 
-        logging.debug("get_stocks: ret.length:", len(res))
+        sz = len(res)
+        logging.debug("get_stocks: ret.length:", sz)
         return res
 
 #####################################################################3
