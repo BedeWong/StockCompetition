@@ -6,6 +6,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from handlers.models.tb_article import Article
 from handlers.models.tb_article_upcounts import ArticleUpcounts
+from handlers.models.tb_user import User
 
 from datetime import datetime
 import datetime as dttm
@@ -79,7 +80,8 @@ class SVC_Article(object):
 
         article = None
         try:
-            article = dbsession.query(Article).filter(Article.id == id).one()
+            query = dbsession.query(Article, User.u_name).filter(and_(Article.id == id, Article.u_id==User.id))
+            article = query.one()
         except NoResultFound as e:
             raise e
         except Exception as e:
@@ -87,7 +89,9 @@ class SVC_Article(object):
             raise e
 
         if article:
-            return article.to_json()
+            retdata = article[0].to_json()
+            retdata['uname'] = article[1]
+            return retdata
 
         return None
 
@@ -103,7 +107,8 @@ class SVC_Article(object):
 
         res = None
         try:
-            res = dbsession.query(Article).order_by('a_pub_time').limit(count).offset(page*count).all()
+            query = dbsession.query(Article, User.u_name).filter(User.id == Article.u_id).order_by('a_pub_time').limit(count).offset(page*count)
+            res = query.all()
         except Exception as e:
             dbsession.rollback()
             raise e
@@ -113,7 +118,15 @@ class SVC_Article(object):
 
         lst = []
         for it in res:
-            lst.append(it.to_json())
+            recode = it[0].to_json()
+            recode['uname'] = it[1]
+
+            # 類型： 默認這裏讀出來的都是 文章， 文章默認是使用1 type
+            #  描述為：發表了帖子
+            recode['type'] = 1
+            recode['type_desc'] = u"發表了帖子"
+
+            lst.append(recode)
 
         return lst
 
@@ -129,7 +142,8 @@ class SVC_Article(object):
         res = None
         try:
             dt = datetime.today() - dttm.timedelta(latest_day)
-            res = dbsession.query(Article).filter(Article.a_pub_time > dt).order_by(Article.a_interviews).limit(count).offset(page*count).all()
+            query = dbsession.query(Article, User.u_name).filter(User.id == Article.u_id).filter(Article.a_pub_time > dt).order_by(Article.a_interviews).limit(count).offset(page*count)
+            res = query.all()
         except Exception as e:
             raise e
 
@@ -138,7 +152,11 @@ class SVC_Article(object):
 
         lst = []
         for it in res:
-            lst.append(it.to_json())
+            recode = it[0].to_json()                    # Article recode
+            recode['uname'] = it[1]                     # user name
+            recode['type'] = 1
+            recode['type_desc'] = u"發表了帖子"
+            lst.append(recode)
 
         return lst
 
@@ -295,12 +313,12 @@ def test_get_newest():
 
 
 def main():
-    test_add()
+    # test_add()
     # test_del()
-    # test_get_by_id()
-    # test_get_newest()
-    # test_getbyuid()
-    # test_newest_hot()
+    test_get_by_id()
+    test_get_newest()
+    test_getbyuid()
+    test_newest_hot()
 
 
 if __name__ == '__main__':

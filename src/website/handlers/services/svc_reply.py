@@ -7,6 +7,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from handlers.models.tb_reply import Reply
 from handlers.models.tb_article import Article
 from handlers.models.tb_reply_upcounts import ReplyUpcounts
+from handlers.models.tb_user import User
 
 from datetime import datetime
 import datetime as dttm
@@ -98,14 +99,16 @@ class SVC_Reply(object):
     @staticmethod
     def getReplyByArticleId(aid, page=0, count=40):
         """
-        獲取話題的回復
+        獲取話題的評論
         :param aid:
         :return:
         """
 
         res = None
         try:
-            res = dbsession.query(Reply).filter(Reply.a_id == aid).limit(count).offset(count*page).all()
+            query = dbsession.query(Reply, User.u_name).filter(and_(Reply.a_id == aid, User.id==Reply.u_id))
+            query = query.limit(count).offset(count*page)
+            res = query.all()
         except Exception as e:
             dbsession.rollback()
             raise e
@@ -115,7 +118,32 @@ class SVC_Reply(object):
 
         lst = []
         for it in res:
-            lst.append(it.to_json())
+            recode = it[0].to_json()
+            recode['uname'] = it[1]
+
+
+            #  type: 2
+            #  類型為2， 描述為： 回復了帖子
+            recode['type'] = 2
+            recode['type_desc'] = u"評論了帖子"
+
+            # type： 3
+            # 回復了用戶的評論
+            if it[0].r_reply_id != 0:
+                aritcleid = it[0].r_reply_id
+                try:
+                    query = dbsession.query(Reply, User.u_name).filter(and_(Reply.id == aritcleid, User.id == Reply.u_id))
+                    result = query.one()
+                except Exception as e:
+                    dbsession.rollback()
+                    raise e
+
+                recode['type'] = 3
+                recode['type_desc'] = u"回復了"
+                recode['reply_uname'] = result[1]
+
+
+            lst.append(recode)
 
         return lst
 
@@ -130,7 +158,9 @@ class SVC_Reply(object):
 
         res = None
         try:
-            res = dbsession.query(Reply, Article).join(Article, Article.id==Reply.a_id).order_by(desc(Reply.r_time)).limit(count).offset(page*count) \
+            res = dbsession.query(Reply, Article, User.u_name).join(Article, Article.id==Reply.a_id)\
+                .filter(User.id == Reply.u_id) \
+                .order_by(desc(Reply.r_time)).limit(count).offset(page*count) \
                 .all()
         except Exception as e:
             dbsession.rollback()
@@ -143,6 +173,7 @@ class SVC_Reply(object):
         for it in res:
             tmp = it[0].to_json()
             tmp.update(it[1].to_json())
+            tmp['uname'] = it[2]
             lst.append(tmp)
 
         return lst
