@@ -106,7 +106,7 @@ class SVC_Reply(object):
 
         res = None
         try:
-            query = dbsession.query(Reply, User.u_name).filter(and_(Reply.a_id == aid, User.id==Reply.u_id))
+            query = dbsession.query(Reply, User.u_name, User.u_headurl).filter(and_(Reply.a_id == aid, User.id==Reply.u_id))
             query = query.limit(count).offset(count*page)
             res = query.all()
         except Exception as e:
@@ -120,6 +120,7 @@ class SVC_Reply(object):
         for it in res:
             recode = it[0].to_json()
             recode['uname'] = it[1]
+            recode['uheadurl'] = it[2]
 
 
             #  type: 2
@@ -158,7 +159,7 @@ class SVC_Reply(object):
 
         res = None
         try:
-            res = dbsession.query(Reply, Article, User.u_name).join(Article, Article.id==Reply.a_id)\
+            res = dbsession.query(Reply, Article, User.u_name, User.u_headurl).join(Article, Article.id==Reply.a_id)\
                 .filter(User.id == Reply.u_id) \
                 .order_by(desc(Reply.r_time)).limit(count).offset(page*count) \
                 .all()
@@ -174,6 +175,7 @@ class SVC_Reply(object):
             tmp = it[0].to_json()
             tmp.update(it[1].to_json())
             tmp['uname'] = it[2]
+            tmp['uheadurl'] = it[3]
             lst.append(tmp)
 
         return lst
