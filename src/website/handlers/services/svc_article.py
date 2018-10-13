@@ -8,6 +8,8 @@ from handlers.models.tb_article import Article
 from handlers.models.tb_article_upcounts import ArticleUpcounts
 from handlers.models.tb_user import User
 
+from utils import timeutil
+
 from datetime import datetime
 import datetime as dttm
 
@@ -92,6 +94,10 @@ class SVC_Article(object):
             retdata = article[0].to_json()
             retdata['uname'] = article[1]
             retdata['uheadurl'] = article[2]
+
+            # 計算距當前時間多久
+            retdata['time'] = timeutil.Datetime2HowLong(str(article[0].a_pub_time))
+
             return retdata
 
         return None
@@ -122,6 +128,9 @@ class SVC_Article(object):
             recode = it[0].to_json()
             recode['uname'] = it[1]
             recode['uheadurl'] = it[2]
+
+            # 計算距當前時間多久
+            recode['time'] = timeutil.Datetime2HowLong(str(it[0].a_pub_time))
 
             # 類型： 默認這裏讀出來的都是 文章， 文章默認是使用1 type
             #  描述為：發表了帖子
@@ -158,6 +167,9 @@ class SVC_Article(object):
             recode['uname'] = it[1]                     # user name
             recode['uheadurl'] = it[2]
 
+            # 計算距當前時間多久
+            recode['time'] = timeutil.Datetime2HowLong(str(it[0].a_pub_time))
+
             recode['type'] = 1
             recode['type_desc'] = u"發表了帖子"
 
@@ -189,6 +201,9 @@ class SVC_Article(object):
             tmp = it[0].to_json()
             tmp['uname'] = it[1]
             tmp['uheadurl'] = it[2]
+
+            # 計算距當前時間多久
+            tmp['time'] = timeutil.Datetime2HowLong(str(it[0].a_pub_time))
 
             lst.append(tmp)
 

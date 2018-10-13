@@ -9,6 +9,8 @@ from handlers.models.tb_article import Article
 from handlers.models.tb_reply_upcounts import ReplyUpcounts
 from handlers.models.tb_user import User
 
+from utils import timeutil
+
 from datetime import datetime
 import datetime as dttm
 
@@ -128,6 +130,9 @@ class SVC_Reply(object):
             recode['type'] = 2
             recode['type_desc'] = u"評論了帖子"
 
+            # 計算距當前時間多久
+            recode['time'] = timeutil.Datetime2HowLong(str(it[0].r_time))
+
             # type： 3
             # 回復了用戶的評論
             if it[0].r_reply_id != 0:
@@ -142,7 +147,6 @@ class SVC_Reply(object):
                 recode['type'] = 3
                 recode['type_desc'] = u"回復了"
                 recode['reply_uname'] = result[1]
-
 
             lst.append(recode)
 
@@ -176,6 +180,10 @@ class SVC_Reply(object):
             tmp.update(it[1].to_json())
             tmp['uname'] = it[2]
             tmp['uheadurl'] = it[3]
+
+            # 計算距當前時間多久
+            tmp['time'] = timeutil.Datetime2HowLong(str(it[0].r_time))
+
             lst.append(tmp)
 
         return lst
