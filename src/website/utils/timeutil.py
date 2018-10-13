@@ -14,13 +14,13 @@ def Datetime2HowLong(strtime):
 
     dif = now - ts
     if (int)(dif / 31536000) > 0:
-        return (str)((int)(dif / 31536000)) + "年之前"
+        return (str)((int)(dif / 31536000)) + "年"
     elif (int)(dif / 86400) > 0:
-        return (str) ((int)(dif / 86400)) + "天之前"
+        return (str) ((int)(dif / 86400)) + "天"
     elif (int)(dif / 3600) > 0:
-        return (str) ((int)(dif / 3600))+"小时之前"
+        return (str) ((int)(dif / 3600))+"小时"
     elif (int)(dif / 60) > 0:
-        return (str) ((int)(dif / 60))+"分钟之前"
+        return (str) ((int)(dif / 60))+"分钟"
     else:
         return "刚刚"
 

@@ -1,7 +1,7 @@
 #coding=utf-8
 
 from handlers.models.basemodel import dbsession
-from sqlalchemy import and_, or_
+from sqlalchemy import and_, or_, desc
 from sqlalchemy.orm.exc import NoResultFound
 
 from handlers.models.tb_article import Article
@@ -114,7 +114,7 @@ class SVC_Article(object):
 
         res = None
         try:
-            query = dbsession.query(Article, User.u_name, User.u_headurl).filter(User.id == Article.u_id).order_by('a_pub_time').limit(count).offset(page*count)
+            query = dbsession.query(Article, User.u_name, User.u_headurl).filter(User.id == Article.u_id).order_by(desc(Article.a_pub_time)).limit(count).offset(page*count)
             res = query.all()
         except Exception as e:
             dbsession.rollback()
@@ -153,7 +153,7 @@ class SVC_Article(object):
         res = None
         try:
             dt = datetime.today() - dttm.timedelta(latest_day)
-            query = dbsession.query(Article, User.u_name, User.u_headurl).filter(User.id == Article.u_id).filter(Article.a_pub_time > dt).order_by(Article.a_interviews).limit(count).offset(page*count)
+            query = dbsession.query(Article, User.u_name, User.u_headurl).filter(User.id == Article.u_id).filter(Article.a_pub_time > dt).order_by(desc(Article.a_interviews)).limit(count).offset(page*count)
             res = query.all()
         except Exception as e:
             raise e
@@ -188,7 +188,7 @@ class SVC_Article(object):
         res = None
         try:
             res = dbsession.query(Article, User.u_name, User.u_headurl).join(User, Article.u_id == User.id)\
-                .filter(Article.u_id==uid).order_by('a_pub_time').limit(count).offset(page*count).all()
+                .filter(Article.u_id==uid).order_by(desc(Article.a_pub_time)).limit(count).offset(page*count).all()
         except Exception as e:
             dbsession.rollback()
             raise e
