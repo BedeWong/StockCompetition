@@ -257,6 +257,50 @@ class SVC_Article(object):
 
 
     @staticmethod
+    def upcountArticleOnly(aid, uid):
+        """
+        給文章點贊：只點贊，不存在重複點贊
+        :param aid:
+        :param uid:
+        :return: success：return true,""
+                    fail： return  false,"失敗原因"
+        :exception: exception returned if sql err
+        """
+        recode = None
+        try:
+            recode = dbsession.query(ArticleUpcounts).filter(
+                and_(ArticleUpcounts.a_id == aid, ArticleUpcounts.u_id == uid)).one()
+        except NoResultFound as e:
+            pass
+        except Exception as e:
+            dbsession.rollback()
+            raise e
+
+        if not recode:
+            recode = ArticleUpcounts()
+            recode.u_id = uid
+            recode.a_id = aid
+            try:
+                dbsession.add(recode)
+                dbsession.commit()
+            except Exception as e:
+                dbsession.rollback()
+                raise e
+
+            try:
+                dbsession.query(Article).filter(Article.id == aid).update({Article.a_upcounts: Article.a_upcounts + 1})
+                dbsession.commit()
+            except Exception as e:
+                dbsession.rollback()
+                raise e
+
+            return True, ""
+
+        else:
+            return False, "你已經點過贊了"
+
+
+    @staticmethod
     def checkUpcount(uid, aid):
         """
         檢查是否是點過讚了

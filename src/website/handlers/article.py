@@ -238,7 +238,7 @@ class UpcountArticle(BaseHandler):
         :return:
         """
 
-        uid = self.get_argument("uid")
+        uid = (int)(self.get_argument("uid"))
         aid = (int)(self.get_argument("aid"))
         try:
             SVC_Article.upcountArticle(aid, uid)
@@ -253,6 +253,42 @@ class UpcountArticle(BaseHandler):
             errcode = RET.RET_OK,
             errmsg = ""
         ))
+
+
+class UpcountArticleOnly(BaseHandler):
+    """
+    給文章點贊， 已經點過則點贊失敗
+    """
+
+    def post(self, *args, **kwargs):
+        """
+
+        :param aid:
+        :param uid:
+        :return:
+        """
+        uid = (int)(self.get_argument("uid"))
+        aid = (int)(self.get_argument("aid"))
+        try:
+            ok, msg = SVC_Article.upcountArticleOnly(aid, uid)
+        except Exception as e:
+            self.write(dict(
+                errcode=RET.RET_SERVERERR,
+                errmsg=RETMSG_MAP[RET.RET_SERVERERR]
+            ))
+            raise e
+
+        if ok:
+            self.write(dict(
+                errcode=RET.RET_OK,
+                errmsg=""
+            ))
+        else:
+            self.write(dict(
+                errcode = RET.RET_SERVERERR,
+                errmsg = msg
+            ))
+
 
 def main():
     pass
