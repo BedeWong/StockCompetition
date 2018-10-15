@@ -292,7 +292,11 @@ def get_newest():
     except Exception as e:
         traceback.print_exc()
 
-
+def test_get_article_by_id():
+    try:
+        print(SVC_Reply.getReplyByArticleId(2))
+    except Exception as e:
+        traceback.print_exc()
 
 def main():
     # test_add()
@@ -300,6 +304,7 @@ def main():
     # test_addrreply()
     test_getArticleReply()
     get_newest()
+    test_get_article_by_id()
 
 
 if __name__ == '__main__':
