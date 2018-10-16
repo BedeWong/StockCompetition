@@ -24,8 +24,9 @@ class UserFollowers(BaseModel):
         )
 
 
+from handlers.models.basemodel import Engin
 def main():
-    pass
+    BaseModel.metadata.create_all(Engin)
 
 
 if __name__ == '__main__':

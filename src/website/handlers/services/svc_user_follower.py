@@ -6,6 +6,8 @@ from sqlalchemy.orm.exc import NoResultFound
 from handlers.models.basemodel import dbsession
 from handlers.models.tb_user_followers import UserFollowers
 
+import logging
+
 class SVC_UserFollower(object):
     """
     用戶粉絲關係處理類
@@ -110,7 +112,9 @@ class SVC_UserFollower(object):
 
         res = None
         try:
-            res = dbsession.query(UserFollowers).filter(and_(UserFollowers.u_follower_id==fuid, UserFollowers.u_id==uid)).one()
+            query = dbsession.query(UserFollowers).filter(and_(UserFollowers.u_follower_id==fuid, UserFollowers.u_id==uid))
+            logging.debug(query)
+            res = query.one()
         except NoResultFound as e:
             return False
 
@@ -120,8 +124,16 @@ class SVC_UserFollower(object):
         return False
 
 
+#######  tests
+import traceback
+def test_user_relation():
+    try:
+        print(SVC_UserFollower.check_user_folower_relation(27052245, 27052237))
+    except Exception as e:
+        traceback.print_exc()
+
 def main():
-    pass
+    test_user_relation()
 
 
 if __name__ == '__main__':
