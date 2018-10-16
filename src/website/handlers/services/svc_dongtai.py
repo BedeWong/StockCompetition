@@ -186,14 +186,12 @@ class SVC_Dongtai(object):
         if not follow_list:
             return []
 
+        # follow_list type is a same as "[(27052245,)]" result.
         res = None
         try:
-            query = dbsession.query(UserDongtai).filter(UserDongtai.u_id.in_(follow_list))
-            if count:
-                query = query.limit(count)
+            query = dbsession.query(UserDongtai).filter(UserDongtai.u_id.in_(follow_list[0]))
 
-            if page:
-                query = query.offset(page*count)
+            query = query.limit(page).offset(page*count)
 
             res = query.all()
 
@@ -210,9 +208,16 @@ class SVC_Dongtai(object):
 
         return lst
 
+####   test
+import  traceback
+def test_getlist_by_user():
+    try:
+        print("res:", SVC_Dongtai.get_dongtai_by_user(27052237))
+    except Exception as e:
+        traceback.print_exc()
 
 def main():
-    pass
+    test_getlist_by_user()
 
 
 if __name__ == '__main__':
