@@ -200,7 +200,7 @@ class UserInfo(BaseHandler):
         self.write(dict(
             errcode=RET.RET_OK,
             errmsg="",
-            retdata= res.to_json()
+            retdata= res.to_dict()
         ))
 
 def main():
