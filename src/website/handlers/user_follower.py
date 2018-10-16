@@ -8,7 +8,7 @@ from handlers.services.svc_user_follower import SVC_UserFollower
 
 class FollowerRelationAdd(BaseHandler):
     """
-    用戶關注
+    用戶關注： uid 關注 fuid
     """
 
     @required_login
@@ -40,7 +40,7 @@ class FollowerRelationAdd(BaseHandler):
 
 class FollowerRelationDel(BaseHandler):
     """
-    取關
+    取關: uid 取关 fuid
     """
     @required_login
     def post(self, *args, **kwargs):
@@ -53,7 +53,7 @@ class FollowerRelationDel(BaseHandler):
         fuid = self.get_argument("fuid")
 
         try:
-            SVC_UserFollower.del_recode(uid, fuid)
+            SVC_UserFollower.del_recode(fuid, uid)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -106,7 +106,7 @@ class GetFollowersCount(BaseHandler):
 
 class CheckUserFollowerRelation(BaseHandler):
     """
-    檢測uid是不是fuid關注的人
+    檢測fuid是不是uid關注的人
     """
 
     @required_login
@@ -120,7 +120,7 @@ class CheckUserFollowerRelation(BaseHandler):
         fuid = self.get_argument("fuid")
         ret = None
         try:
-            ret = SVC_UserFollower.check_user_folower_relation(uid, fuid)
+            ret = SVC_UserFollower.check_user_folower_relation(fuid, uid)
         except Exception as e:
             logging.error(e)
             self.write(dict(

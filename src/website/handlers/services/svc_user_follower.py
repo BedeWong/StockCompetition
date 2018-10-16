@@ -14,11 +14,11 @@ class SVC_UserFollower(object):
     """
 
     @staticmethod
-    def add_recode(uid, fuid):
+    def add_recode(fuid, uid):
         """
         用戶關注一個用戶
-        :param uid:  被關注人
-        :param fuid:  關注人
+        :param uid:  關注人
+        :param fuid:  被關注人
         :return:
         """
 
@@ -35,7 +35,7 @@ class SVC_UserFollower(object):
 
 
     @staticmethod
-    def del_recode(uid, fuid):
+    def del_recode(fuid, uid):
         """
         用戶取關
         :param uid:  被關注的用戶u
@@ -102,7 +102,7 @@ class SVC_UserFollower(object):
 
 
     @staticmethod
-    def check_user_folower_relation(uid, fuid):
+    def check_user_folower_relation(fuid, uid):
         """
         檢測用戶是不是粉絲關係
         :param uid:    被關注的人
