@@ -99,6 +99,8 @@ class getArticleById(BaseHandler):
             ))
             raise e
 
+        logging.debug("res:", res)
+
         # 獲取文章作者是不是 本請求的用戶 所關注的
         check = False
         try:
