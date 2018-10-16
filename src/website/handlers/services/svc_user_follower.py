@@ -14,7 +14,7 @@ class SVC_UserFollower(object):
     """
 
     @staticmethod
-    def add_recode(fuid, uid):
+    def add_recode(uid, fuid):
         """
         用戶關注一個用戶
         :param uid:  關注人
@@ -23,7 +23,7 @@ class SVC_UserFollower(object):
         """
 
         recode = UserFollowers()
-        recode.u_id = uid,
+        recode.u_id = uid
         recode.u_follower_id = fuid
         try:
             dbsession.add(recode)
@@ -35,7 +35,7 @@ class SVC_UserFollower(object):
 
 
     @staticmethod
-    def del_recode(fuid, uid):
+    def del_recode(uid, fuid):
         """
         用戶取關
         :param uid:  被關注的用戶u
@@ -102,7 +102,7 @@ class SVC_UserFollower(object):
 
 
     @staticmethod
-    def check_user_folower_relation(fuid, uid):
+    def check_user_folower_relation(uid, fuid):
         """
         檢測用戶是不是粉絲關係
         :param uid:    被關注的人
@@ -132,9 +132,26 @@ def test_user_relation():
     except Exception as e:
         traceback.print_exc()
 
+
+def test_add_relation():
+    try:
+        SVC_UserFollower.add_recode(27052245, 27052237)
+        SVC_UserFollower.add_recode(27152248, 27052237)
+        SVC_UserFollower.add_recode(27052242, 27052237)
+        SVC_UserFollower.add_recode(27152250, 27052237)
+        SVC_UserFollower.add_recode(27152248, 27152254)
+        SVC_UserFollower.add_recode(27052242, 27152254)
+        SVC_UserFollower.add_recode(27052245, 27152254)
+        SVC_UserFollower.add_recode(27152248, 27152256)
+        SVC_UserFollower.add_recode(27052242, 27152256)
+    except Exception as e:
+        traceback.print_exc()
+
+
 def main():
     test_user_relation()
 
+    test_add_relation()
 
 if __name__ == '__main__':
     main()
