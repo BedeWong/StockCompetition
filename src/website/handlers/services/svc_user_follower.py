@@ -38,14 +38,14 @@ class SVC_UserFollower(object):
     def del_recode(uid, fuid):
         """
         用戶取關
-        :param uid:  被關注的用戶u
-        :param fuid: 關注者
+        :param uid:  關注者
+        :param fuid: 被關注的用戶
         :return:
         """
 
         recode = None
         try:
-            dbsession.query(UserFollowers).filter(and_(UserFollowers.u_id==uid, UserFollowers.u_follower_id==fuid)).one()
+            dbsession.query(UserFollowers).filter(and_(UserFollowers.u_id==fuid, UserFollowers.u_follower_id==uid)).one()
         except NoResultFound as e:
             return
 
