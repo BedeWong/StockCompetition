@@ -176,6 +176,33 @@ class GetUserInfo(BaseHandler):
 
 
 
+class UserInfo(BaseHandler):
+    """
+    获取用户的信息。
+    """
+
+    def get(self, userid):
+        """
+        userid： 匹配到的用户id
+        :return:
+        """
+
+        res = None
+        try:
+            res = SVC_userinfo.get_user_byid((int)(userid))
+        except Exception as e:
+            logging.error(e)
+            return self.write(dict(
+                errcode=RET.RET_SMSCODEERR,
+                errmsg=RETMSG_MAP[RET.RET_SMSCODEERR]
+            ))
+
+        self.write(dict(
+            errcode=RET.RET_OK,
+            errmsg="",
+            retdata= res.to_json()
+        ))
+
 def main():
     pass
 
