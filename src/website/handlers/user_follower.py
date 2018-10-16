@@ -22,8 +22,11 @@ class FollowerRelationAdd(BaseHandler):
         uid = self.get_argument("uid")
         fuid = self.get_argument("fuid")
 
+        checked = False
         try:
-            SVC_UserFollower.add_recode(uid, fuid)
+            checked = SVC_UserFollower.check_user_folower_relation(uid, fuid)
+            if not checked:
+                SVC_UserFollower.add_recode(uid, fuid)
         except Exception as e:
             logging.error(e)
             self.write(dict(
