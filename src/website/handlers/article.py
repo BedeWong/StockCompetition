@@ -103,7 +103,7 @@ class getArticleById(BaseHandler):
         # 獲取文章作者是不是 本請求的用戶 所關注的
         check = False
         author = res.get('uid', None)
-        logging.debug("author:", author)
+        logging.debug(author)
         if author:
             try:
                 check = SVC_UserFollower.check_user_folower_relation(author, uid)
