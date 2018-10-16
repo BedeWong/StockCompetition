@@ -102,7 +102,7 @@ class getArticleById(BaseHandler):
         # 獲取文章作者是不是 本請求的用戶 所關注的
         check = False
         try:
-            check = SVC_UserFollower.check_user_folower_relation(res.uid, uid)
+            check = SVC_UserFollower.check_user_folower_relation(res.u_id, uid)
         except Exception as e:
             logging.error(e)
             self.write(dict(
