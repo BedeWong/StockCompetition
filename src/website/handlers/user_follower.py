@@ -56,7 +56,7 @@ class FollowerRelationDel(BaseHandler):
         fuid = self.get_argument("fuid")
 
         try:
-            SVC_UserFollower.del_recode(fuid, uid)
+            SVC_UserFollower.del_recode(uid, fuid)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -123,7 +123,7 @@ class CheckUserFollowerRelation(BaseHandler):
         fuid = self.get_argument("fuid")
         ret = None
         try:
-            ret = SVC_UserFollower.check_user_folower_relation(fuid, uid)
+            ret = SVC_UserFollower.check_user_folower_relation(uid, fuid)
         except Exception as e:
             logging.error(e)
             self.write(dict(
