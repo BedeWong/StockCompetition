@@ -102,19 +102,19 @@ class getArticleById(BaseHandler):
         logging.debug("res:", res)
 
         # 獲取文章作者是不是 本請求的用戶 所關注的
-        check = False
-        try:
-            check = SVC_UserFollower.check_user_folower_relation(res.u_id, uid)
-        except Exception as e:
-            logging.error(e)
-            self.write(dict(
-                errcode=RET.RET_SERVERERR,
-                errmsg=RETMSG_MAP[RET.RET_SERVERERR]
-            ))
-            raise e
-
-        # 填寫粉絲關係數據
-        res['follower'] = check
+        # check = False
+        # try:
+        #     check = SVC_UserFollower.check_user_folower_relation(res.u_id, uid)
+        # except Exception as e:
+        #     logging.error(e)
+        #     self.write(dict(
+        #         errcode=RET.RET_SERVERERR,
+        #         errmsg=RETMSG_MAP[RET.RET_SERVERERR]
+        #     ))
+        #     raise e
+        #
+        # # 填寫粉絲關係數據
+        # res['follower'] = check
 
         self.write(dict(
             errcode=RET.RET_OK,
