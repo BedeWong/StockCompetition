@@ -153,7 +153,7 @@ class SVC_Article(object):
         res = None
         try:
             dt = datetime.today() - dttm.timedelta(latest_day)
-            query = dbsession.query(Article, User.u_name, User.u_headurl).filter(User.id == Article.u_id).filter(Article.a_pub_time > dt).order_by(desc(Article.a_interviews)).limit(count).offset(page*count)
+            query = dbsession.query(Article, User.u_name, User.u_headurl).filter(User.id == Article.u_id).filter(Article.a_pub_time > dt).order_by(desc(Article.a_interviews)).order_by(desc(Article.a_pub_time)).limit(count).offset(page*count)
             res = query.all()
         except Exception as e:
             raise e

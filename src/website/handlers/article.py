@@ -6,6 +6,7 @@ from utils.response_code import RET, RETMSG_MAP
 from handlers.basehandler import BaseHandler
 from handlers.services.svc_article import SVC_Article
 from handlers.services.svc_dongtai import SVC_Dongtai
+from handlers.services.svc_user_follower import SVC_UserFollower
 
 class addArticle(BaseHandler):
     """
@@ -84,6 +85,9 @@ class getArticleById(BaseHandler):
         """
 
         aid = (int)(self.get_argument("aid"))
+        uid = (int)(self.get_argument("uid"))
+
+        # 獲取文章數據
         res = None
         try:
             res = SVC_Article.getArticleById(aid)
@@ -94,6 +98,21 @@ class getArticleById(BaseHandler):
                 errmsg=RETMSG_MAP[RET.RET_SERVERERR]
             ))
             raise e
+
+        # 獲取文章作者是不是 本請求的用戶 所關注的
+        check = False
+        try:
+            check = SVC_UserFollower.check_user_folower_relation(res.uid, uid)
+        except Exception as e:
+            logging.error(e)
+            self.write(dict(
+                errcode=RET.RET_SERVERERR,
+                errmsg=RETMSG_MAP[RET.RET_SERVERERR]
+            ))
+            raise e
+
+        # 填寫粉絲關係數據
+        res['follower'] = check
 
         self.write(dict(
             errcode=RET.RET_OK,
@@ -180,6 +199,7 @@ class getHotArticle(BaseHandler):
         page = (int)(self.get_argument("page", 0))
         count = (int)(self.get_argument("count", 40))
 
+        # 獲取熱門數據
         res = None
         try:
             res = SVC_Article.getArticleNewestHot(latest, page, count)
