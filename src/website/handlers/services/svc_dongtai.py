@@ -182,16 +182,21 @@ class SVC_Dongtai(object):
         :return: 一個列表
         """
 
+        follow_list = []
         follow_list = SVC_UserFollower.get_user_followers(uid)
-        if not follow_list:
-            return []
+
+        follow_list = list(follow_list[0])
+        follow_list.append(uid)
+        print(follow_list)
 
         # follow_list type is a same as "[(27052245,)]" result.
         res = None
         try:
-            query = dbsession.query(UserDongtai).filter(UserDongtai.u_id.in_(follow_list[0]))
+            query = dbsession.query(UserDongtai).filter(UserDongtai.u_id.in_(follow_list))
 
-            query = query.limit(page).offset(page*count)
+            query = query.limit(count).offset(page*count)
+
+            print(query)
 
             res = query.all()
 

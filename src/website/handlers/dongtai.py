@@ -8,7 +8,7 @@ from handlers.services.svc_dongtai import SVC_Dongtai
 
 class GetDongTaiByUid(BaseHandler):
     """
-    獲取用戶的動態數據， 指的是這一個用的動態
+    獲取用戶的動態數據， 指的是這一個用戶的動態
     """
 
     @required_login
