@@ -5,6 +5,7 @@ from sqlalchemy import and_
 from sqlalchemy.orm.exc import NoResultFound
 
 from handlers.models.tb_user_dongtai import UserDongtai, Dongtaitype
+from handlers.models.tb_user import User
 
 from handlers.services.svc_user_follower import SVC_UserFollower
 
@@ -192,11 +193,10 @@ class SVC_Dongtai(object):
         # follow_list type is a same as "[(27052245,)]" result.
         res = None
         try:
-            query = dbsession.query(UserDongtai).filter(UserDongtai.u_id.in_(follow_list))
+            query = dbsession.query(UserDongtai,User.u_name, User.u_headurl).join(User, UserDongtai.u_id == User.id)\
+                .filter(UserDongtai.u_id.in_(follow_list))
 
             query = query.limit(count).offset(page*count)
-
-            print(query)
 
             res = query.all()
 
@@ -209,7 +209,11 @@ class SVC_Dongtai(object):
 
         lst = []
         for it in res:
-            lst.append(it.to_json())
+            tmp = it[0].to_json()
+            tmp['uname'] = it[1]
+            tmp['uheadurl'] = it[1]
+            lst.append(tmp)
+
 
         return lst
 
