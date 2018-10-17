@@ -6,15 +6,25 @@ from handlers.models.basemodel import BaseModel
 from datetime import  datetime
 
 class Dongtaitype(object):
+    desc_string = {}
     follower = 1                ## 關注
+    desc_string[1] = "关注了"
     reply = 2                   ## 回復
-    upcount_topic = 3                 ##  點贊 話題
-    upcount_reply = 4               ## 點贊回復
+    desc_string[2] = "回复了"
+    upcount_topic = 3           ## 點贊 話題
+    desc_string[3] = "点赞了文章"
+    upcount_reply = 4           ## 點贊回復
+    desc_string[4] = "点赞了回复"
     pub_topic = 5               # 發表話題
+    desc_string[5] = "发表了话题"
     pub_reply = 6               # 發表回復
+    desc_string[6] = "评论了"
     buy_sale_stock = 7          # 買賣股票
+    desc_string[7] = "委托下单"
     invoke_stock = 8            # 撤單
-    mark_article = 9               # 收藏文章
+    desc_string[8] = "撤单"
+    mark_article = 9            # 收藏文章
+    desc_string[9] = "收藏了文章"
 
 class UserDongtai(BaseModel):
     """

@@ -158,7 +158,7 @@ class SVC_Dongtai(object):
 
         res = None
         try:
-            res = dbsession.query(UserDongtai).filter_by(u_id = uid).limit(count).offset(page*count).all()
+            res = dbsession.query(UserDongtai,User.u_name, User.u_headurl).join(User, UserDongtai.u_id == User.id).filter_by(u_id = uid).limit(count).offset(page*count).all()
         except Exception as e:
             dbsession.rollback()
             raise e
@@ -168,7 +168,13 @@ class SVC_Dongtai(object):
 
         lst = []
         for it in res:
-            lst.append(it.to_json())
+            tmp = it[0].to_json()
+            tmp['uname'] = it[1]
+            tmp['uheadurl'] = it[2]
+
+            tmp['type_desc'] = Dongtaitype.desc_string[it[0].d_type]
+
+            lst.append(tmp)
 
         return lst
 
@@ -211,7 +217,10 @@ class SVC_Dongtai(object):
         for it in res:
             tmp = it[0].to_json()
             tmp['uname'] = it[1]
-            tmp['uheadurl'] = it[1]
+            tmp['uheadurl'] = it[2]
+
+            tmp['type_desc'] = Dongtaitype.desc_string[it[0].d_type]
+
             lst.append(tmp)
 
 
