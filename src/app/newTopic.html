@@ -86,6 +86,7 @@
 	            	
 	            	if(data['errcode'] == 0){
 	            		plus.nativeUI.toast("發表成功!");
+	            		mui.back();
 	            	} else {
 	            		plus.nativeUI.toast(data['errmsg']);
 	            	}

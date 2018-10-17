@@ -394,9 +394,22 @@
 				"priority": 0
 			},
 			"discuss.html": {
-				"resources": [],
+				"resources": [
+					"images/qq.png"
+				],
 				"refer": [
-					"newTopic.html"
+					"newTopic.html",
+					"topicDetail.html",
+					"userinfo.html"
+				],
+				"priority": 0
+			},
+			"topicDetail.html": {
+				"resources": [
+					"css/mui.min.css"
+				],
+				"refer": [
+					"replay.html"
 				],
 				"priority": 0
 			}

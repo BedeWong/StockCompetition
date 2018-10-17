@@ -9,6 +9,7 @@ window.urls = {
 	
 	url_login : baseurl + '/api/login',
 	url_getUserinfo : baseurl + '/api/getuserinfo',
+	url_userinfo : baseurl + '/api/user/',
 	
 	url_addStock2Favorite :baseurl + '/api/favoritestock/add',
 	url_getFavoriteStock : baseurl + '/api/favoritestock/list',
@@ -50,6 +51,7 @@ window.urls = {
 	url_topicmine : baseurl + '/api/article/list/uid',
 	url_topiccheckupcount : baseurl + "/api/article/upcount/check",
 	url_topicUpcount : baseurl + '/api/article/upcount',
+	url_topicUpcountOnly : baseurl + '/api/article/upcount-only',
 	url_getTopic : baseurl + '/api/article/id',
 	
 	url_replyDel : baseurl + '/api/reply/del',

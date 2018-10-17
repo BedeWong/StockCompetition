@@ -25,7 +25,7 @@
 		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
 			<h1 class="mui-title" id="title">討論</h1>
 		</header>
-		<div class="mui-content mui-scroll-wrapper" id="pullrefreshArea">
+		<div class="mui-content mui-scroll-wrapper" id="pullrefreshArea" style="margin-bottom: 35px;">
 			<div class="mui-scroll">
 				<div class="tabwidget">
 					<div id="tab1" class="tabitem fl curtab">
@@ -44,27 +44,35 @@
 				
 				<div id="hot" class="">
 					<div id="hotvm">
-					<div v-for="it in datas">
-						<div>{{it}}</div>
+                    <div v-for="it in datas" class="msg-item" style="background-color: #FAFAFA;">
 						<div class="head">
 							<div id="head-img" style="line-height: 30px;">
 								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
 							</div>
 							<div id="head-type">
-								{{it.uname}} {{it.type}}了話題
+								<span id="" style="color: royalblue;" @tap="toUserinfo(it)">
+									{{it.uname}}
+								</span> 
+								<span id="" style="color: #555555;">
+									{{it.type_desc}}
+								</span>
 							</div>
 							<div id="head-time">
-								{{it.time}}之前
+								<span id="" style="color: darkgray;">
+									{{it.time}}之前
+								</span>
 							</div>
 						</div>
-						<div class="title">
-							{{it.title}}新手到來！！！
+						<div class="title" style="margin-top: 5px;" @tap="toTopicDetail(it)">
+							<span id="" style="color: royalblue;">
+							{{it.title}}
+							</span> 
 						</div>
-						<div class="content">
-							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						<div class="content mui-ellipsis">
+							{{it.content}}
 						</div>
 						<div class="tail">
-							<div class="upcount">
+							<div class="upcount" @tap="upCountTopic(it)">
 								{{it.upcounts}}<span class="mui-icon mui-icon-plus"></span>
 							</div>
 							<div class="replay">
@@ -79,33 +87,35 @@
 				</div>
 				<div id="newest" class="mui-hidden">
 					<div id="newestvm">
-					<div v-for="it in datas">
+					<div v-for="it in datas" class="msg-item" style="background-color: #FAFAFA;">
 						<div class="head">
 							<div id="head-img" style="line-height: 30px;">
 								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
 							</div>
-							<div id="head-type">
-								{{it.uname}} {{it.type}}了話題
+							<div id="head-type" style="color: royalblue;" @tap="toUserinfo(it)">
+								{{it.uname}} {{it.type}}
 							</div>
 							<div id="head-time">
 								{{it.time}}之前
 							</div>
 						</div>
-						<div class="title">
-							{{it.title}}新手到來！！！
+						<div class="title" style="margin-top: 5px;" @tap="toTopicDetail(it)">
+							<span id="" style="color: royalblue;">
+							{{it.title}}
+							</span> 
 						</div>
-						<div class="content">
-							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						<div class="content mui-ellipsis">
+							{{it.content}}
 						</div>
 						<div class="tail">
-							<div class="upcount">
-								{{it.upcount}}<span class="mui-icon mui-icon-plus"></span>
+							<div class="upcount" @tap="upCountTopic(it)">
+								{{it.upcounts}}<span class="mui-icon mui-icon-plus"></span>
 							</div>
 							<div class="replay">
-								{{it.replay}}<span class="mui-icon mui-icon-chat"></span>
+								{{it.replays}}<span class="mui-icon mui-icon-chat"></span>
 							</div>
 							<div class="viewcount">
-								{{it.viewcount}}<span class="mui-icon mui-icon-search"></span>
+								{{it.interviews}}<span class="mui-icon mui-icon-search"></span>
 							</div>
 						</div>
 					</div>
@@ -113,33 +123,35 @@
 				</div>
 				<div id="care" class="mui-hidden">
 					<div id="carevm">
-					<div id="" v-for="it in datas">
+					<div id="" v-for="it in datas" class="msg-item" style="background-color: #FAFAFA;">
 						<div class="head">
 							<div id="head-img" style="line-height: 30px;">
 								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
 							</div>
-							<div id="head-type">
-								{{it.uname}} {{it.type}}了話題
+							<div id="head-type"  style="color: royalblue;" @tap="toUserinfo(it)">
+								{{it.uname}} {{it.type_desc}}
 							</div>
 							<div id="head-time">
 								{{it.time}}之前
 							</div>
 						</div>
-						<div class="title">
-							{{it.title}}新手到來！！！
+						<div class="title" style="margin-top: 5px;" @tap="toTopicDetail(it)">
+							<span id="" style="color: royalblue;">
+							{{it.title}}
+							</span> 
 						</div>
-						<div class="content">
-							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						<div class="content mui-ellipsis">
+							{{it.content}}
 						</div>
 						<div class="tail">
-							<div class="upcount">
-								{{it.upcount}}<span class="mui-icon mui-icon-plus"></span>
+							<div class="upcount" @tap="upCountTopic(it)">
+								{{it.upcounts}}<span class="mui-icon mui-icon-plus"></span>
 							</div>
 							<div class="replay">
-								{{it.replay}}<span class="mui-icon mui-icon-chat"></span>
+								{{it.replays}}<span class="mui-icon mui-icon-chat"></span>
 							</div>
 							<div class="viewcount">
-								{{it.viewcount}}<span class="mui-icon mui-icon-search"></span>
+								{{it.interviews}}<span class="mui-icon mui-icon-search"></span>
 							</div>
 						</div>
 					</div>
@@ -147,33 +159,35 @@
 				</div>
 				<div id="mine" class="mui-hidden">
 					<div id="minevm">
-					<div id="" v-for="it in datas">
+					<div id="" v-for="it in datas" class="msg-item">
 						<div class="head">
 							<div id="head-img" style="line-height: 30px;">
 								<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
 							</div>
-							<div id="head-type">
-								{{it.uname}} {{it.type}}了話題
+							<div id="head-type" @tap="toUserinfo(it)">
+								{{it.uname}} {{it.type}}
 							</div>
 							<div id="head-time">
 								{{it.time}}之前
 							</div>
 						</div>
-						<div class="title">
-							{{it.title}}新手到來！！！
+						<div class="title" style="margin-top: 5px;" @tap="toTopicDetail(it)">
+							<span id="" style="color: royalblue;">
+							{{it.title}}
+							</span> 
 						</div>
-						<div class="content">
-							{{it.content}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~{{}}請多關照， 看三思密達~
+						<div class="content mui-ellipsis">
+							{{it.content}}
 						</div>
 						<div class="tail">
-							<div class="upcount">
-								{{it.upcount}}<span class="mui-icon mui-icon-plus"></span>
+							<div class="upcount" @tap="upCountTopic(it)">
+								{{it.upcounts}}<span class="mui-icon mui-icon-plus"></span>
 							</div>
 							<div class="replay">
-								{{it.replay}}<span class="mui-icon mui-icon-chat"></span>
+								{{it.replays}}<span class="mui-icon mui-icon-chat"></span>
 							</div>
-							<div class="viewcount">
-								{{it.viewcount}}<span class="mui-icon mui-icon-search"></span>
+							<div class="viewcount"> 
+								{{it.interviews}}<span class="mui-icon mui-icon-search"></span>
 							</div>
 						</div>
 					</div>
@@ -189,8 +203,11 @@
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/vue.min.js"></script>
-	<script src="js/discuss.js"></script>
 	<script>
 		
+		//  預先定義好 頁面變量， 此變量需要在pluseReady中加載，後面發送事件喚醒頁面
+		var userinfoPage, topicDetailPage;  
+		
 	</script>
+	<script src="js/discuss.js"></script>
 </html>

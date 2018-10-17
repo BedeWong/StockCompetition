@@ -78,4 +78,48 @@
 			}
 		});
 	});
+	
+	var dongtai = new Vue({
+    	el:'#dongtai-bar',
+    	data:{
+    		datas:{}
+    	},
+    	methods:{
+    		
+    	}
+    });
+    
+    function get_user_dongtai(){
+    	var postdata = {}
+    	
+    	postdata.userid = app.getState().uid;
+	
+		app.fillToken(postdata);
+	
+		mui.ajax({
+            type: "get",
+			url: urls.url_dongtaiByUser,
+			data:postdata,
+            timeout: 3000,
+            success: function(data) {
+            	console.log("success: URL:" + urls.url_dongtaiByUser );
+            	
+            	if(data['errcode'] == 0){
+            		dongtai.datas = data['retdata'];
+            		console.log(JSON.stringify(data['retdata']));
+            	} else {
+            		plus.nativeUI.toast(data['errmsg']);
+            	}
+            },
+            error: function(xhr, type, errorThrown) {
+                plus.nativeUI.toast(errorThrown);
+            }
+        });// ajax
+    };
+    
+    window.addEventListener('display', function(event) {
+		console.log("討論頁面顯示。");
+	
+		get_user_dongtai();
+	});
 })(mui);

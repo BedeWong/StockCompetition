@@ -18,6 +18,48 @@
 				margin: 0px auto;
 				padding: 0px;
 			}
+			
+			/* 動態	*/
+			#dongtai-bar {
+				margin-top: 0px;
+				line-height: 32px;
+				height: 32px;
+				width:100%;
+				text-align: left;
+				padding-top: 3px;
+				padding-bottom: 3px;
+				background-color: #C7C7CC;
+			}
+			
+			#dongtai-bar-item {
+				width: 100%;
+				line-height: 32px;
+				padding-left: 10px;
+				margin-bottom: 5px;
+				border-bottom: 1px solid #BBBBBB;
+				overflow: hidden;
+			}
+			
+			#dongtai-bar-head {
+				height: 32px;
+				width: 32px;
+				border-radius: 50%;
+				display: inline-block;
+			}
+			
+			#dongtai-bar-type, #dongtai-bar-msg, #dongtai-bar-uname {
+				height: 32px;
+				line-height: 32px;
+				padding-left: 5px;
+				display: inline-block;
+			}
+			
+			#dongtai-bar-btn{
+				line-height: 32px;
+				display: inline-block;
+				width: 24%;
+			}
+
 		</style>
 		
 	</head>
@@ -60,18 +102,38 @@
          	时间：2018-07-23
          	描述：動態開始:
          -->
-         <div class="mymsg" id="divmsg">
-         	最新動態
-         </div>
-         
-         <div id="">
-         	
-         </div>
+         <div id="dongtai-bar" class="mui-scroll" style="margin-top: 10px;">
+         		<div id="dongtai-bar-title">
+         			最新動態
+         		</div>
+         		<div id="dongtai-bar-item" v-for="it in datas">
+         			<div id="" style="text-align: left;">
+	         			<div id="dongtai-bar-head" style="float:left;">
+	         				<img :src="it.uheadurl" style="width: 32px; height: 32px;"/>
+	         			</div>
+	         			<div id="dongtai-bar-uname" style="float:left">
+	         				{{it.uname}}
+	         			</div>
+	         			<div id="dongtai-bar-type" style="float:left">
+	         				{{it.type_desc}}
+	         			</div>
+	         			<div id="dongtai-bar-msg" style="float:left" >
+	         				<span id="" class="mui-ellipsis">
+	         					{{it.extmsg}}
+	         				</span>
+	         			</div>
+	         			<div id="dongtai-bar-btn" style="float:right">
+	         				<button id='btn-view' type="button" class="mui-btn mui-btn-warning" style="height: 32px;">查看</button>
+	         			</div>
+         			</div>
+         		</div>
+         	</div>
          
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/vue.min.js"></script>
 	<script src="js/index.js"></script>
 	<script>
 		
