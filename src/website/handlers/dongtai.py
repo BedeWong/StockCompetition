@@ -14,13 +14,13 @@ class GetDongTaiByUid(BaseHandler):
     @required_login
     def get(self, *args, **kwargs):
         """
-        uid:
+        userid:
         page:
         count:
         :return:
         """
 
-        uid = self.get_argument("uid")
+        uid = self.get_argument("userid")
         page = (int)(self.get_argument("page", 0))
         count = (int)(self.get_argument("count", 40))
 
@@ -53,13 +53,13 @@ class getDongTaiByUser(BaseHandler):
     @required_login
     def get(self, *args, **kwargs):
         """
-        uid:
+        userid:
         page：
         count:
         :return:
         """
 
-        uid = self.get_argument("uid")
+        uid = self.get_argument("userid")
         page = (int)(self.get_argument("page", 0))
         count = (int)(self.get_argument("count", 40))
 
