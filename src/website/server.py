@@ -25,16 +25,22 @@ class Application(tornado.web.Application):
 
 
 def main():
-    options.log_file_prefix = config.log_path
+    tornado.options.parse_command_line()	
+
+    #options.log_file_prefix = config.log_path + "_" + options.port
     options.logging = config.log_level
 
-    tornado.options.parse_command_line()
+    #tornado.options.parse_command_line()
 
     app = Application(
         urls,
         **config.settings
     )
     server = tornado.httpserver.HTTPServer(app)
+    
+    options.log_file_prefix = config.log_path + "_" + (str)(options.port)
+    print(options.log_file_prefix)
+    
     logging.debug(options.port)
     server.listen(options.port)
     tornado.ioloop.IOLoop.current().start()
