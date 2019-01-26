@@ -36,14 +36,16 @@ class SMSCodeHandler(BaseHandler):
 
     def post(self):
         cur_pic = self.get_cookie("cur_pic", None)
-        pic_code = self.get_argument("piccode")
-        phone = self.get_argument("mobile")
+        # pic_code = self.get_argument("piccode")
+        # phone = self.get_argument("mobile")
+        pic_code = self.json_args.get('piccode')
+        phone = self.json_args.get('mobile')
 
         logging.debug("cookie:cur_pic: %s" % cur_pic)
         logging.debug("pic_code: %s" % pic_code)
         logging.debug("phone: %s" % phone)
         # 验证参数
-        if not all(cur_pic, pic_code, phone):
+        if not all((cur_pic, pic_code, phone)):
             self.write(dict(
                 errcode = RET.RET_PARAMERR,
                 errmsg = RETMSG_MAP[RET.RET_PARAMERR]

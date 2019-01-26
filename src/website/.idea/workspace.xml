@@ -65,8 +65,17 @@
       <file leaf-file-name="verify_code.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basehandler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handlers/basehandler.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="43" column="42" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="42" />
+              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -130,15 +139,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-352">
               <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="svc_article.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/services/svc_article.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="116" column="139" selection-start-line="116" selection-start-column="115" selection-end-line="116" selection-end-column="139" />
             </state>
           </provider>
         </entry>
@@ -943,13 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/basehandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handlers/user_info.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1254">
@@ -1050,10 +1043,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
+    <entry file="file://$PROJECT_DIR$/handlers/basehandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="43" column="42" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="42" />
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
         </state>
       </provider>
     </entry>
