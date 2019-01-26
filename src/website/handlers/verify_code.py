@@ -61,7 +61,7 @@ class SMSCodeHandler(BaseHandler):
             logging.error(e)
             raise e
 
-        if real_sms_code != pic_code.lower():
+        if real_sms_code.decode() != pic_code.lower():
             self.write(dict(
                 errcode=RET.RET_PICCODEERR,
                 errmsg=RETMSG_MAP[RET.RET_PICCODEERR]
@@ -69,7 +69,7 @@ class SMSCodeHandler(BaseHandler):
             return
 
         ### 验证手机 号码
-        if not re.match(r"^1[0-9]{10}$"):
+        if not re.match(r"^1[0-9]{10}$", phone):
             return self.write(dict(
                 errcode=RET.RET_MOBILEPHONEERR,
                 errmsg=RETMSG_MAP[RET.RET_MOBILEPHONEERR]

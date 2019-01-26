@@ -37,6 +37,14 @@ class BaseHandler(RequestHandler):
         self.session = Session(self)
         return self.session.data
 
+    def write_error(self, status_code, **kwargs):
+        self.write(
+            dict(
+                errcode=999,
+                errmsg="服務器錯誤！"
+            )
+        )
+
 def main():
     pass
 

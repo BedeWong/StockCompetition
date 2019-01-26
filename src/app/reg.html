@@ -136,6 +136,9 @@
 						        xhrFields: {
 						            withCredentials: true
 						        },
+						        headers:{
+						        	"Content-Type" : 'application/json'
+								},
 								success : function(data) {
 									if(data.errcode == 0) {
 										mui.toast("验证码发送成功!");
