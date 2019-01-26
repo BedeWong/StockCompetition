@@ -192,8 +192,8 @@ class SVC_Dongtai(object):
 
         follow_list = []
         follow_list = SVC_UserFollower.get_user_followers(uid)
-
-        follow_list = list(follow_list[0])
+        if follow_list and len(follow_list) > 0:
+            follow_list = list(follow_list[0])
         follow_list.append(uid)
         print(follow_list)
 
