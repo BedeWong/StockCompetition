@@ -5,6 +5,7 @@ from tornado.web import RequestHandler
 from utils.session import Session
 
 import json
+import logging
 
 class BaseHandler(RequestHandler):
     """
@@ -20,6 +21,8 @@ class BaseHandler(RequestHandler):
             self.json_args = json.loads(self.request.body)
         else:
             self.json_args = {}
+
+        logging.debug(self.json_args)
 
 
     def set_default_headers(self):
