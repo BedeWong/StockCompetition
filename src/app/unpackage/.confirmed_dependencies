@@ -116,7 +116,20 @@
 	},
 	"discuss.html": {
 		"refer": [
-			"newTopic.html"
+			"newTopic.html",
+			"topicDetail.html",
+			"userinfo.html"
+		],
+		"resources": [
+			"images/qq.png"
+		]
+	},
+	"topicDetail.html": {
+		"resources": [
+			"css/mui.min.css"
+		],
+		"refer": [
+			"replay.html"
 		]
 	}
 }

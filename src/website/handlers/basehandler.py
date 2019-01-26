@@ -24,6 +24,7 @@ class BaseHandler(RequestHandler):
 
     def set_default_headers(self):
         self.set_header("Content-Type", "application/json; charset=UTF-8")
+        self.set_header("Age", "60")
 
     def get_current_user(self):
         """
