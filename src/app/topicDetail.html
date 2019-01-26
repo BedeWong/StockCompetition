@@ -8,6 +8,7 @@
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/style.css" rel="stylesheet" />
 		<link href="css/topicDetail.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -39,13 +40,13 @@
 				</div>
 				<div class="tail">
 					<div class="upcount" @tap="upCountTopic(datas)">
-						{{datas.upcounts}}<span class="mui-icon mui-icon-plus"></span>
+						{{datas.upcounts}}<span class=" iconfont icon-dianzan"></span>
 					</div>
 					<div class="replay">
-						{{datas.replays}}<span class="mui-icon mui-icon-chat"></span>
+						{{datas.replays}}<span class="iconfont icon-pinglun3-copy"></span>
 					</div>
 					<div class="viewcount">
-						{{datas.interviews}}<span class="mui-icon mui-icon-search"></span>
+						{{datas.interviews}}<span class="iconfont icon-liulanliang"></span>
 					</div>
 				</div> 
                     <!--作者：BideWong
@@ -87,7 +88,7 @@
 					</div>
 					<div class="tail" style="padding-right: 20px;">
 						<div class="upcount" @tap="upCountReply(it)">
-							{{it.upcounts}}<span class="mui-icon mui-icon-plus"></span>
+							{{it.upcounts}}<span class=" iconfont icon-dianzan"></span>
 						</div>
 					</div>
 				</div>		

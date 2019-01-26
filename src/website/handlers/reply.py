@@ -163,7 +163,7 @@ class addReply(BaseHandler):
         res = None
         try:
             rid = SVC_Reply.addReply(uid, aid, content)
-            SVC_Dongtai.add_dongtai_reply(uid, rid, content)
+            SVC_Dongtai.add_dongtai_reply(uid, aid, content)
         except Exception as e:
             logging.error(e)
             self.write(dict(

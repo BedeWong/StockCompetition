@@ -1,7 +1,7 @@
 #coding=utf-8
 
 from handlers.models.basemodel import dbsession
-from sqlalchemy import and_
+from sqlalchemy import and_, desc
 from sqlalchemy.orm.exc import NoResultFound
 
 from handlers.models.tb_user_dongtai import UserDongtai, Dongtaitype
@@ -158,7 +158,8 @@ class SVC_Dongtai(object):
 
         res = None
         try:
-            res = dbsession.query(UserDongtai,User.u_name, User.u_headurl).join(User, UserDongtai.u_id == User.id).filter_by(u_id = uid).limit(count).offset(page*count).all()
+            res = dbsession.query(UserDongtai,User.u_name, User.u_headurl).join(User, UserDongtai.u_id == User.id).filter_by(u_id = uid)\
+                .order_by(desc(UserDongtai.d_time)).limit(count).offset(page*count).all()
         except Exception as e:
             dbsession.rollback()
             raise e
@@ -200,7 +201,7 @@ class SVC_Dongtai(object):
         res = None
         try:
             query = dbsession.query(UserDongtai,User.u_name, User.u_headurl).join(User, UserDongtai.u_id == User.id)\
-                .filter(UserDongtai.u_id.in_(follow_list))
+                .filter(UserDongtai.u_id.in_(follow_list)).order_by(desc(UserDongtai.d_time))
 
             query = query.limit(count).offset(page*count)
 
