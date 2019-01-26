@@ -87,7 +87,7 @@ class SMSCodeHandler(BaseHandler):
 
         #### 发送短信
         __business_id = uuid.uuid1()
-        params = '{"code":%s,"product":""}' % sms_code
+        params = '%s' % sms_code
         result = Send_SMS.send_sms(__business_id, phone, "Matchs", "SMS_135600035", params)
         if r'"Code":"OK"' not in result.decode():
             logging.error(result)
