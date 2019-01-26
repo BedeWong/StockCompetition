@@ -22,7 +22,8 @@
 		"refer": [
 			"main.html",
 			"reg.html",
-			"setting.html"
+			"setting.html",
+			"forget_password.html"
 		],
 		"resources": [
 			"css/style.css",

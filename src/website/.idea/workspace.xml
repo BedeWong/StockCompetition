@@ -50,14 +50,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="svc_dongtai.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="svc_dongtai.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handlers/services/svc_dongtai.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="195" column="46" lean-forward="true" selection-start-line="195" selection-start-column="46" selection-end-line="195" selection-end-column="46" />
+            <state relative-caret-position="1537">
+              <caret line="202" column="91" selection-start-line="202" selection-start-column="91" selection-end-line="202" selection-end-column="91" />
               <folding>
                 <element signature="e#15#62#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="verify_code.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="43" column="42" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -102,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/handlers/dongtai.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="236">
-              <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+              <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -121,15 +130,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-352">
               <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="article.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/article.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="174" column="39" lean-forward="true" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -174,7 +174,6 @@
         <option value="$PROJECT_DIR$/libs/captcha.py" />
         <option value="$PROJECT_DIR$/libs/aliyun_sms_code/Send_SMS.py" />
         <option value="$PROJECT_DIR$/libs/captcha_gen.py" />
-        <option value="$PROJECT_DIR$/handlers/verify_code.py" />
         <option value="$PROJECT_DIR$/utils/jsonconvert.py" />
         <option value="$PROJECT_DIR$/handlers/models/tb_user.py" />
         <option value="$PROJECT_DIR$/server.py" />
@@ -202,6 +201,7 @@
         <option value="$PROJECT_DIR$/handlers/basehandler.py" />
         <option value="$PROJECT_DIR$/handlers/reply.py" />
         <option value="$PROJECT_DIR$/handlers/services/svc_dongtai.py" />
+        <option value="$PROJECT_DIR$/handlers/verify_code.py" />
       </list>
     </option>
   </component>
@@ -957,13 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="33" column="20" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handlers/models/tb_contest_detail.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1043,17 +1036,24 @@
     <entry file="file://$PROJECT_DIR$/handlers/dongtai.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
-          <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers/services/svc_dongtai.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="195" column="46" lean-forward="true" selection-start-line="195" selection-start-column="46" selection-end-line="195" selection-end-column="46" />
+        <state relative-caret-position="1537">
+          <caret line="202" column="91" selection-start-line="202" selection-start-column="91" selection-end-line="202" selection-end-column="91" />
           <folding>
             <element signature="e#15#62#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="43" column="42" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="42" />
         </state>
       </provider>
     </entry>

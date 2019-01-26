@@ -177,6 +177,14 @@ window.urls = {
 			}
 		});
 	};
+	
+	/**  退出 ***/
+	owner.exit = function(callback){
+		callback = callback || $.noop;
+		owner.setState({})
+		
+		return callback();
+	};
 
 	owner.createState = function(resp, callback) {
 		var state = owner.getState();
