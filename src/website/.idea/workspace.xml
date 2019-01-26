@@ -53,8 +53,8 @@
       <file leaf-file-name="verify_code.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="96" column="51" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
+            <state relative-caret-position="237">
+              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
               <folding>
                 <element signature="e#15#59#0" expanded="true" />
               </folding>
@@ -991,8 +991,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers/verify_code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="96" column="51" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
+        <state relative-caret-position="237">
+          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
           <folding>
             <element signature="e#15#59#0" expanded="true" />
           </folding>
