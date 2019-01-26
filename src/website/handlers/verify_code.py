@@ -89,9 +89,13 @@ class SMSCodeHandler(BaseHandler):
         __business_id = uuid.uuid1()
         params = '{"code":%s,"product":"注册"}' % sms_code
         result = Send_SMS.send_sms(__business_id, phone, "Matchs", "SMS_135600035", params)
-        if r'"Code":"OK"' not in result:
+        if r'"Code":"OK"' not in result.decode():
             logging.error(result)
-            raise Exception(result)
+            logging.exception(str(result))
+            return self.write(dict(
+                errcode=RET.RET_SERVERERR,
+                errmsg=RETMSG_MAP[RET.RET_SERVERERR]
+            ))
 
         return self.write(dict(
             errcode = RET.RET_OK,
