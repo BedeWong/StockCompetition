@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\ApterWong\AppData\Local\Programs\Python\Python36\lib\site-packages\tornado\web.py", line 1541, in _execute
-    result = method(*self.path_args, **self.path_kwargs)
-  File "H:\stockMatchs\www\handlers\verify_code.py", line 19, in get
-    cap = CaptchaGen()
-  File "H:\stockMatchs\www\libs\captcha_gen.py", line 13, in __init__
-    self._text = text if text else random.sample(string.uppercase + string.uppercase + '3456789', 5)
-AttributeError: module 'string' has no attribute 'uppercase'

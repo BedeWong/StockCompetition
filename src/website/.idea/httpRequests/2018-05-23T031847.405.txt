@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\ApterWong\AppData\Local\Programs\Python\Python36\lib\site-packages\tornado\web.py", line 1541, in _execute
-    result = method(*self.path_args, **self.path_kwargs)
-  File "C:\Users\ApterWong\AppData\Local\Programs\Python\Python36\lib\site-packages\tornado\web.py", line 225, in get
-    raise HTTPError(405)
-tornado.web.HTTPError: HTTP 405: Method Not Allowed

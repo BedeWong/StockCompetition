@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\ApterWong\AppData\Local\Programs\Python\Python36\lib\site-packages\tornado\web.py", line 1518, in _execute
-    self.check_xsrf_cookie()
-  File "C:\Users\ApterWong\AppData\Local\Programs\Python\Python36\lib\site-packages\tornado\web.py", line 1359, in check_xsrf_cookie
-    raise HTTPError(403, "'_xsrf' argument missing from POST")
-tornado.web.HTTPError: HTTP 403: Forbidden ('_xsrf' argument missing from POST)
