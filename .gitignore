@@ -104,6 +104,6 @@ venv.bak/
 # 新添加
 *.pyc
 .idea/
-./src/website/config.py
-./src/website/config_bak.py
-./src/website/libs/*
+config.py
+config_bak.py
+libs/*
