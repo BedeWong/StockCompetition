@@ -106,4 +106,4 @@ venv.bak/
 .idea/
 config.py
 config_bak.py
-libs/aliyun_sms_code/*
+*/libs/aliyun_sms_code/*
