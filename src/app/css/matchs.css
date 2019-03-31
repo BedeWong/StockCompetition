@@ -1,0 +1,52 @@
+
+.tabwidget {
+	height: 40px;
+	width: 100%;
+	border: 1px solid;
+	border-color: #AAAAAA;
+	background-color:#EEEEEE;
+	/*text-align: center;*/
+	overflow: hidden;
+	font-size: 16px;
+}
+
+
+#tab1{
+	display: inline;
+	text-align: center;
+	width: 50%;
+	line-height: 40px;
+	border-right: solid 1px;
+}
+
+#tab2 {
+	display: inline;
+	text-align: center;
+	width: 50%;
+	line-height: 40px;
+	border-left: solid 1px;
+}
+
+
+.curtab {
+	color: #555555;
+	background-color: #F9F9F9;
+}
+
+
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+
+// 大賽列表
+#matchslist {
+}
+
+// 我的比賽
+#mymatchs {
+	
+}

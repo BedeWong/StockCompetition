@@ -1,0 +1,75 @@
+
+.line-box, .line-box-1, .stock-line-box, #stock-button {
+	width:100%;
+	height: 30px;
+}
+
+#headimg {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	float: left;
+	display: inline-block;
+}
+
+#user-nick {
+	margin-left: 15px;
+	float: left;
+	line-height: 30px;
+	width: 40%;
+	display: inline-block;
+}
+
+#user-rank {
+	float: left;
+	line-height: 30px;
+	width: 48%;
+	display: inline-block;
+}
+
+#win-rate, #cash, #all-capital, #position, .stock-line-item{
+	width: 49%;
+	line-height: 30px;
+	display: inline-block;
+}
+
+.user-stock-head {
+	line-height: 40px;
+	font-size: 18px;
+	background-color: #AAAAAA;
+}
+
+#data-item {
+	width:100%;
+	margin-bottom: 10px;
+}
+
+#stock-name {
+	line-height: 30px;
+}
+
+#stock-button div {
+	text-align: center;
+	padding-right: 50px;
+	width: 49%;
+	line-height: 30px;
+	font-size: 18px;
+	display: inline-block;
+}
+
+
+#bottom-bar {
+	width: 100%;
+	height: 40px;
+	background: #FEFEFE;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+}
+
+#bottom-bar  button {
+	margin: 0px;
+	padding: 0px;
+	width: 24%;
+	line-height: 40px;
+}

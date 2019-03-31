@@ -1,0 +1,130 @@
+
+#container-1 {
+	width: 100%;
+	height: 60px;
+	margin: 0 auto;
+	padding: 0;
+	font-size: 10px;
+	border-bottom: 1px solid #BBBBBB;
+}
+
+#price-box {
+	width: 39%;
+	height: 100%;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+}
+
+/**現價*/
+#cur-price {
+	font-size: 18px;
+}
+
+#kaipan-box{
+	width: 29%;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	border-left: 1px solid #BBBBBB;
+}
+
+#close-box{
+	width: 29%;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	border-left: 1px solid #BBBBBB;
+}
+
+#container-2, #container-3, #container-4, #container-5, #container-6{
+	width: 100%;
+	height: 30px;
+	margin: 0 auto;
+	padding: 0;
+	border-bottom: 1px solid #BBBBBB;
+}
+
+#container-2 div {
+	line-height: 30px;
+	width: 32.5%;
+	margin: 0;
+	padding: 0;
+	border: 0px;
+	font-size: 12px;
+	text-align: center;
+	display: inline-block;
+}
+
+#container-3 div {
+	line-height: 30px;
+	width: 32.5%;
+	margin: 0;
+	padding: 0;
+	border: 0px;
+	font-size: 14px;
+	text-align: center;
+	display: inline-block;
+}
+
+#container-4 div {
+	display: inline-block;
+	width: 24%;
+	line-height: 30px;
+	text-align: center;
+	font-size: 16px;
+	border-right: 1px solid #CCCCCC;
+}
+
+#charts {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#stock-list {
+	margin: 1px;	
+}
+
+#charts div {
+	width:100%;
+	height: 250px;
+	text-align: left;
+	background-color: #BBBBBB;
+}
+
+#container-5 div{
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	width: 49%;
+	border-right: 1px solid #CCCCCC;
+}
+
+#item-raise, #stock-item {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	height: 40px;
+}
+
+#stock-item div {
+	display: inline-block;
+	line-height: 40px;
+	text-align: center;
+	width: 32%;
+}
+
+#change-per{
+	padding-left: 8px;
+}
+
+
+.chart-detail img {
+	width: 100%;
+	height: 100%;
+}
+
+.tab-chart-cur {
+	background-color: #FEFEFE;
+}

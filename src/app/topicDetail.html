@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/topicDetail.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">文章</h1>
+		</header>
+		<div id="" class="mui-content" style="margin-bottom: 35px;">
+			<div id="topic-detail">
+				<div class="author-bar">
+					<div class="line-box-author">
+						<img :src="datas.uheadurl" />
+						<div id="user-info">
+							<div id="user-nick">
+								{{datas.uname}}
+							</div>
+							<div id="pubtime">
+								發表于：{{datas.time}}之前
+							</div>		
+						</div>
+						<div class="follow-btn">
+							<button type="button" class="mui-btn" v-if="datas.follower" @tap="remove_relation(datas)">已關注</button>
+							<button type="button" class="mui-btn mui-btn-primary" v-else @tap="add_relation(datas)">+ 關注</button>
+						</div>		
+					</div>
+				</div>
+				<div id="topic-content">
+					{{datas.content}}
+				</div>
+				<div class="tail">
+					<div class="upcount" @tap="upCountTopic(datas)">
+						{{datas.upcounts}}<span class=" iconfont icon-dianzan"></span>
+					</div>
+					<div class="replay">
+						{{datas.replays}}<span class="iconfont icon-pinglun3-copy"></span>
+					</div>
+					<div class="viewcount">
+						{{datas.interviews}}<span class="iconfont icon-liulanliang"></span>
+					</div>
+				</div> 
+                    <!--作者：BideWong
+                    	时间：2018-10-15
+                    	描述：  end 文章-->
+	        	<div id="" style="padding: 10px; background-color: #B6B6B6;"> 
+	        		评论（{{datas.interviews}}）
+	        	</div>
+			</div> 
+        	<div id="reply-items">
+        		<div v-for="it in datas" class="reply-item" style="background-color: #FAFAFA;">
+					<div class="head">
+						<div class="head-img" style="line-height: 30px;">
+							<img :src="it.uheadurl" style="width: 30px; height: 30px;"/>
+						</div>
+						<div class="head-user">
+							<span id="" style="color: royalblue;" @tap="toUserinfo(it)">
+								{{it.uname}}
+							</span> 
+						</div>
+						<div class="head-type" v-if="it.replyid > 0">
+							<span id="" style="color: darkgray;">
+								{{it.type_desc}}
+							</span>
+						</div>
+						<div class="head-reply-user" v-if="it.replyid > 0">
+							<span id="" style="color: royalblue;">
+								{{it.reply_uname}}
+							</span>
+						</div>
+						<div class="head-time">
+							<span id="" style="color: darkgray;">
+								{{it.time}}之前
+							</span>
+						</div>
+					</div>
+					<div class="content">
+						{{it.content}}
+					</div>
+					<div class="tail" style="padding-right: 20px;">
+						<div class="upcount" @tap="upCountReply(it)">
+							{{it.upcounts}}<span class=" iconfont icon-dianzan"></span>
+						</div>
+					</div>
+				</div>		
+        	</div>
+        	<!--	end reply-item	-->
+        	<div id="button-bar">
+        		<div id="mark">
+        			<button id="btn-mark" type="button" class="mui-btn mui-btn-block">收藏</button>
+        		</div>
+        		<div id="reply">
+        			<button id="btn-reply" type="button" class="mui-btn mui-btn-block">回復</button> 
+        		</div>
+        	</div>
+ 
+		</div>
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/jquery-min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		var pramaData = {};   // 父頁面傳送過來的數據
+		
+		/********
+		 * VM相关的操作函数  提取出来:
+		 */
+		/***
+		 * post 請求到後端
+		 * @param {Object} postdata：
+		 * @param {Object} _url
+		 * @param {Object} cb
+		 */
+		function fn_ajax_post(postdata, _url, cb) {
+			cb = cb || mui.noop;
+			
+			app.fillToken(postdata);
+			
+			mui.ajax({
+		            type: "post",
+					url: _url,
+					data:postdata,
+		            timeout: 3000,
+		            success: function(data) {
+		            	console.log("success: URL:" + _url );
+		            	
+		            	if(data['errcode'] == 0){
+		            		cb(data['retdata']);
+		            	} else {
+		            		plus.nativeUI.toast(data['errmsg']);
+		            	}
+		            },
+		            error: function(xhr, type, errorThrown) {
+		                plus.nativeUI.toast(errorThrown);
+		            }
+		        });// ajax
+		}
+		
+		/**
+		 * 給文章點贊
+		 * @param {Object} item
+		 */
+		function fnUpCountTopic(item) {
+	//		var state = owner.getState();
+	//		if (!state) {
+	//			mui.alert("請登錄！", "提示");
+	//			return;
+	//		}
+			postdata = {}
+			postdata.aid = item.id;
+			
+			fn_ajax_post(postdata, urls.url_topicUpcountOnly, function(dat){
+				item.upcounts += 1;
+				plus.nativeUI.toast("點贊成功！");
+			});
+		};
+	
+		/***
+		 * 文章相关的数据，父窗口传送过来
+		 */
+		var topicvm = new Vue({
+			el:'#topic-detail',
+			data:{
+				datas:{}
+			},
+			methods:{
+				resetData:function(){//重置数据
+					Object.assign(this.$data, {});
+				},
+				upCountTopic:function(item) {
+					console.log("给文章（话题）点赞:" + item.title);
+					fnUpCountTopic(item);
+				},
+				add_relation:function(dat) {
+					var data = {}
+					data.fuid = dat.uid;  // uid 給 fuid 關注
+					app.fillToken(data);
+					
+					fn_ajax_post(data, urls.url_followerAdd, function(resp){
+						dat.follower = true;
+					});
+				},
+				remove_relation:function(dat) {
+					var data = {}
+					data.fuid = dat.uid;   //  uid 取關 fuid
+					app.fillToken(data);
+					
+					fn_ajax_post(data, urls.url_followerDel, function(resp){
+						dat.follower = false;
+					});
+				}
+			}
+		});
+		
+		var userinfoPage;
+		var replyPage;
+	</script>
+	<script src="js/topicDetail.js"></script>
+</html>

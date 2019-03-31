@@ -1,0 +1,136 @@
+{
+  "main.html": {
+    "refer": [
+      "setting.html",
+      "login.html",
+      "index.html",
+      "my.html",
+      "matchs.html",
+      "discuss.html",
+      "contest.html"
+    ],
+    "resources": [
+      "setting.html",
+      "index.html",
+      "matchs.html",
+      "discuss.html",
+      "my.html",
+      "contest.html"
+    ]
+  },
+  "login.html": {
+    "refer": [
+      "main.html",
+      "reg.html",
+      "setting.html",
+      "forget_password.html"
+    ],
+    "resources": [
+      "css/style.css",
+      "fonts/mui.ttf"
+    ]
+  },
+  "my.html": {
+    "refer": [
+      "setting.html"
+    ]
+  },
+  "matchs.html": {
+    "refer": [
+      "createMatch.html",
+      "searchMatchs.html"
+    ]
+  },
+  "index.html": {
+    "refer": [
+      "market.html",
+      "myfavoritestock.html",
+      "dalao.html",
+      "bankuai.html",
+      "mystockposition.html",
+      "setting.html"
+    ]
+  },
+  "market.html": {
+    "refer": [
+      "indexDetail.html",
+      "bankuaiStockList.html"
+    ]
+  },
+  "bankuaiStockList.html": {
+    "refer": [
+      "stockDetail.html"
+    ]
+  },
+  "bankuai.html": {
+    "refer": [
+      "bankuaiStockList.html"
+    ]
+  },
+  "myfavoritestock.html": {
+    "refer": [
+      "stockDetail.html"
+    ]
+  },
+  "mystockposition.html": {
+    "refer": [
+      "myfavoritestock.html",
+      "historytradelist.html",
+      "sellStock.html",
+      "rebackStock.html",
+      "trade.html"
+    ]
+  },
+  "sellStock.html": {
+    "refer": [
+      "trade.html"
+    ]
+  },
+  "stockDetail.html": {
+    "refer": [
+      "trade.html"
+    ]
+  },
+  "contest.html": {
+    "refer": [
+      "searchMatchs.html",
+      "contestDetail.html",
+      "createMatch.html"
+    ],
+    "resources": [
+      "images/qq.png"
+    ]
+  },
+  "contestDetail.html": {
+    "refer": [
+      "contestTrade.html"
+    ]
+  },
+  "contestTrade.html": {
+    "refer": [
+      "historytradelist.html",
+      "sellStock.html",
+      "rebackStock.html",
+      "myfavoritestock.html",
+      "trade.html"
+    ]
+  },
+  "discuss.html": {
+    "refer": [
+      "newTopic.html",
+      "topicDetail.html",
+      "userinfo.html"
+    ],
+    "resources": [
+      "images/qq.png"
+    ]
+  },
+  "topicDetail.html": {
+    "resources": [
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "replay.html"
+    ]
+  }
+}
