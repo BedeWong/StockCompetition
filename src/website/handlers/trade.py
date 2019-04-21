@@ -12,7 +12,6 @@ class BuyStockHander(BaseHandler):
     """
     下訂單
     """
-
     @required_login
     def post(self, *args, **kwargs):
         """
@@ -26,7 +25,7 @@ class BuyStockHander(BaseHandler):
         stock_amount = (int)(self.get_argument("amount"))
 
         try:
-            SVC_TradeRecode.add_recode(u_id, 1, stock_price, stock_amount, stock_code, stock_name)
+            SVC_TradeRecode.add_order(u_id, 1, stock_price, stock_amount, stock_code, stock_name)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -39,6 +38,7 @@ class BuyStockHander(BaseHandler):
             errcode = RET.RET_OK,
             errmsg = ""
         ))
+
 
 class SaleStockHandler(BaseHandler):
     """
@@ -53,7 +53,7 @@ class SaleStockHandler(BaseHandler):
         stock_amount = (int)(self.get_argument("amount"))
 
         try:
-            SVC_TradeRecode.add_recode(u_id, 2, stock_price, stock_amount, stock_code, stock_name)
+            SVC_TradeRecode.add_order(u_id, 2, stock_price, stock_amount, stock_code, stock_name)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -67,11 +67,11 @@ class SaleStockHandler(BaseHandler):
             errmsg=""
         ))
 
+
 class GetTradeHistoryHandler(BaseHandler):
     """
     獲取交易歷史記錄
     """
-
     @required_login
     def get(self, *args, **kwargs):
         """

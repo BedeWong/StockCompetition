@@ -128,8 +128,34 @@ class SVC_UserStocks(object):
         return True, ""
 
 
+    # @staticmethod
+    # def get_stock_list(uid, lmt=100):
+    #     """
+    #     列出用戶的持股信息，默認100條
+    #     return: a list,
+    #     """
+    #     if not uid:
+    #         logging.error("uid err", uid)
+    #         raise Exception("parameter err")
+    #
+    #     lst = None
+    #     try:
+    #         lst = dbsession.query(UserStock).filter_by(u_id=uid).limit(lmt).all()
+    #     except Exception as e:
+    #         logging.error(e)
+    #         dbsession.rollback()
+    #         raise e
+    #
+    #     res = []
+    #     for it in lst:
+    #         res.append(it.to_json())
+    #
+    #     sz = len(res)
+    #     logging.debug("get_stocks: ret.length:", sz)
+    #     return res
+
     @staticmethod
-    def get_stock_list(uid, lmt=100):
+    def get_stock_list(uid, limit=100):
         """
         列出用戶的持股信息，默認100條
         return: a list,
@@ -138,21 +164,26 @@ class SVC_UserStocks(object):
             logging.error("uid err", uid)
             raise Exception("parameter err")
 
-        lst = None
+        sql = "select * from tb_user_positions where user_id = %s" \
+              " order by updated_at desc" \
+              " limit %d" % (uid, limit)
+        result = []
         try:
-            lst = dbsession.query(UserStock).filter_by(u_id=uid).limit(lmt).all()
+            query_res = dbsession.execute(sql)
+            query_res = query_res.fetchall()
         except Exception as e:
             logging.error(e)
-            dbsession.rollback()
-            raise e
+            raise
 
-        res = []
-        for it in lst:
-            res.append(it.to_json())
+        # table column
+        headers = ("id", "create_at", "update_at", "delete_at",
+                   "uid", "name", "code", "count", "price",
+                   "freeze")
+        for item in query_res:
+            dct = dict(zip(headers, item))
+            result.append(dct)
 
-        sz = len(res)
-        logging.debug("get_stocks: ret.length:", sz)
-        return res
+        return result
 
 #####################################################################3
 #####   test
@@ -192,8 +223,10 @@ def test_del():
         print(e)
 
 def test_get_lst():
+    res = None
     try:
-        res = SVC_UserStocks.get_stock_list("27052237")
+        res = SVC_UserStocks.get_stock_list("27052242")
+        # res = SVC_UserStocks.get_stock_list("27052237")
     except Exception as e:
         traceback.print_exc()
         print(e)
@@ -203,8 +236,8 @@ def test_get_lst():
 
 def main():
     # test_add()
-    # test_get_lst()
-    test_del()
+    test_get_lst()
+    # test_del()
 
 
 if __name__ == '__main__':

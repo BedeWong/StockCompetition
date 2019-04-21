@@ -5,6 +5,7 @@ from handlers.models.tb_user_trade_recode import TradeRecode
 from handlers.models.tb_user import User
 
 from handlers.services.svc_dongtai import SVC_Dongtai
+import config
 
 # exceptions
 from sqlalchemy.orm.exc import NoResultFound
@@ -12,24 +13,25 @@ from sqlalchemy.orm.exc import NoResultFound
 import logging
 import  traceback
 import json
+import time
+import hashlib
+import requests
 
 class SVC_TradeRecode(object):
     """
     提供trade recode表的操作：
     """
-
     @staticmethod
-    def add_recode(uid, type, price, amount, code, name):
+    def add_order(uid, type, price, amount, code, name, contest_id=0):
         """
-        添加一條記錄：
-            買入： 凍結用戶餘額，餘額不足不能繼續處理
-            賣出：扣除交易手續費，用戶成交的額度在交易系統中給用戶處理
+        委托下单
         :param uid: 用戶id
         :param type: B/S  1買入  2 賣出
         :param price:  價格
         :param amount:  成交量
         :param code:    股票代碼
         :param name:  股票名字
+        :param contest_id: 比赛场次，非0为比赛下单（代码耦合了）
         :return:  no val, if err throw exception
         """
 
@@ -37,170 +39,280 @@ class SVC_TradeRecode(object):
             logging.error("type err", type)
             raise Exception("type err")
 
-        volume = amount * price
-        charge = round(volume * 0.00025, 2)    # 此值應該存放在配置中！！
-        if charge < 5 :
-            charge = 5
+        # volume = amount * price
+        # charge = round(volume * 0.00025, 2)    # 此值應該存放在配置中！！
+        # if charge < 5 :
+        #     charge = 5
+        #
+        # recode = TradeRecode()
+        # recode.t_volume = volume
+        # recode.t_stock_price = price
+        # recode.t_stock_amount = amount
+        # recode.t_charge = charge
+        # recode.t_type = type
+        # recode.s_name = name
+        # recode.s_code = code
+        # recode.u_id = uid
+        #
+        # recode.s_id = 0   ## exception  這個值不能為0
+        #
+        # try:
+        #     user = None
+        #     ### 取出用戶的數據，檢測是否餘額是否足夠
+        #     try:
+        #         user = dbsession.query(User).filter_by(id=uid).one()
+        #     except Exception as e:   #  包括了NoResultFound異常， 用戶的數據都找不到了，還處理個毛綫
+        #         logging.error(e)
+        #         dbsession.rollback()
+        #         raise e
+        #
+        #     #### 買入
+        #     if type == 1:
+        #         if user.u_money < volume + charge:
+        #             logging.info("用戶的餘額不足.", uid)
+        #             raise  Exception("餘額不足")
+        #
+        #         user.u_money = (float)(user.u_money) - volume     #  凍結用戶的資產
+        #     user.u_money = (float)(user.u_money) - charge         #  賣出的手續費一樣在這裏扣除
+        #
+        #
+        #     dbsession.merge(user)
+        #     dbsession.add(recode)
+        #     dbsession.commit()
+        # except Exception as e:
+        #     dbsession.rollback()
+        #     logging.error(e)
+        #     raise e
+        #
 
-        recode = TradeRecode()
-        recode.t_volume = volume
-        recode.t_stock_price = price
-        recode.t_stock_amount = amount
-        recode.t_charge = charge
-        recode.t_type = type
-        recode.s_name = name
-        recode.s_code = code
-        recode.u_id = uid
+        now = str(time.time())
 
-        recode.s_id = 0   ## exception  這個值不能為0
+        sign = ''.join(sorted(str(uid) + now + config.RPC_REQUEST_SALT))
+        md5 = hashlib.md5()
+        md5.update(sign.encode())
+        sign = md5.hexdigest()
+        request_body = {
+            "method": "orderService.AddOrder",
+            "params":[{
+                "user_id": uid,
+                "sign": sign,
+                "stock_code": code,
+                "stock_name": name,
+                "stock_count": amount,
+                "stock_price": price,
+                "trade_type": type,
+                "req_time": now,
+                "contest_id": contest_id,
+            }]
+        }
 
         try:
-            user = None
-            ### 取出用戶的數據，檢測是否餘額是否足夠
-            try:
-                user = dbsession.query(User).filter_by(id=uid).one()
-            except Exception as e:   #  包括了NoResultFound異常， 用戶的數據都找不到了，還處理個毛綫
-                logging.error(e)
-                dbsession.rollback()
-                raise e
-
-            #### 買入
-            if type == 1:
-                if user.u_money < volume + charge:
-                    logging.info("用戶的餘額不足.", uid)
-                    raise  Exception("餘額不足")
-
-                user.u_money = (float)(user.u_money) - volume     #  凍結用戶的資產
-            user.u_money = (float)(user.u_money) - charge         #  賣出的手續費一樣在這裏扣除
-
-
-            dbsession.merge(user)
-            dbsession.add(recode)
-            dbsession.commit()
+            resp = requests.post(config.RPC_SERVICE_URL,
+                                 json=request_body,
+                                 headers={'Content-Type': 'application/json'})
         except Exception as e:
-            dbsession.rollback()
-            logging.error(e)
-            raise e
+            raise
 
-        ###  添加到動態記錄
+        if not resp.ok:
+            raise Exception("请求失败, 请稍后再试!")
+
+        content = resp.content.decode()
+        content = json.loads(content)['result']
+        if content['ret_code'] != 0 :
+            raise Exception(content['err_msg'])
+
+        # 添加用户动态.
+        data = {
+            'uid': 'uid',
+            'code': code,
+            'name':name,
+            'contest_id':contest_id,
+            'type': '买入' if type == 1 else '卖出',
+        }
         try:
-            SVC_Dongtai.add_dongtai_trade(uid, json.dumps(recode))
+            SVC_Dongtai.add_dongtai_trade(uid, json.dumps(data))
         except Exception as e:
             logging.error(e)
-            raise e
-
-
+            raise
 
     @staticmethod
-    def get_recode_list(uid, type=0, page=1, limit=40, ext=None):
+    def get_recode_list(uid, type=0, page=1, count=40, ext=None):
         """
-        獲取用戶的交易記錄（不管是否已成交）
+        獲取用戶的交易記錄: 已成交
         :param uid:
         :param type:  0：所有的   1買入  2 賣出
         :param page:    頁
-        :param limit:   每頁加載數據量
+        :param count:   每頁加載數據量
         :param ext： 選項  finished 只加載已完成   unfinished 只加載未完成 all 加載所有
         :return: a list container all objects
         """
-
-        lst = None
-        if not all([isinstance(type, int), isinstance(page, int),isinstance(limit, int)]):
+        if not all([isinstance(type, int), isinstance(page, int),isinstance(count, int)]):
             logging.error("parameter type err:")
             raise Exception("parameter type err:")
 
+        sql = "select * from tb_trade_details "
+        where = " where "
+        limit = " limit %d, %d " % ((page-1)*count, count)
+
+        where_cond = ["user_id=%s" % uid,]
         try:
-            query = dbsession.query(TradeRecode).filter_by(u_id=uid)
-
             if type != 0:
-                query = query.filter_by(t_type=type)
+                where_cond.append("trade_type=%d" % type )
 
-            ##### finished 已完成的
-            ##### unfinished 未完成的
-            ##### all 所有的
-            if ext == 'finished':
-                query = query.filter_by(t_status=1)
-            elif ext == 'unfinished':
-                query = query.filter_by(t_status=0)
-            elif ext == 'all':
-                pass
-            else:
-                logging.warning("ext parameter err. %s", ext)
+            # 组装where条件
+            where += " and ".join(where_cond)
+            sql += where + " order by updated_at desc " + limit
 
-            lst = query.limit(limit).offset((page-1)*limit).all()
+            # 执行sql
+            logging.debug(sql)
+            result = dbsession.execute(sql).fetchall()
         except Exception as e:
-            dbsession.rollback()
             logging.error(e)
-            raise e
+            raise
 
         res = []
-        if lst is None:
+        if result is None:
             return res
 
-        for it in lst:
-            res.append(it.to_json())
+        # 组装数据
+        colums = ("id", "created_at", "updated_at", "deleted_at", "order_id", "uid",
+                  "name", "code", "price", "amount", "type", "charge", "cid")
+        for item in result:
+            dct = dict(zip(colums, item))
+            dct['volume'] = round(
+                (float)(dct['price'])*(float)(dct['amount']),
+                2)
+            res.append(dct)
 
         return res
 
     @staticmethod
-    def revoke_order(uid, id):
+    def revoke_order(uid, order_id, contest_id=0):
         """
         撤銷一個訂單：
         :param uid: 用戶id
-        :param id:   訂單id號
+        :param order_id:   訂單id號
+        :param contest_id:   比赛id， 0表示非比赛（代码耦合了）
         :return:
         """
 
-        if not isinstance(id, int):
+        if not isinstance(order_id, int):
             logging.error("id not a int object %s", id)
             raise Exception("參數錯誤")
 
-        recode = None
-        try:
-            recode = dbsession.query(TradeRecode).filter_by(id=id).filter_by(u_id=uid).one()
-        except NoResultFound as e:
-            logging.warning(e)
-            dbsession.rollback()
-            raise e
+        # recode = None
+        # try:
+        #     recode = dbsession.query(TradeRecode).filter_by(id=id).filter_by(u_id=uid).one()
+        # except NoResultFound as e:
+        #     logging.warning(e)
+        #     dbsession.rollback()
+        #     raise e
+        #
+        # except Exception as e:
+        #     logging.error(e)
+        #     dbsession.rollback()
+        #     raise e
+        #
+        # ## 判斷用記錄的狀態是否對
+        # if recode.t_status != 0:
+        #     logging.error("記錄的狀態不對, 不能撤銷該訂單: %s" %(recode.to_json()) )
+        #     raise Exception("記錄的狀態不對, 不能撤銷該訂單")
+        #
+        # user = None
+        # ### 取出用戶的數據，檢測是否餘額是否足夠
+        # try:
+        #     user = dbsession.query(User).filter_by(id=uid).one()
+        # except NoResultFound as e:   #  包括了NoResultFound異常， 用戶的數據都找不到了，還處理個毛綫
+        #     logging.error(e)
+        #     raise e
+        # except Exception as e:
+        #     dbsession.rollback()
+        #     logging.error(e)
+        #     raise e
+        #
+        # if recode.t_type == 1:    # 買入
+        #     user.u_money = (float)(user.u_money) + (float)(recode.t_volume) + (float)(recode.t_charge)   # 用戶的錢返還回去
+        # elif recode.t_type == 2:  # 賣出  退還凍結的手續費
+        #     user.u_money = (float)(user.u_money) + (float)(recode.t_charge)
+        #
+        # recode.t_status = 2                             # 記錄狀態設置為撤單
+        # try:
+        #     dbsession.merge(recode)
+        #     dbsession.merge(user)
+        #     dbsession.commit()
+        # except Exception as e:
+        #     dbsession.rollback()
+        #     logging.error(e)
+        #     raise e
 
+        # 检测订单数据
+        sql = 'select * from tb_orders where user_id=%d and id=%d ' % (uid, order_id)
+        try:
+            result = dbsession.execute(sql).fetchall()
+            if not result:
+                raise Exception("订单数据不存在. order_id: %d, user_id: %d" %(order_id, uid))
         except Exception as e:
-            logging.error(e)
-            dbsession.rollback()
-            raise e
+            logging.error("数据库错误：%s", e)
+            raise
 
-        ## 判斷用記錄的狀態是否對
-        if recode.t_status != 0:
-            logging.error("記錄的狀態不對, 不能撤銷該訂單: %s" %(recode.to_json()) )
-            raise Exception("記錄的狀態不對, 不能撤銷該訂單")
+        # 拼接数据
+        colums = ("id", "created_at", "updated_at", "deleted_at",
+                  "uid", "name", "code", "price", "count", "transfer_fee",
+                  "brokerage", "freeze_amount", "trade_type", "type",
+                  "status", "contest_id")
+        record = dict(zip(colums, result[0]))
+        # 检查订单状态
+        # enum:
+        #   ORDER_STATUS_TBD = iota
+        # 	ORDER_STATUS_FINISH
+        # 	ORDER_STATUS_REVOKE
+        if record['status'] != 0:
+            raise Exception("撤销订单失败,订单状态不对.")
 
-        user = None
-        ### 取出用戶的數據，檢測是否餘額是否足夠
+        # 构造请求，发送到交易服务器
+        now = str(time.time())
+
+        sign = ''.join(sorted(str(uid) + now + config.RPC_REQUEST_SALT))
+        md5 = hashlib.md5()
+        md5.update(sign.encode())
+        sign = md5.hexdigest()
+        request_body = {
+            "method": "orderService.RevokeOrder",
+            "params": [{
+                "user_id": uid,
+                "sign": sign,
+                "order_id": order_id,
+                "req_time": now,
+                "contest_id": contest_id,
+            }]
+        }
+
         try:
-            user = dbsession.query(User).filter_by(id=uid).one()
-        except NoResultFound as e:   #  包括了NoResultFound異常， 用戶的數據都找不到了，還處理個毛綫
-            logging.error(e)
-            raise e
+            resp = requests.post(config.RPC_SERVICE_URL,
+                                 json=request_body,
+                                 headers={'Content-Type': 'application/json'})
         except Exception as e:
-            dbsession.rollback()
-            logging.error(e)
-            raise e
+            raise
 
-        if recode.t_type == 1:    # 買入
-            user.u_money = (float)(user.u_money) + (float)(recode.t_volume) + (float)(recode.t_charge)   # 用戶的錢返還回去
-        elif recode.t_type == 2:  # 賣出  退還凍結的手續費
-            user.u_money = (float)(user.u_money) + (float)(recode.t_charge)
+        if not resp.ok:
+            raise Exception("请求失败, 请稍后再试!")
 
-        recode.t_status = 2                             # 記錄狀態設置為撤單
+        content = resp.content.decode()
+        content = json.loads(content)['result']
+        if content['ret_code'] != 0:
+            raise Exception(content['err_msg'])
+
+        # 添加用户动态.
+        data = {
+            'uid': record['uid'],
+            'order_id': record['id'],
+            'code': record['code'],
+            'name': record['name'],
+            'contest_id': record['contest_id'],
+            'type': record['type'],
+        }
         try:
-            dbsession.merge(recode)
-            dbsession.merge(user)
-            dbsession.commit()
-        except Exception as e:
-            dbsession.rollback()
-            logging.error(e)
-            raise e
-
-        try:
-            SVC_Dongtai.add_dongtai_invoke(uid, json.dumps(recode))
+            SVC_Dongtai.add_dongtai_revoke(uid, json.dumps(data))
         except Exception as e:
             logging.error(e)
             raise e
@@ -212,44 +324,43 @@ class SVC_TradeRecode(object):
 
 def test_add():
     try:
-        SVC_TradeRecode.add_recode("27052237", 1, 2.88, 1103, "sz002729", "好利来")
-        SVC_TradeRecode.add_recode("27052237", 1, 9.88, 103, "sz002729", "好利来")
-        SVC_TradeRecode.add_recode("27052237", 2, 1.44, 1203, "sz002679", "福建金森")
-        SVC_TradeRecode.add_recode("27052237", 1, 3.12, 123, "sz002679", "福建金森")
-        SVC_TradeRecode.add_recode("27052237", 2, 13.58, 103, "sh600050", "中国联通")
-        SVC_TradeRecode.add_recode("27052237", 1, 5.18, 103, "sh600037", "歌华有线")
+        # SVC_TradeRecode.add_order(27052237, 1, 2.88, 1103, "sz002729", "好利来")
+        # SVC_TradeRecode.add_order(27052237, 1, 9.88, 103, "sz002729", "好利来")
+        # SVC_TradeRecode.add_order(27052237, 2, 1.44, 1203, "sz002679", "福建金森")
+        # SVC_TradeRecode.add_order(27052237, 1, 3.12, 123, "sz002679", "福建金森")
+        SVC_TradeRecode.add_order(27052237, 2, 13.58, 103, "sh600050", "中国联通")
+        SVC_TradeRecode.add_order(27052237, 1, 5.18, 103, "sh600037", "歌华有线")
     except Exception as e:
         traceback.print_exc()
 
 def test_get_list():
     try:
-        lst = SVC_TradeRecode.get_recode_list("27052237", 0)
+        lst = SVC_TradeRecode.get_recode_list("27052243", 0)
         print(lst)
 
-        lst = SVC_TradeRecode.get_recode_list("27052237", 0, 2)
+        lst = SVC_TradeRecode.get_recode_list("27052243", 0, 2)
         print(lst)
 
-        lst = SVC_TradeRecode.get_recode_list("27052237", 1)
+        lst = SVC_TradeRecode.get_recode_list("27052243", 1)
         print(lst)
 
-        lst = SVC_TradeRecode.get_recode_list("27052237", 2)
+        lst = SVC_TradeRecode.get_recode_list("27052243", 2)
         print(lst)
     except Exception as e:
         traceback.print_exc()
 
 def test_invoke_recode():
     try:
-        SVC_TradeRecode.revoke_order("27052237", 35)
-        SVC_TradeRecode.revoke_order("27052237", 37)
-        SVC_TradeRecode.revoke_order("27052237", 37)
+        SVC_TradeRecode.revoke_order(27052242, 24)
+        SVC_TradeRecode.revoke_order(27052243, 21)
     except Exception as e:
         traceback.print_exc()
 
 
 def main():
     # test_add()
-    test_get_list()
-    # test_invoke_recode()
+    # test_get_list()
+    test_invoke_recode()
 
 
 if __name__ == '__main__':
