@@ -177,9 +177,10 @@ class Contest_get_list(BaseHandler):
         :return:
         """
 
-        page = self.get_argument("page", 0)
-        count = self.get_argument("count", 40)
+        page = int(self.get_argument("page", 0))
+        count = int(self.get_argument("count", 40))
 
+        logging.debug('param: page: %d, count: %d' % (page, count))
         res = None
         try:
             res = SVC_Contest.get_contest_list(page, count)
