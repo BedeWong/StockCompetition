@@ -124,7 +124,7 @@ class SVC_Dongtai(object):
         SVC_Dongtai.add_dongtai(uid, Dongtaitype.buy_sale_stock, extmsg=detail)
 
     @staticmethod
-    def add_dongtai_invoke(uid, detail):
+    def add_dongtai_revoke(uid, detail):
         """
         下單股買股票
         :param uid:
@@ -132,7 +132,7 @@ class SVC_Dongtai(object):
         :return:
         """
 
-        SVC_Dongtai.add_dongtai(uid, Dongtaitype.invoke_stock, extmsg=detail)
+        SVC_Dongtai.add_dongtai(uid, Dongtaitype.revoke_stock, extmsg=detail)
 
     @staticmethod
     def add_dongtai_mark_article(uid, aid):
