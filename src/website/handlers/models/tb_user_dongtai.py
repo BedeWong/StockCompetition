@@ -21,7 +21,7 @@ class Dongtaitype(object):
     desc_string[6] = "评论了"
     buy_sale_stock = 7          # 買賣股票
     desc_string[7] = "委托下单"
-    invoke_stock = 8            # 撤單
+    revoke_stock = 8            # 撤單
     desc_string[8] = "撤单"
     mark_article = 9            # 收藏文章
     desc_string[9] = "收藏了文章"
