@@ -1,16 +1,19 @@
 #coding=utf-8
+"""
+bedewong(NOTE)：
+    已废弃。
+    使用新的表：tb_user_posotions
+"""
 
 from sqlalchemy import Column, Integer, DECIMAL, DateTime, String
-
 from handlers.models.basemodel import BaseModel
-
 from datetime import datetime
+
 
 class UserStock(BaseModel):
     """
     用戶持倉的股票
     """
-
     __tablename__ = 'tb_user_hold_stocks'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -36,8 +39,10 @@ class UserStock(BaseModel):
             freeze = self.s_stock_freeze
         )
 
+
 ##################################################  TEST
 from handlers.models.basemodel import Engin
+
 
 def main():
     BaseModel.metadata.create_all(Engin)
