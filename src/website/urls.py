@@ -34,8 +34,8 @@ urls = [
     # 股票交易記錄相關
     (r'/api/stocks/buy', trade.BuyStockHander),
     (r'/api/stocks/sale', trade.SaleStockHandler),
-    (r'/api/stocks/history/tradelist', trade.GetTradeHistoryHandler),
     (r'/api/stocks/invoke', trade.InvokeStockHandler),
+    (r'/api/stocks/history/tradelist', trade.GetTradeHistoryHandler),
 
     # 比賽相關
     (r'/api/contest/create', contest.ContestCreate),

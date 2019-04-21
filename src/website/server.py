@@ -9,6 +9,7 @@ import tornado.httpserver
 
 import redis
 import os
+import sys
 import config
 
 from tornado.options import options, define
