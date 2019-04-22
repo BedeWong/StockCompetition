@@ -126,7 +126,7 @@ class RegisterHanler(BaseHandler):
         umobile  = self.get_argument("mobile")
         upwd     = self.get_argument("pwd")
 
-        sms_code = self.get_argument("smscode")
+        sms_code = str(self.get_argument("smscode"))
         real_sms_code = None
         try:
             real_sms_code = self.redis.get("smscode_%s" % umobile)
@@ -138,6 +138,7 @@ class RegisterHanler(BaseHandler):
             ))
 
         if not real_sms_code:
+            logging.error('驗證碼不存在.')
             return self.write(dict(
                 errcode=RET.RET_SMSCODETIMEOUT,
                 errmsg = RETMSG_MAP[RET.RET_SMSCODETIMEOUT]
@@ -145,6 +146,8 @@ class RegisterHanler(BaseHandler):
 
         logging.debug("smscode=%s, ss_code=%s" % (sms_code, real_sms_code))
         if sms_code != real_sms_code:
+            logging.debug('驗證碼不正確: input:%s, real: %s' %
+                          (sms_code, real_sms_code))
             return self.write(dict(
                 errcode = RET.RET_SMSCODEERR,
                 errmsg = RETMSG_MAP[RET.RET_SMSCODEERR]
