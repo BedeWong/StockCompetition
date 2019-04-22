@@ -418,18 +418,18 @@ def test_add():
     except Exception as e:
         traceback.print_exc()
 
-def test_get_list():
+def test_get_trade_list():
     try:
-        lst = SVC_TradeRecode.get_recode_list("27052243", 0)
+        lst = SVC_TradeRecode.get_recode_list(27152349, 0)
         print(lst)
 
-        lst = SVC_TradeRecode.get_recode_list("27052243", 0, 2)
+        lst = SVC_TradeRecode.get_recode_list(27152349, 0, 2)
         print(lst)
 
-        lst = SVC_TradeRecode.get_recode_list("27052243", 1)
+        lst = SVC_TradeRecode.get_recode_list(27152349, 1)
         print(lst)
 
-        lst = SVC_TradeRecode.get_recode_list("27052243", 2)
+        lst = SVC_TradeRecode.get_recode_list(27152349, 2)
         print(lst)
     except Exception as e:
         traceback.print_exc()
@@ -453,9 +453,9 @@ def test_list_orders():
 
 def main():
     # test_add()
-    # test_get_list()
+    test_get_trade_list()
     # test_invoke_recode()
-    test_list_orders()
+    # test_list_orders()
 
 
 if __name__ == '__main__':
