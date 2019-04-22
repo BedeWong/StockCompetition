@@ -177,6 +177,7 @@ class SVC_TradeRecode(object):
             logging.debug(sql)
             result = dbsession.execute(sql).fetchall()
         except Exception as e:
+            dbsession.rollback()
             logging.error(e)
             raise
 
@@ -271,6 +272,7 @@ class SVC_TradeRecode(object):
             if not result:
                 raise Exception("订单数据不存在. order_id: %d, user_id: %d" %(order_id, uid))
         except Exception as e:
+            dbsession.rollback()
             logging.error("数据库错误：%s", e)
             raise
 
