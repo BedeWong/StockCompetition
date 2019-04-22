@@ -14,9 +14,11 @@ class SVC_userinfo(object):
     def add_user(**kwargs):
         user = User()
         user.u_name = kwargs.get('u_name')
-        user.u_passwd = kwargs.get('u_pwd')
+        user.u_passwd = kwargs.get('u_passwd')
         user.u_email = kwargs.get('u_email')
         user.u_sex = kwargs.get('u_sex')
+        user.u_mobilephone = kwargs.get('u_mobilephone')
+
         logging.debug('SVC_userinfo 注册用户：', user)
 
         dbsession.add(user)
@@ -134,14 +136,19 @@ class SVC_userinfo(object):
         return user
 
 #### test
-def test():
+def test_add():
     # SVC_userinfo.update_user(id=27052237, u_name="wong")
 
     import hashlib
     md5obj = hashlib.md5()
     md5obj.update(b"123456")
     pwd = md5obj.hexdigest()
-    SVC_userinfo.add_user(User(u_name="Bide", u_address="湖南", u_email='1005679098@qq.com', u_sex=1, u_mobilephone=10000000000, u_passwd=pwd))
+    SVC_userinfo.add_user(
+                        u_name="hhhhwwww",
+                        u_email='1005679098@qq.com',
+                        u_sex=1,
+                        u_mobilephone=10000000000,
+                        u_passwd=pwd)
 
 def test_delete():
     SVC_userinfo.delete_user(27152548)
@@ -157,9 +164,9 @@ def test_query():
         print(user.to_json())
 
 def main():
-    test_query()
-    test_query()
-
+    # test_query()
+    # test_query()
+    test_add()
 
 if __name__ == '__main__':
     main()

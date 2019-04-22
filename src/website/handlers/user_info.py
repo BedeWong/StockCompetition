@@ -158,7 +158,7 @@ class RegisterHanler(BaseHandler):
                 u_sex = usex,
                 u_email = uemail,
                 u_mobilephone = umobile,
-                u_pwd = pwd)
+                u_passwd = pwd)
         except Exception as e:
             logging.error(e)
             return self.write(dict(
