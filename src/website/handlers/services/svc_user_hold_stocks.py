@@ -177,13 +177,13 @@ class SVC_UserStocks(object):
             raise
 
         # table column
-        headers = ("id", "create_at", "update_at", "delete_at",
+        headers = ("id", "created_at", "updated_at", "deleted_at",
                    "uid", "name", "code", "count", "price",
                    "freeze")
         for item in query_res:
             dct = dict(zip(headers, item))
-            tm = dct['create_at']
-            dct['create_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['created_at']
+            dct['created_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['updated_at']
             dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['deleted_at']
