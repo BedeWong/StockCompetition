@@ -148,9 +148,11 @@ class ListOrder(BaseHandler):
         try:
             uid = (int)(self.get_argument("uid"))
             cid = (int)(self.get_argument("cid", 0))
-            type = (int)(self.get_argument("type"))
-            page = (int)(self.get_argument("page"))
-            count = (int)(self.get_argument("count"))
+            type = (int)(self.get_argument("type", None))
+            page = (int)(self.get_argument("page", 1))
+            count = (int)(self.get_argument("count", 40))
+
+            assert page > 0
         except Exception as e:
             logging.error(e)
             self.write(dict(
