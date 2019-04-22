@@ -109,14 +109,17 @@ class SVC_TradeRecode(object):
                                  json=request_body,
                                  headers={'Content-Type': 'application/json'})
         except Exception as e:
+            logging.error('请求失败, 请稍后重试.')
             raise
 
         if not resp.ok:
+            logging.error("rpc 服务错误.")
             raise Exception("请求失败, 请稍后再试!")
 
         content = resp.content.decode()
         content = json.loads(content)['result']
         if content['ret_code'] != 0 :
+            logging.error(content['err_msg'])
             raise Exception(content['err_msg'])
 
         # 添加用户动态.
