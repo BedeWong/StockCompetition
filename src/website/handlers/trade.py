@@ -8,6 +8,7 @@ from handlers.basehandler import BaseHandler
 
 from handlers.services.svc_trade_recode import SVC_TradeRecode
 
+
 class BuyStockHander(BaseHandler):
     """
     下訂單
@@ -42,7 +43,7 @@ class BuyStockHander(BaseHandler):
 
 class SaleStockHandler(BaseHandler):
     """
-
+    委托卖单
     """
     @required_login
     def post(self, *args, **kwargs):
@@ -97,14 +98,14 @@ class GetTradeHistoryHandler(BaseHandler):
 
         self.write(dict(
             errcode = RET.RET_OK,
-            errmsg = RETMSG_MAP[RET.RET_SERVERERR],
+            errmsg = RETMSG_MAP[RET.RET_OK],
             retdata = ret
         ))
 
 
-class InvokeStockHandler(BaseHandler):
+class RevokeStockHandler(BaseHandler):
     """
-
+    委托撤单。
     """
     @required_login
     def post(self, *args, **kwargs):
@@ -131,6 +132,47 @@ class InvokeStockHandler(BaseHandler):
             errmsg = ""
         ))
 
+
+class ListOrder(BaseHandler):
+    """
+    列出委托单.
+    """
+    @required_login
+    def get(self, *args, **kwargs):
+        """
+
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+            uid = (int)(self.get_argument("uid"))
+            cid = (int)(self.get_argument("cid"))
+            type = (int)(self.get_argument("type"))
+            page = (int)(self.get_argument("page"))
+            count = (int)(self.get_argument("count"))
+        except Exception as e:
+            logging.error(e)
+            self.write(dict(
+                errcode=RET.RET_PARAMERR,
+                errmsg=RETMSG_MAP[RET.RET_PARAMERR]
+            ))
+
+        try:
+            res = SVC_TradeRecode.list_orders(
+                uid=uid, cid=cid, type=type, page=page, count=count)
+        except Exception as e:
+            logging.error(e)
+            self.write(dict(
+                errcode=RET.RET_SERVERERR,
+                errmsg=RETMSG_MAP[RET.RET_SERVERERR]
+            ))
+
+        self.write(dict(
+            errcode=RET.RET_OK,
+            errmsg=RETMSG_MAP[RET.RET_OK],
+            retdata=res
+        ))
 
 def main():
     pass

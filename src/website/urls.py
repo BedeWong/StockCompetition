@@ -19,8 +19,8 @@ urls = [
     (r'/api/getuserinfo', user_info.GetUserInfo),
     (r'/api/user/([0-9]+)', user_info.UserInfo),
 
-    (r'/piccode', verify_code.PicCodeHandler),
-    (r'/api/checkpic', verify_code.SMSCodeHandler),
+    (r'/api/piccode', verify_code.PicCodeHandler),  # 图片验证码生成
+    (r'/api/checkpic', verify_code.SMSCodeHandler),  # 验证码验证，发送短信
 
     # 用戶自選股
     (r'/api/favoritestock/add', favorite_stocks.AddStock2FavoriteHandler),
@@ -32,10 +32,11 @@ urls = [
     (r'/api/holdstocks/list', user_hold_stocks.GetStockList),
 
     # 股票交易記錄相關
-    (r'/api/stocks/buy', trade.BuyStockHander),
-    (r'/api/stocks/sale', trade.SaleStockHandler),
-    (r'/api/stocks/invoke', trade.InvokeStockHandler),
-    (r'/api/stocks/history/tradelist', trade.GetTradeHistoryHandler),
+    (r'/api/stocks/buy', trade.BuyStockHander),  # 股票委托买
+    (r'/api/stocks/sale', trade.SaleStockHandler),  # 股票委托卖
+    (r'/api/stocks/invoke', trade.RevokeStockHandler),  # 股票委托撤单
+    (r'/api/stocks/orders', trade.ListOrder),  # 委托单列表
+    (r'/api/stocks/history/tradelist', trade.GetTradeHistoryHandler),  # 成交记录
 
     # 比賽相關
     (r'/api/contest/create', contest.ContestCreate),
@@ -47,10 +48,11 @@ urls = [
     (r'/api/contest/checkin', contest.Contest_check_in_contest),
     (r'/api/contest/userinfo', contest.ContestUserInfo),
 
-    (r'/api/contest/stocks/list', contest_trade.ListContestStocks),
-    (r'/api/contest/stocks/buy', contest_trade.BuyStockHander),
+    (r'/api/contest/stocks/list', contest_trade.ListUserContestStocks),  # 用户该场比赛的持股
+    (r'/api/contest/stocks/buy', contest_trade.BuyStockHander),  # 比赛中委托买单
     (r'/api/contest/stocks/sale', contest_trade.SaleStockHandler),
-    (r'/api/contest/stocks/invoke', contest_trade.InvokeStockHandler),
+    (r'/api/contest/stocks/invoke', contest_trade.RevokeStockHandler),
+    (r'/api/contest/stocks/orders', trade.ListOrder),  # 委托单列表
     (r'/api/contest/stocks/history/tradelist', contest_trade.GetTradeHistoryHandler),
 
     # 話題 評論

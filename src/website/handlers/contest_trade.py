@@ -6,10 +6,12 @@ from utils.commons import required_login
 from utils.response_code import RET, RETMSG_MAP
 from handlers.basehandler import BaseHandler
 from handlers.services.svc_contest_user_hold_stocks import SVC_UserStocks
-from handlers.services.svc_contest_trade_recode import SVC_TradeRecode
+from handlers.services.svc_trade_recode import SVC_TradeRecode
 
-class ListContestStocks(BaseHandler):
-    """"""
+class ListUserContestStocks(BaseHandler):
+    """
+    获取用户比赛持仓股
+    """
 
     @required_login
     def get(self, *args, **kwargs):
@@ -61,7 +63,7 @@ class BuyStockHander(BaseHandler):
         stock_amount = (int)(self.get_argument("amount"))
 
         try:
-            SVC_TradeRecode.add_recode(u_id, c_id, 1, stock_price, stock_amount, stock_code, stock_name)
+            SVC_TradeRecode.add_order(u_id, 1, stock_price, stock_amount, stock_code, stock_name, c_id)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -75,21 +77,22 @@ class BuyStockHander(BaseHandler):
             errmsg = ""
         ))
 
+
 class SaleStockHandler(BaseHandler):
     """
 
     """
     @required_login
     def post(self, *args, **kwargs):
-        u_id = self.get_argument("uid")
-        c_id = self.get_argument("cid")
+        u_id = (int)(self.get_argument("uid"))
+        c_id = (int)(self.get_argument("cid"))
         stock_code = self.get_argument("code")
         stock_name = self.get_argument("name")
         stock_price = (float)(self.get_argument("price"))
         stock_amount = (int)(self.get_argument("amount"))
 
         try:
-            SVC_TradeRecode.add_recode(u_id, c_id, 2, stock_price, stock_amount, stock_code, stock_name)
+            SVC_TradeRecode.add_order(u_id, 2, stock_price, stock_amount, stock_code, stock_name, c_id)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -123,7 +126,7 @@ class GetTradeHistoryHandler(BaseHandler):
 
         ret = None
         try:
-            ret = SVC_TradeRecode.get_recode_list(u_id, c_id, type, page, limit, finished)
+            ret = SVC_TradeRecode.get_recode_list(u_id, c_id, type, page, limit)
         except Exception as e:
             logging.error(e)
             self.write(dict(
@@ -139,7 +142,7 @@ class GetTradeHistoryHandler(BaseHandler):
         ))
 
 
-class InvokeStockHandler(BaseHandler):
+class RevokeStockHandler(BaseHandler):
     """
 
     """

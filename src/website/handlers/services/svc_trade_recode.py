@@ -1,8 +1,6 @@
 #coding=utf-8
 
 from handlers.models.basemodel import dbsession
-from handlers.models.tb_user_trade_recode import TradeRecode
-from handlers.models.tb_user import User
 
 from handlers.services.svc_dongtai import SVC_Dongtai
 import config
@@ -19,7 +17,7 @@ import requests
 
 class SVC_TradeRecode(object):
     """
-    提供trade recode表的操作：
+    对接rpc接口
     """
     @staticmethod
     def add_order(uid, type, price, amount, code, name, contest_id=0):
@@ -136,14 +134,14 @@ class SVC_TradeRecode(object):
             raise
 
     @staticmethod
-    def get_recode_list(uid, type=0, page=1, count=40, ext=None):
+    def get_recode_list(uid, type=0, page=1, count=40, cid=0):
         """
         獲取用戶的交易記錄: 已成交
         :param uid:
         :param type:  0：所有的   1買入  2 賣出
         :param page:    頁
         :param count:   每頁加載數據量
-        :param ext： 選項  finished 只加載已完成   unfinished 只加載未完成 all 加載所有
+        :param cid： 比赛id
         :return: a list container all objects
         """
         if not all([isinstance(type, int), isinstance(page, int),isinstance(count, int)]):
@@ -154,7 +152,8 @@ class SVC_TradeRecode(object):
         where = " where "
         limit = " limit %d, %d " % ((page-1)*count, count)
 
-        where_cond = ["user_id=%s" % uid,]
+        # where 条件
+        where_cond = ["user_id=%s" % uid, "contest_id=%d" % cid]
         try:
             if type != 0:
                 where_cond.append("trade_type=%d" % type )
@@ -317,6 +316,54 @@ class SVC_TradeRecode(object):
             logging.error(e)
             raise e
 
+    @staticmethod
+    def list_orders(uid, cid, type=None, page=1, count=40):
+        """
+        获取订单列表.
+        :param uid: 用户id
+        :param cid: 比赛id （0为非比赛委托单）
+        :param page:
+        :param count:
+        :param type:  交易类型
+                TRADE_TYPE_NONE = iota
+                TRADE_TYPE_BUY  # 买入
+                TRADE_TYPE_SALE  # 卖出
+        :return:
+        """
+        uid = (int)(uid)
+        cid = (int)(cid)
+        page = (int)(page)
+        count = (int)(count)
+
+        sql = 'select * from tb_orders where '
+        where_cond = ['user_id=%d' % uid, 'contest_id=%d' % cid,]
+        order_by = ' order by updated_at desc '
+        limit_sql = ' limit %d, %d ' % ((page-1)*count, count)
+
+        if type is not None:
+            # 交易类型过滤
+            where_cond.append('trade_type=%d' % type)
+
+        # 执行sql
+        sql = sql + ' and '.join(where_cond) + \
+                order_by + limit_sql
+        logging.debug('sql: %s' % sql)
+
+        raws = dbsession.execute(sql).fetchall()
+        if not raws:
+            return []
+
+        # table colume
+        colums = ('id', 'created_at', 'updated_at', 'deleted_at', 'uid',
+                  'name', 'code', 'price', 'count', 'transfer_fee',
+                  'brokerage', 'total_value', 'trade_type', 'type',
+                  'status', 'cid')
+        result = []
+        for item in raws:
+            dct = dict(zip(item, colums))
+            result.append(dct)
+
+        return result
 
 
 #####################################################################3
@@ -357,10 +404,20 @@ def test_invoke_recode():
         traceback.print_exc()
 
 
+def test_list_orders():
+    try:
+        print(SVC_TradeRecode.list_orders(27052242, 0))
+        print(SVC_TradeRecode.list_orders(27052242, 2))
+        print(SVC_TradeRecode.list_orders(27052242, 0, 1)) # 买入
+        print(SVC_TradeRecode.list_orders(27052237, 0, 2))
+    except Exception as e:
+        traceback.print_exc()
+
 def main():
     # test_add()
     # test_get_list()
-    test_invoke_recode()
+    # test_invoke_recode()
+    test_list_orders()
 
 
 if __name__ == '__main__':

@@ -164,7 +164,7 @@ class SVC_UserStocks(object):
             logging.error("uid err", uid)
             raise Exception("parameter err")
 
-        sql = "select * from tb_user_positions where user_id = %s" \
+        sql = "select * from tb_user_positions where user_id = %s and stock_count > 0 " \
               " order by updated_at desc" \
               " limit %d" % (uid, limit)
         result = []
