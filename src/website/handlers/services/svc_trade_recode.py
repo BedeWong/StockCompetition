@@ -204,6 +204,7 @@ class SVC_TradeRecode(object):
             dct['charge'] = float(dct['charge'])
             res.append(dct)
 
+        logging.debug(res)
         return res
 
     @staticmethod
