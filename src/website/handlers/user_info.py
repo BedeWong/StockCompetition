@@ -124,7 +124,7 @@ class RegisterHanler(BaseHandler):
         usex = self.get_argument("usex", 0)
         uemail = self.get_argument("uemail")
         umobile  = self.get_argument("mobile")
-        upwd     = self.get_argument("pwd")
+        upwd     = str(self.get_argument("pwd"))
 
         sms_code = str(self.get_argument("smscode")).encode('utf-8')
         real_sms_code = None
@@ -154,7 +154,9 @@ class RegisterHanler(BaseHandler):
             ))
 
         # 密码hash
-        pwd = hashlib.md5().update(upwd.encode('utf8')).hexdigest()
+        md5 = hashlib.md5()
+        md5.update(upwd.encode('utf-8'))
+        pwd = md5.hexdigest()
         try:
             SVC_userinfo.add_user(
                 u_name=uname,
