@@ -104,6 +104,8 @@ class SVC_TradeRecode(object):
             }]
         }
 
+        logging.debug(request_body)
+
         try:
             resp = requests.post(config.RPC_SERVICE_URL,
                                  json=request_body,
