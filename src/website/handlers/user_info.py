@@ -122,7 +122,6 @@ class RegisterHanler(BaseHandler):
     def post(self):
         uname = self.get_argument('uname')
         usex = self.get_argument("usex", 0)
-        uaddress = self.get_argument("uaddress")
         uemail = self.get_argument("uemail")
         umobile  = self.get_argument("mobile")
         upwd     = self.get_argument("pwd")

@@ -34,7 +34,7 @@ urls = [
     # 股票交易記錄相關
     (r'/api/stocks/buy', trade.BuyStockHander),  # 股票委托买
     (r'/api/stocks/sale', trade.SaleStockHandler),  # 股票委托卖
-    (r'/api/stocks/invoke', trade.RevokeStockHandler),  # 股票委托撤单
+    (r'/api/stocks/revoke', trade.RevokeStockHandler),  # 股票委托撤单
     (r'/api/stocks/orders', trade.ListOrder),  # 委托单列表
     (r'/api/stocks/history/tradelist', trade.GetTradeHistoryHandler),  # 成交记录
 
@@ -51,7 +51,7 @@ urls = [
     (r'/api/contest/stocks/list', contest_trade.ListUserContestStocks),  # 用户该场比赛的持股
     (r'/api/contest/stocks/buy', contest_trade.BuyStockHander),  # 比赛中委托买单
     (r'/api/contest/stocks/sale', contest_trade.SaleStockHandler),
-    (r'/api/contest/stocks/invoke', contest_trade.RevokeStockHandler),
+    (r'/api/contest/stocks/revoke', contest_trade.RevokeStockHandler),
     (r'/api/contest/stocks/orders', trade.ListOrder),  # 委托单列表
     (r'/api/contest/stocks/history/tradelist', contest_trade.GetTradeHistoryHandler),
 
