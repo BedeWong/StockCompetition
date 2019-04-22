@@ -19,9 +19,20 @@ class SVC_userinfo(object):
         user.u_sex = kwargs.get('u_sex')
         user.u_mobilephone = kwargs.get('u_mobilephone')
 
-        logging.debug('SVC_userinfo 注册用户：', user)
 
         dbsession.add(user)
+        dbsession.commit()
+
+        logging.debug('SVC_userinfo 注册用户：%s', user)
+        # 处理用户资产信息
+        user_money = user.u_money
+        user_mv = 0
+        uid = user.id
+
+        sql = 'insert into tb_user_assets ' \
+              'set user_id=%s, user_money=%.2f, user_mv=%.2f' \
+              % (uid, user_money, user_mv)
+        dbsession.execute(sql)
         dbsession.commit()
 
         return user
