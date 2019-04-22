@@ -186,15 +186,15 @@ class SVC_TradeRecode(object):
             return res
 
         # 组装数据
-        colums = ("id", "created_at", "updated_at", "deleted_at", "order_id", "uid",
+        colums = ("id", "submit_time", "updated_at", "deleted_at", "order_id", "uid",
                   "name", "code", "price", "amount", "type", "charge", "cid")
         for item in result:
             dct = dict(zip(colums, item))
             dct['volume'] = round(
                 (float)(dct['price'])*(float)(dct['amount']),
                 2)
-            tm = dct['created_at']
-            dct['created_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['submit_time']
+            dct['submit_time'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['updated_at']
             dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['deleted_at']

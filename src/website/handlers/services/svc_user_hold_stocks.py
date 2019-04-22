@@ -161,7 +161,7 @@ class SVC_UserStocks(object):
         return: a list,
         """
         if not uid:
-            logging.error("uid err", uid)
+            logging.error("uid err")
             raise Exception("parameter err")
 
         sql = "select * from tb_user_positions where user_id = %s and stock_count > 0 " \
@@ -172,6 +172,7 @@ class SVC_UserStocks(object):
             query_res = dbsession.execute(sql)
             query_res = query_res.fetchall()
         except Exception as e:
+            dbsession.rollback()
             logging.error(e)
             raise
 
@@ -183,6 +184,7 @@ class SVC_UserStocks(object):
             dct = dict(zip(headers, item))
             result.append(dct)
 
+        logging.debug(result)
         return result
 
 #####################################################################3

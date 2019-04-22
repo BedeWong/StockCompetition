@@ -101,7 +101,7 @@ class SVC_FavoriteStocks(object):
 
         # test
         sz = len(res)
-        logging.debug("get_stocks: ret.length:", sz)
+        logging.debug("get_stocks: ret.length: %d" % sz)
         return res
 
 
