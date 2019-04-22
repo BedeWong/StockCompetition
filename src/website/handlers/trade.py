@@ -80,7 +80,7 @@ class GetTradeHistoryHandler(BaseHandler):
         :return:
         """
         u_id = (int)(self.get_argument("uid"))
-        c_id = (int)(self.get_argument('cid'))
+        c_id = (int)(self.get_argument('cid', 0))
         type = (int)(self.get_argument("tradetype", 0))   # 默認所有的數據都要加載
         page = (int)(self.get_argument("page", 1))
         limit = (int)(self.get_argument("limit", 100))
