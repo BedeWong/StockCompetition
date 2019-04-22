@@ -47,7 +47,7 @@ class SaleStockHandler(BaseHandler):
     """
     @required_login
     def post(self, *args, **kwargs):
-        u_id = self.get_argument("uid")
+        u_id = int(self.get_argument("uid"))
         stock_code = self.get_argument("code")
         stock_name = self.get_argument("name")
         stock_price = (float)(self.get_argument("price"))
@@ -113,7 +113,7 @@ class RevokeStockHandler(BaseHandler):
 
         :return:
         """
-        u_id = self.get_argument("uid")
+        u_id = int(self.get_argument("uid"))
         id = (int)(self.get_argument("id"))
 
         try:
