@@ -126,7 +126,7 @@ class RegisterHanler(BaseHandler):
         umobile  = self.get_argument("mobile")
         upwd     = self.get_argument("pwd")
 
-        sms_code = str(self.get_argument("smscode"))
+        sms_code = str(self.get_argument("smscode")).encode('utf-8')
         real_sms_code = None
         try:
             real_sms_code = self.redis.get("smscode_%s" % umobile)
