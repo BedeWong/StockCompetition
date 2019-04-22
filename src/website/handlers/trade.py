@@ -150,7 +150,7 @@ class ListOrder(BaseHandler):
         trade_type = self.get_argument("type", None)
         page = (int)(self.get_argument("page", 1))
         count = (int)(self.get_argument("count", 40))
-        finished = (self.get_argument("ext", None))
+        finished = self.get_argument("ext", None)
 
         res = []
         try:
@@ -163,6 +163,7 @@ class ListOrder(BaseHandler):
                 errmsg=RETMSG_MAP[RET.RET_SERVERERR]
             ))
 
+        logging.debug(res)
         self.write(dict(
             errcode=RET.RET_OK,
             errmsg=RETMSG_MAP[RET.RET_OK],

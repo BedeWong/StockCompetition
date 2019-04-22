@@ -190,6 +190,12 @@ class SVC_TradeRecode(object):
             dct['volume'] = round(
                 (float)(dct['price'])*(float)(dct['amount']),
                 2)
+            tm = dct['created_at']
+            dct['created_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['updated_at']
+            dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['deleted_at']
+            dct['deleted_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             res.append(dct)
 
         return res
@@ -369,7 +375,15 @@ class SVC_TradeRecode(object):
                   'status', 'cid')
         result = []
         for item in raws:
-            dct = dict(zip(item, colums))
+            dct = dict(zip(colums, item))
+
+            tm = dct['created_at']
+            dct['created_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['updated_at']
+            dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['deleted_at']
+            dct['deleted_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+
             result.append(dct)
 
         return result
@@ -415,18 +429,18 @@ def test_invoke_recode():
 
 def test_list_orders():
     try:
-        print(SVC_TradeRecode.list_orders(27052242, 0))
-        print(SVC_TradeRecode.list_orders(27052242, 2))
-        print(SVC_TradeRecode.list_orders(27052242, 0, 1)) # 买入
-        print(SVC_TradeRecode.list_orders(27052237, 0, 2))
+        print(SVC_TradeRecode.list_orders(27152349, 0))
+        print(SVC_TradeRecode.list_orders(27152349, 2))
+        # print(SVC_TradeRecode.list_orders(27152349, 0, 1)) # 买入
+        # print(SVC_TradeRecode.list_orders(27052237, 0, 2))
     except Exception as e:
         traceback.print_exc()
 
 def main():
-    test_add()
+    # test_add()
     # test_get_list()
     # test_invoke_recode()
-    # test_list_orders()
+    test_list_orders()
 
 
 if __name__ == '__main__':
