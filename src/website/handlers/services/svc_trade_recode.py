@@ -384,6 +384,11 @@ class SVC_TradeRecode(object):
             tm = dct['deleted_at']
             dct['deleted_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
 
+            dct['price'] = float(dct['price'])
+            dct['brokerage'] = float(dct['brokerage'])
+            dct['transfer_fee'] = float(dct['transfer_fee'])
+            dct['total_value'] = float(dct['total_value'])
+
             result.append(dct)
 
         return result
