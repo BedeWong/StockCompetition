@@ -150,14 +150,26 @@ class RegisterHanler(BaseHandler):
                 errmsg = RETMSG_MAP[RET.RET_SMSCODEERR]
             ))
 
+        # 密码hash
         pwd = hashlib.md5().update(upwd.encode('utf8')).hexdigest()
-        SVC_userinfo.add_user(u_name=uname,
-                              u_sex = usex,
-                              u_email = uemail,
-                              u_mobilephone = umobile,
-                              u_pwd = pwd
-                              )
+        try:
+            SVC_userinfo.add_user(
+                u_name=uname,
+                u_sex = usex,
+                u_email = uemail,
+                u_mobilephone = umobile,
+                u_pwd = pwd)
+        except Exception as e:
+            logging.error(e)
+            return self.write(dict(
+                errcode=RET.RET_SERVERERR,
+                errmsg=RETMSG_MAP[RET.RET_SERVERERR]
+            ))
 
+        # ok
+        return self.write(
+            dict(errcode = RET.RET_OK,
+                 errmsg = RETMSG_MAP[RET.RET_OK]))
 
 class GetUserInfo(BaseHandler):
     """用於檢測用戶的token是否過期，過期返回錯誤碼，未過期返回用戶數據"""

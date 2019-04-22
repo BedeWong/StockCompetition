@@ -17,10 +17,12 @@ class SVC_userinfo(object):
         user.u_passwd = kwargs.get('u_pwd')
         user.u_email = kwargs.get('u_email')
         user.u_sex = kwargs.get('u_sex')
+        logging.debug('SVC_userinfo 注册用户：', user)
 
         dbsession.add(user)
         dbsession.commit()
 
+        return user
 
     @staticmethod
     def delete_user(arg):
