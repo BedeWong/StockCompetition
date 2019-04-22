@@ -147,9 +147,10 @@ class ListOrder(BaseHandler):
         """
         u_id = (int)(self.get_argument("uid"))
         c_id = (int)(self.get_argument("cid", 0))
-        trade_type = (int)(self.get_argument("type", None))
+        trade_type = self.get_argument("type", None)
         page = (int)(self.get_argument("page", 1))
         count = (int)(self.get_argument("count", 40))
+        finished = (self.get_argument("ext", None))
 
         res = []
         try:
