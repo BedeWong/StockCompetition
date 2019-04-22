@@ -145,24 +145,16 @@ class ListOrder(BaseHandler):
         :param kwargs:
         :return:
         """
-        try:
-            uid = (int)(self.get_argument("uid"))
-            cid = (int)(self.get_argument("cid", 0))
-            type = (int)(self.get_argument("type", None))
-            page = (int)(self.get_argument("page", 1))
-            count = (int)(self.get_argument("count", 40))
+        u_id = (int)(self.get_argument("uid"))
+        c_id = (int)(self.get_argument("cid", 0))
+        trade_type = (int)(self.get_argument("type", None))
+        page = (int)(self.get_argument("page", 1))
+        count = (int)(self.get_argument("count", 40))
 
-            assert page > 0
-        except Exception as e:
-            logging.error(e)
-            self.write(dict(
-                errcode=RET.RET_PARAMERR,
-                errmsg=RETMSG_MAP[RET.RET_PARAMERR]
-            ))
-
+        res = []
         try:
             res = SVC_TradeRecode.list_orders(
-                uid=uid, cid=cid, type=type, page=page, count=count)
+                uid=u_id, cid=c_id, type=trade_type, page=page, count=count)
         except Exception as e:
             logging.error(e)
             self.write(dict(
