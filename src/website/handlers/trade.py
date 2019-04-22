@@ -19,7 +19,7 @@ class BuyStockHander(BaseHandler):
 
         :return:
         """
-        u_id = self.get_argument("uid")
+        u_id = int(self.get_argument("uid"))
         stock_code = self.get_argument("code")
         stock_name = self.get_argument("name")
         stock_price = (float)(self.get_argument("price"))

@@ -419,10 +419,10 @@ def test_list_orders():
         traceback.print_exc()
 
 def main():
-    # test_add()
+    test_add()
     # test_get_list()
     # test_invoke_recode()
-    test_list_orders()
+    # test_list_orders()
 
 
 if __name__ == '__main__':
