@@ -11,11 +11,12 @@ class SVC_userinfo(object):
     '''
 
     @staticmethod
-    def add_user(user=None, **kwargs):
-
-        if user is None:
-            user = {}
-            user.update(kwargs)
+    def add_user(**kwargs):
+        user = User()
+        user.u_name = kwargs.get('u_name')
+        user.u_passwd = kwargs.get('u_pwd')
+        user.u_email = kwargs.get('u_email')
+        user.u_sex = kwargs.get('u_sex')
 
         dbsession.add(user)
         dbsession.commit()

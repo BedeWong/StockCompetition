@@ -19,7 +19,7 @@ class User(BaseModel):
     u_vistors       = Column(Integer, default=0)
     u_passwd        = Column(String(32), nullable=False)
     u_paypwd        = Column(String(32), default='123456')
-    u_headurl       = Column(String(32), default='')
+    u_headurl       = Column(String(32), default='images/qq.jpg')
     u_describe      = Column(String(256), default='')
     u_descimg       = Column(String(32), default='')
     u_level         = Column(Integer, default=1) # 1级，愣头青
@@ -37,7 +37,7 @@ class User(BaseModel):
 
 
     def __repr__(self):
-        return "TABLE <User: %s>" % self.to_json();
+        return "TABLE <User: %s>" % self.to_json()
 
     def to_dict(self):
         return dict(

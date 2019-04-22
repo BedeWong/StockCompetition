@@ -153,7 +153,6 @@ class RegisterHanler(BaseHandler):
         pwd = hashlib.md5().update(upwd.encode('utf8')).hexdigest()
         SVC_userinfo.add_user(u_name=uname,
                               u_sex = usex,
-                              # u_address = usex,
                               u_email = uemail,
                               u_mobilephone = umobile,
                               u_pwd = pwd
