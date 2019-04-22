@@ -83,7 +83,7 @@ class GetTradeHistoryHandler(BaseHandler):
         type = (int)(self.get_argument("tradetype", 0))   # 默認所有的數據都要加載
         page = (int)(self.get_argument("page", 1))
         limit = (int)(self.get_argument("limit", 40))
-        finished = (self.get_argument("ext", 'all'))   # inished 只加載已完成   unfinished 只加載未完成 all 加載所有
+        finished = (self.get_argument("ext", None))   # 是否只加载已完成
 
         ret = None
         try:
@@ -147,7 +147,7 @@ class ListOrder(BaseHandler):
         """
         try:
             uid = (int)(self.get_argument("uid"))
-            cid = (int)(self.get_argument("cid"))
+            cid = (int)(self.get_argument("cid", 0))
             type = (int)(self.get_argument("type"))
             page = (int)(self.get_argument("page"))
             count = (int)(self.get_argument("count"))

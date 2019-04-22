@@ -139,7 +139,7 @@ class SVC_TradeRecode(object):
             raise
 
     @staticmethod
-    def get_recode_list(uid, type=0, page=1, count=40, cid=0):
+    def get_recode_list(uid, type=0, page=1, count=40, cid=0, finished=None):
         """
         獲取用戶的交易記錄: 已成交
         :param uid:
@@ -147,6 +147,7 @@ class SVC_TradeRecode(object):
         :param page:    頁
         :param count:   每頁加載數據量
         :param cid： 比赛id
+        :param finished: 已完成
         :return: a list container all objects
         """
         if not all([isinstance(type, int), isinstance(page, int),isinstance(count, int)]):
@@ -162,6 +163,9 @@ class SVC_TradeRecode(object):
         try:
             if type != 0:
                 where_cond.append("trade_type=%d" % type )
+
+            if finished:
+                where_cond.append("order_status != 0")
 
             # 组装where条件
             where += " and ".join(where_cond)
