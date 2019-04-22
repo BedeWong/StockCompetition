@@ -79,15 +79,16 @@ class GetTradeHistoryHandler(BaseHandler):
 
         :return:
         """
-        u_id = self.get_argument("uid")
+        u_id = (int)(self.get_argument("uid"))
+        c_id = (int)(self.get_argument('cid'))
         type = (int)(self.get_argument("tradetype", 0))   # 默認所有的數據都要加載
         page = (int)(self.get_argument("page", 1))
-        limit = (int)(self.get_argument("limit", 40))
+        limit = (int)(self.get_argument("limit", 100))
         finished = (self.get_argument("ext", None))   # 是否只加载已完成
 
         ret = None
         try:
-            ret = SVC_TradeRecode.get_recode_list(u_id, type, page, limit, finished)
+            ret = SVC_TradeRecode.get_recode_list(u_id, type, page, limit, cid=c_id, finished=finished)
         except Exception as e:
             logging.error(e)
             self.write(dict(

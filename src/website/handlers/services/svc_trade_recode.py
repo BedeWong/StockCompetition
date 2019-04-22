@@ -139,7 +139,7 @@ class SVC_TradeRecode(object):
             raise
 
     @staticmethod
-    def get_recode_list(uid, type=0, page=1, count=40, cid=0, finished=None):
+    def get_recode_list(uid, type=0, page=1, count=100, cid=0, finished=None):
         """
         獲取用戶的交易記錄: 已成交
         :param uid:
@@ -159,13 +159,15 @@ class SVC_TradeRecode(object):
         limit = " limit %d, %d " % ((page-1)*count, count)
 
         # where 条件
-        where_cond = ["user_id=%s" % uid, "contest_id=%d" % cid]
+        where_cond = ["user_id=%d" % uid, "contest_id=%d" % cid]
         try:
             if type != 0:
                 where_cond.append("trade_type=%d" % type )
 
-            if finished:
+            if finished == 'finished':
                 where_cond.append("order_status != 0")
+            elif finished == 'unfinished':
+                where_cond.append("order_status = 0")
 
             # 组装where条件
             where += " and ".join(where_cond)
@@ -196,6 +198,8 @@ class SVC_TradeRecode(object):
             dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['deleted_at']
             dct['deleted_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+
+            dct['price'] = float(dct['price'])
             res.append(dct)
 
         return res
