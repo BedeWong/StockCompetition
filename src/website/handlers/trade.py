@@ -155,7 +155,7 @@ class ListOrder(BaseHandler):
         res = []
         try:
             res = SVC_TradeRecode.list_orders(
-                uid=u_id, cid=c_id, type=trade_type, page=page, count=count)
+                uid=u_id, cid=c_id, type=trade_type, page=page, count=count, finished=finished)
         except Exception as e:
             logging.error(e)
             self.write(dict(

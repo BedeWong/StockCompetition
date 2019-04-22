@@ -332,7 +332,7 @@ class SVC_TradeRecode(object):
             raise e
 
     @staticmethod
-    def list_orders(uid, cid, type=None, page=1, count=40):
+    def list_orders(uid, cid, type=None, page=1, count=40, finished=None):
         """
         获取订单列表.
         :param uid: 用户id
@@ -359,6 +359,12 @@ class SVC_TradeRecode(object):
             # 交易类型过滤
             where_cond.append('trade_type=%d' % type)
 
+        if finished == 'finished':
+            where_cond.append('order_status!=0')
+
+        elif finished == 'unfinished':
+            where_cond.append('order_status=0')
+
         # 执行sql
         sql = sql + ' and '.join(where_cond) + \
                 order_by + limit_sql
@@ -369,16 +375,16 @@ class SVC_TradeRecode(object):
             return []
 
         # table colume
-        colums = ('id', 'created_at', 'updated_at', 'deleted_at', 'uid',
-                  'name', 'code', 'price', 'count', 'transfer_fee',
-                  'brokerage', 'total_value', 'trade_type', 'type',
+        colums = ('id', 'submit_time', 'updated_at', 'deleted_at', 'uid',
+                  'name', 'code', 'price', 'amount', 'transfer_fee',
+                  'brokerage', 'volume', 'trade_type', 'type',
                   'status', 'cid')
         result = []
         for item in raws:
             dct = dict(zip(colums, item))
 
-            tm = dct['created_at']
-            dct['created_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['submit_time']
+            dct['submit_time'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['updated_at']
             dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['deleted_at']
@@ -387,7 +393,7 @@ class SVC_TradeRecode(object):
             dct['price'] = float(dct['price'])
             dct['brokerage'] = float(dct['brokerage'])
             dct['transfer_fee'] = float(dct['transfer_fee'])
-            dct['total_value'] = float(dct['total_value'])
+            dct['volume'] = float(dct['volume'])
 
             result.append(dct)
 
