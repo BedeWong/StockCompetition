@@ -182,6 +182,15 @@ class SVC_UserStocks(object):
                    "freeze")
         for item in query_res:
             dct = dict(zip(headers, item))
+            tm = dct['submit_time']
+            dct['submit_time'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['updated_at']
+            dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['deleted_at']
+            dct['deleted_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+
+            dct['price'] = float(dct['price'])
+            dct['freeze'] = float(dct['freeze'])
             result.append(dct)
 
         logging.debug(result)
