@@ -20,7 +20,7 @@ class ListUserContestStocks(BaseHandler):
         :return:
         """
         uid = self.get_argument("uid")
-        cid = self.get_argument("cid")
+        cid = int(self.get_argument("cid"))
         page = (int)(self.get_argument("page", 0))
         count = (int)(self.get_argument("count", 20))
 
@@ -56,7 +56,7 @@ class BuyStockHander(BaseHandler):
         :return:
         """
         u_id = self.get_argument("uid")
-        c_id = self.get_argument("cid")
+        c_id = int(self.get_argument("cid"))
         stock_code = self.get_argument("code")
         stock_name = self.get_argument("name")
         stock_price = (float)(self.get_argument("price"))
@@ -117,8 +117,8 @@ class GetTradeHistoryHandler(BaseHandler):
 
         :return:
         """
-        u_id = self.get_argument("uid")
-        c_id = self.get_argument("cid")
+        u_id = int(self.get_argument("uid"))
+        c_id = int(self.get_argument("cid"))
         type = (int)(self.get_argument("tradetype", 0))   # 默認所有的數據都要加載
         page = (int)(self.get_argument("page", 0))
         limit = (int)(self.get_argument("limit", 40))
