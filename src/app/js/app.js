@@ -4,10 +4,11 @@
 baseurl = 'http://120.79.208.53:8001';
 
 window.urls = {
-	url_picCode : baseurl+'/piccode',
+	url_picCode : baseurl+'/api/piccode',
 	url_getSMSCode : baseurl+'/api/checkpic',
 	
 	url_login : baseurl + '/api/login',
+	url_register: baseurl + '/api/register',
 	url_getUserinfo : baseurl + '/api/getuserinfo',
 	url_userinfo : baseurl + '/api/user/',
 	
@@ -23,7 +24,8 @@ window.urls = {
 	url_buystock : baseurl + "/api/stocks/buy",
 	url_salestock : baseurl + "/api/stocks/sale",
 	url_getTradeHistory: baseurl + "/api/stocks/history/tradelist",
-	url_invokeStock : baseurl + "/api/stocks/invoke",
+	url_invokeStock : baseurl + "/api/stocks/revoke",
+	url_orders: baseurl + "/api/stocks/orders",
 	
 	// 比賽相關
 	url_createContest : baseurl + '/api/contest/create',
@@ -40,8 +42,9 @@ window.urls = {
 	
 	url_contestStockBuy : baseurl + "/api/contest/stocks/buy",
 	url_contestStockSale : baseurl + "/api/contest/stocks/sale",
-	url_contestStockInvoke : baseurl + "/api/contest/stocks/invoke",
+	url_contestStockInvoke : baseurl + "/api/contest/stocks/revoke",
 	url_contestHistoryList : baseurl + "/api/contest/stocks/history/tradelist",
+	url_contestOrders: baseurl + "/api/contest/stocks/orders",
 	
 	// 討論處理接口
 	url_airticlePublish : baseurl + '/api/article/add',
@@ -155,7 +158,6 @@ window.urls = {
 	        },
 			success : function(dat) {
 				console.log(dat.errcode);
-				console.log(dat.token);
 				console.log(dat.retdata);
 				if(dat.errcode == 0) {
 					$.toast("登录成功!");
@@ -221,21 +223,47 @@ window.urls = {
 	owner.reg = function(regInfo, callback) {
 		callback = callback || $.noop;
 		regInfo = regInfo || {};
-		regInfo.account = regInfo.account || '';
-		regInfo.password = regInfo.password || '';
-		if (regInfo.account.length < 5) {
-			return callback('用户名最短需要 5 个字符');
+		
+		if (regInfo.uname.length < 3) {
+			return callback('用户名最短需要 3 个字符');
 		}
-		if (regInfo.password.length < 6) {
+		if (regInfo.pwd.length < 6) {
 			return callback('密码最短需要 6 个字符');
 		}
-		if (!checkEmail(regInfo.email)) {
+		if (!checkEmail(regInfo.uemail)) {
 			return callback('邮箱地址不合法');
 		}
-		var users = JSON.parse(localStorage.getItem('$users') || '[]');
-		users.push(regInfo);
-		localStorage.setItem('$users', JSON.stringify(users));
-		return callback();
+		
+		result_data = undefined
+		$.ajax(urls.url_register, {
+			data : $.param(regInfo),
+			type : 'POST',
+			timeout : 5000,
+			crossDomain: true,
+	        xhrFields: {
+	            withCredentials: true
+	        },
+	        
+			success : function(dat) {
+				console.log(dat.errcode);
+				console.log(dat.errmsg);
+				if(dat.errcode == 0) {
+		
+//					var users = JSON.parse(localStorage.getItem('$users') || '[]');
+//					users.push(regInfo);
+//					localStorage.setItem('$users', JSON.stringify(users));
+					return callback();
+				}//成功返回
+				else {
+					$.alert(dat.errmsg);
+					return callback(dat.errmsg);
+				}
+			},//end success
+			error: function(code, type, msg) {  
+                $.alert("msg:" + msg);
+                return ;
+			}
+		});
 	};
 
 	/**

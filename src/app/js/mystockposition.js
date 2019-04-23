@@ -201,6 +201,7 @@
 			
 			// 賦值數據到模型
 			list_data.datas = data;
+			console.log(JSON.stringify(data));
 		}, code_lst);
 	};
 	

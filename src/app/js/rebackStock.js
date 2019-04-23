@@ -83,9 +83,8 @@
 		app.fillToken(postdata);
 		postdata.ext = 'unfinished';   // 所有未完成的交易記錄
 		
-		var url = urls.url_getTradeHistory;
+		var url = urls.url_orders;
 		if(param.contestid != undefined) {
-			url = urls.url_contestHistoryList;
 			postdata.cid = param.contestid;    // 附帶比賽id 參數
 		}
 		

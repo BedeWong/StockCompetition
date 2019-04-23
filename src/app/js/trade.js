@@ -2,88 +2,6 @@
 	
 	$$.plusReady(function(){
 		console.log("Trade page ready.");
-		
-	});
-	
-	var dataAreaVm = new Vue({
-		el:'#data-area',
-		data:{
-			datas:{}
-		},
-		methods:{
-			resetData:function(){//重置数据
-				Object.assign(this.$data, {});
-			},
-			buy:function(it){
-				console.log(JSON.stringify(it))
-				
-			},
-			sale:function(it){
-				console.log(JSON.stringify(it))
-			}
-		}
-	});
-	
-	var dataCache = {}
-	var b_price_box = false;   // 頁面加載價格框不出現值問題
-	function updataData(){		
-		hq_obj.get_hq_stock(function(retdata){
-			retdata = retdata.replace(/[\r\n]/g, "");
-			console.log(retdata);
-			eval(retdata);
-			
-			var stockData = JSON.stringify(eval("hq_str_" + dataCache.code)).split(',');
-			
-			dataCache.jinkai = parseFloat(stockData[1]).toFixed(2);    // 今開
-			dataCache.cur_price = parseFloat(stockData[3]).toFixed(2);  // 現價
-			dataCache.zuoshou = parseFloat(stockData[2]).toFixed(2);  // 作收
-			dataCache.change_per = ((dataCache.cur_price - stockData[2]) / stockData[2]*100).toFixed(2); // 34  漲幅
-			
-			dataCache.sale1_c = parseFloat(stockData[20]).toFixed(0);
-			dataCache.sale1 = parseFloat(stockData[21]).toFixed(2);
-			dataCache.sale2_c = parseFloat(stockData[22]).toFixed(0);
-			dataCache.sale2 = parseFloat(stockData[23]).toFixed(2);
-			dataCache.sale3_c = parseFloat(stockData[24]).toFixed(0);
-			dataCache.sale3 = parseFloat(stockData[25]).toFixed(2);
-			dataCache.sale4_c = parseFloat(stockData[26]).toFixed(0);
-			dataCache.sale4 = parseFloat(stockData[27]).toFixed(2);
-			dataCache.sale5_c = parseFloat(stockData[28]).toFixed(0);
-			dataCache.sale5 = parseFloat(stockData[29]).toFixed(2);
-			
-			dataCache.buy1_c = parseFloat(stockData[10]).toFixed(0);
-			dataCache.buy1 = parseFloat(stockData[11]).toFixed(2);
-			dataCache.buy2_c = parseFloat(stockData[12]).toFixed(0);
-			dataCache.buy2 = parseFloat(stockData[13]).toFixed(2);
-			dataCache.buy3_c = parseFloat(stockData[14]).toFixed(0);
-			dataCache.buy3 = parseFloat(stockData[15]).toFixed(2);
-			dataCache.buy4_c = parseFloat(stockData[16]).toFixed(0);
-			dataCache.buy4 = parseFloat(stockData[17]).toFixed(2);
-			dataCache.buy5_c = parseFloat(stockData[18]).toFixed(0);
-			dataCache.buy5 = parseFloat(stockData[19]).toFixed(2);
-			
-			if(!b_price_box){
-				b_price_box = true;
-				document.getElementById("price-box").value = dataCache.cur_price;
-			}
-			
-			dataAreaVm.datas = dataCache;
-		}, [dataCache.code,])
-	};
-	
-	window.addEventListener('display', function(event){
-		console.log(JSON.stringify(event.detail.data));
-		
-		dataCache = event.detail.data;
-		updataData();
-		
-		if(dataCache.type == 'buy') {
-			$("#button-buy").removeClass("mui-hidden");
-			$("#button-sale").addClass("mui-hidden");
-		}else if(dataCache.type == 'sale') {
-			$("#button-sale").removeClass("mui-hidden");
-			$("#button-buy").addClass("mui-hidden");
-		}
-		
 		/*****
 		 * 買入、賣出確認按鈕。
 		 */
@@ -96,6 +14,22 @@
 			var charge = (dataCache.vol * 0.00025).toFixed(2);
 			if(charge < 5) {
 				charge = 5;
+			}
+			
+			console.log("涨停价：" + (dataCache.zuoshou*1.1).toFixed(2));
+			if (dataCache.price > (dataCache.zuoshou*1.1).toFixed(2))
+			{
+				// 大于涨停价
+				$$.alert("输入正确的价格.");
+				$('#price-box').val((dataCache.zuoshou*1.1).toFixed(2));
+				return ;
+			}
+			else if (dataCache.price < (dataCache.zuoshou*0.9).toFixed(2) )
+			{
+				// 小于跌停价
+				$$.alert("输入正确的价格.");
+				$('#price-box').val((dataCache.zuoshou*0.9).toFixed(2));
+				return ;
 			}
 			
 			console.log("price:" + dataCache.price + ", count:"+ dataCache.count + ", vol:" + dataCache.vol + ", charge:" + charge);
@@ -198,7 +132,89 @@
 			$('#mark-box').addClass('mui-hidden');
 		});
 		
-//		setInterval(updataData, 5000);
+		window.addEventListener('display', function(event){
+			console.log(JSON.stringify(event.detail.data));
+			
+			dataCache = event.detail.data;
+			updataData();
+			
+			if(dataCache.type == 'buy') {
+				$("#button-buy").removeClass("mui-hidden");
+				$("#button-sale").addClass("mui-hidden");
+			}else if(dataCache.type == 'sale') {
+				$("#button-sale").removeClass("mui-hidden");
+				$("#button-buy").addClass("mui-hidden");
+			}
+			
+			
+//			setInterval(updataData, 5000);
+		});
 	});
+	
+	var dataAreaVm = new Vue({
+		el:'#data-area',
+		data:{
+			datas:{}
+		},
+		methods:{
+			resetData:function(){//重置数据
+				Object.assign(this.$data, {});
+			},
+			buy:function(it){
+				console.log(JSON.stringify(it))
+				
+			},
+			sale:function(it){
+				console.log(JSON.stringify(it))
+			}
+		}
+	});
+	
+	var dataCache = {}
+	var b_price_box = false;   // 頁面加載價格框不出現值問題
+	function updataData(){		
+		hq_obj.get_hq_stock(function(retdata){
+			retdata = retdata.replace(/[\r\n]/g, "");
+			console.log(retdata);
+			eval(retdata);
+			
+			var stockData = JSON.stringify(eval("hq_str_" + dataCache.code)).split(',');
+			
+			dataCache.jinkai = parseFloat(stockData[1]).toFixed(2);    // 今開
+			dataCache.cur_price = parseFloat(stockData[3]).toFixed(2);  // 現價
+			dataCache.zuoshou = parseFloat(stockData[2]).toFixed(2);  // 作收
+			dataCache.change_per = ((dataCache.cur_price - stockData[2]) / stockData[2]*100).toFixed(2); // 34  漲幅
+			
+			dataCache.sale1_c = parseFloat(stockData[20]).toFixed(0);
+			dataCache.sale1 = parseFloat(stockData[21]).toFixed(2);
+			dataCache.sale2_c = parseFloat(stockData[22]).toFixed(0);
+			dataCache.sale2 = parseFloat(stockData[23]).toFixed(2);
+			dataCache.sale3_c = parseFloat(stockData[24]).toFixed(0);
+			dataCache.sale3 = parseFloat(stockData[25]).toFixed(2);
+			dataCache.sale4_c = parseFloat(stockData[26]).toFixed(0);
+			dataCache.sale4 = parseFloat(stockData[27]).toFixed(2);
+			dataCache.sale5_c = parseFloat(stockData[28]).toFixed(0);
+			dataCache.sale5 = parseFloat(stockData[29]).toFixed(2);
+			
+			dataCache.buy1_c = parseFloat(stockData[10]).toFixed(0);
+			dataCache.buy1 = parseFloat(stockData[11]).toFixed(2);
+			dataCache.buy2_c = parseFloat(stockData[12]).toFixed(0);
+			dataCache.buy2 = parseFloat(stockData[13]).toFixed(2);
+			dataCache.buy3_c = parseFloat(stockData[14]).toFixed(0);
+			dataCache.buy3 = parseFloat(stockData[15]).toFixed(2);
+			dataCache.buy4_c = parseFloat(stockData[16]).toFixed(0);
+			dataCache.buy4 = parseFloat(stockData[17]).toFixed(2);
+			dataCache.buy5_c = parseFloat(stockData[18]).toFixed(0);
+			dataCache.buy5 = parseFloat(stockData[19]).toFixed(2);
+			
+			if(!b_price_box){
+//				b_price_box = true;
+				document.getElementById("price-box").value = dataCache.cur_price;
+				document.getElementById("price-count").value = 100;
+			}
+			
+			dataAreaVm.datas = dataCache;
+		}, [dataCache.code,])
+	};
 	
 })(mui);

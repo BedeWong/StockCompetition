@@ -70,7 +70,7 @@
 				<div class="mui-input-row" id="row-piccode">
 					<label>验证码</label>
 					<!--<a href="#"><img src="http://127.0.0.1:8001/piccode" alt="验证码"  style="width: 140px; height: 36px; /*float:right;*/"/></a>-->
-					<a href="#"><img src="http://120.79.208.53:8001/piccode" alt="验证码"  style="width: 140px; height: 36px; /*float:right;*/"/></a>
+					<a href="#"><img src="http://120.79.208.53:8001/api/piccode" alt="验证码"  style="width: 140px; height: 36px; /*float:right;*/"/></a>
 				</div>
 				<div class="">
 					<input id="piccode" type="text" class="mui-input-clear mui-input" placeholder="请输入验证码" style="width: 40%;margin-left: 80px;">
@@ -156,19 +156,21 @@
 					
 					regButton.addEventListener('tap', function(event) {
 						var regInfo = {
-							usernick : useridBox.value,
+							uname : useridBox.value,
 //							account: accountBox.value,
-							password: passwordBox.value,
-							email: emailBox.value
+							pwd: passwordBox.value,
+							uemail: emailBox.value,
+							mobile: phoneBox.value,
+							smscode: smscodeBox.value
 						};
 						var passwordConfirm = passwordConfirmBox.value;
-						if (passwordConfirm != regInfo.password) {
+						if (passwordConfirm != regInfo.pwd) {
 							plus.nativeUI.toast('密码两次输入不一致');
 							return;
 						}
-						app.reg(regInfo, function(err) {
-							if (err) {
-								plus.nativeUI.toast(err);
+						app.reg(regInfo, function(data) {
+							if (data) {
+								plus.nativeUI.toast(data);
 								return;
 							}
 							plus.nativeUI.toast('注册成功');
@@ -181,13 +183,13 @@
 								plus.webview.currentWebview().close("none");
 							});
 							//若启动页不是登录页，则需通过如下方式打开登录页
-//							$.openWindow({
-//								url: 'login.html',
-//								id: 'login',
-//								show: {
-//									aniShow: 'pop-in'
-//								}
-//							});
+							$.openWindow({
+								url: 'login.html',
+								id: 'login',
+								show: {
+									aniShow: 'pop-in'
+								}
+							});
 						});
 				}); // end
 				});

@@ -72,7 +72,7 @@
 			data:postdata,
             timeout: 3000,
             success: function(data) {
-            	console.log("success:" + urls.url_getMyStocks);
+            	console.log("success:" + url);
             	
             	if(data['errcode'] != 0){
             		plus.nativeUI.toast(data['errmsg']);

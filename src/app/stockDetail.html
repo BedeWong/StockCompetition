@@ -290,6 +290,11 @@
 			
 			pramaData = event.detail.data;
 			console.log("stock detail page display: " + JSON.stringify(pramaData));
+			
+			pg_trade = mui.preload({
+				url:"trade.html",
+				id:"trade",//默认使用当前页面的url作为id
+			});
 		});
 		
 

@@ -34,9 +34,9 @@
 				</div>
 				<div id="info-bar" style="border-bottom: 1px solid #AAAAAA;">
 					<a >訪客 {{dat.uvisitors}}</a>
-					<a >關注 {{20}}</a>
-					<a >粉絲 {{60}}</a>
-					<a >收藏 {{50}}</a>
+					<a >關注 {{0}}</a>
+					<a >粉絲 {{0}}</a>
+					<a >收藏 {{0}}</a>
 					<a >等級 {{dat.ulevel}}</a>
 					<a  v-if="dat.urank!=0">排名 {{dat.urank}}</a>
 					<a  v-else >排名 <span style="color: orangered;">
@@ -86,7 +86,7 @@
 	         				{{it.type_desc}}
 	         			</div>
 	         			<div id="dongtai-bar-msg" style="float:left" class="mui-ellipsis">
-	         				{{it.extmsg}}
+	         				<!--{{it.extmsg}}-->
 	         			</div>
 	         			<div id="dongtai-bar-btn" style="float:right">
 	         				<button id='btn-view' type="button" class="mui-btn mui-btn-warning" style="height: 32px;">查看</button>
