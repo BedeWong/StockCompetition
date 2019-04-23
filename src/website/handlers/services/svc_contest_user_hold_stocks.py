@@ -148,8 +148,10 @@ class SVC_UserStocks(object):
         result = []
         try:
             query_res = dbsession.execute(sql)
+            dbsession.commit()
             query_res = query_res.fetchall()
         except Exception as e:
+            dbsession.rollback()
             logging.error(e)
             raise
 

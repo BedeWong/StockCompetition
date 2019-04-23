@@ -270,6 +270,7 @@ class SVC_TradeRecode(object):
         sql = 'select * from tb_orders where user_id=%d and id=%d ' % (uid, order_id)
         try:
             result = dbsession.execute(sql).fetchall()
+            dbsession.commit()
             if not result:
                 raise Exception("订单数据不存在. order_id: %d, user_id: %d" %(order_id, uid))
         except Exception as e:
@@ -379,7 +380,9 @@ class SVC_TradeRecode(object):
         logging.debug('sql: %s' % sql)
 
         raws = dbsession.execute(sql).fetchall()
+        dbsession.commit()
         if not raws:
+            dbsession.rollback()
             return []
 
         # table colume
