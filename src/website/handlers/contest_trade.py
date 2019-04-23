@@ -21,8 +21,8 @@ class ListUserContestStocks(BaseHandler):
         """
         uid = self.get_argument("uid")
         cid = int(self.get_argument("cid"))
-        page = (int)(self.get_argument("page", 0))
-        count = (int)(self.get_argument("count", 20))
+        page = (int)(self.get_argument("page", 1))
+        count = (int)(self.get_argument("count", 40))
 
         logging.debug("uid:%s, cid:%s, page:%d, count:%d", uid, cid, page, count)
         res = None
