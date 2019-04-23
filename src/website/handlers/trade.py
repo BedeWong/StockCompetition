@@ -127,7 +127,6 @@ class RevokeStockHandler(BaseHandler):
             ))
             return
 
-
         self.write(dict(
             errcode = RET.RET_OK,
             errmsg = ""

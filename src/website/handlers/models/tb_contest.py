@@ -22,7 +22,7 @@ class Contest(BaseModel):
     c_status = Column(Integer, default=0)       # 0未开始， 1进行中， 2结束，  3关闭    5 刪除
     c_default_capital = Column(DECIMAL(15, 4), default=500000)
     c_check_auth = Column(Integer, default=0)   # 0不需要申请认证   1需要申请认证
-    c_logo_url = Column(String(64), default="")
+    c_logo_url = Column(String(64), default="images/logo6.jpg")
 
     def __repr__(self):
         return "TABLE <Contest: %s>" % self.to_json()

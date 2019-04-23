@@ -176,7 +176,10 @@ class SVC_Contest(object):
 
         res = None
         try:
-            query = dbsession.query(Contest, ContestDetail, User.u_name).join(ContestDetail, Contest.id==ContestDetail.c_id).filter(ContestDetail.u_id==uid).join(User, User.id==Contest.u_id)
+            query = dbsession.query(Contest, ContestDetail, User.u_name)\
+                .join(ContestDetail, Contest.id==ContestDetail.c_id)\
+                .filter(ContestDetail.u_id==uid)\
+                .join(User, User.id==Contest.u_id)
             # query = dbsession.query(ContestDetail, Contest, User.u_name).join(User, User.id==ContestDetail.u_id).filter(Contest.id==ContestDetail.c_id).filter(ContestDetail.u_id==uid)
             if not all:
                 query = query.filter(or_(Contest.c_status==1, Contest.c_status==0))
@@ -192,10 +195,12 @@ class SVC_Contest(object):
 
         lst = []
         for it in res:
-            d = it[0].to_json()
-            d.update(it[1].to_json())
-            d['createuser'] = it[2]
-            lst.append(d)
+            contest_dct = it[0].to_json()
+            contest_detail_dct = it[1].to_json()
+            dct = contest_dct
+            dct.update(contest_detail_dct)
+            dct['createuser'] = it[2]
+            lst.append(dct)
 
         return lst
 
@@ -320,9 +325,10 @@ def test_join():
         traceback.print_exc()
 
 def test_get_user_contest_list():
-    res = SVC_Contest.get_user_contest_list("27052237", all=True)
+    res = SVC_Contest.get_user_contest_list(27052237, all=True)
 
-    print(res)
+    for item in res:
+        print(item)
 
 
 def test_get_contest_detail_users():
@@ -348,9 +354,9 @@ def main():
     # test_get_contest_list()
 
     # test_join()
-    # test_get_user_contest_list()
+    test_get_user_contest_list()
 
-    test_get_contest_detail_users()
+    # test_get_contest_detail_users()
 
     # test_checkin()
 

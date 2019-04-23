@@ -35,7 +35,7 @@ class ContestDetail(BaseModel):
             jointime = (str)(self.c_join_time),
             position = self.c_position,
             rank   = self.c_rank,
-            status = self.c_status
+            u_status = self.c_status
         )
 
 ##############  test
