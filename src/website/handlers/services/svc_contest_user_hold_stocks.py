@@ -162,8 +162,8 @@ class SVC_UserStocks(object):
         for item in query_res:
             dct = dict(zip(headers, item))
 
-            tm = dct['create_at']
-            dct['create_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
+            tm = dct['created_at']
+            dct['created_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['updated_at']
             dct['updated_at'] = tm.strftime("%Y-%m-%d %H:%M:%S") if tm else None
             tm = dct['deleted_at']
