@@ -7,7 +7,7 @@ from utils.response_code import RET, RETMSG_MAP
 from handlers.basehandler import BaseHandler
 from handlers.services.svc_contest import SVC_Contest
 
-from config import default_logo, upload_path
+from config import upload_path
 
 import os
 from datetime import datetime
@@ -29,7 +29,7 @@ class ContestCreate(BaseHandler):
 
         # 沒上傳文件的用默認的logo，
         # 上傳了得存起來，生成一個md5的文件名
-        logo_name = default_logo
+        logo_name = None
 
         files = self.request.files.get('logo', None)
         if not files:
